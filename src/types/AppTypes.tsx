@@ -1,0 +1,5 @@
+export const UserTypes = {
+    ADMIN_USER : "ADMIN_USER",
+    SERVICE_USER : "SERVICE_USER",
+    INTEGRATOR_ADMIN_USER : "INTEGRATOR_ADMIN_USER",
+}
