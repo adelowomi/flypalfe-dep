@@ -13,7 +13,7 @@ const extendedColors: DeepPartial<
     600: '#323232',
     700: '#DFF8F9',
     800: '#F5FDFE',
-    900: '',
+    900: '#0D73FF',
   },
 };
 

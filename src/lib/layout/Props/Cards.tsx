@@ -71,7 +71,7 @@ function Cards({ title, note, icon }: CardsType) {
             >
               {note}
             </Text>
-            <NextLink href="/" passHref>
+            <NextLink href="/getstarted" passHref>
               <Link
                 color="white"
                 fontSize=".8rem"

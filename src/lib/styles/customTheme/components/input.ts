@@ -1,19 +1,36 @@
 import type { DeepPartial, Theme } from '@chakra-ui/react';
 
-const Button: DeepPartial<Theme['components']['Input']> = {
+const Input: DeepPartial<Theme['components']['Input']> = {
   variants: {
     outline: {
       field: {
-        borderColor: 'brand.100',
         borderRadius: '5px',
-        background: '#FFFFFF',
-        border: '1px solid #007F82',
+        background: 'white',
         boxSizing: 'border-box',
-        boxShadow: '0px 0px 9px rgba(0, 127, 130, 0.37)',
-        bordeRadius: '5px',
         height: '4rem',
+        borderColor: 'brand.100',
+        border: '1px solid',
+        boxShadow: '0px 0px 9px rgba(0, 127, 130, 0.37)',
         _focus: {
           borderColor: 'brand.200',
+          border: '1px solid',
+        },
+        _placeholder: {
+          fontSize: '.8rem',
+        },
+      },
+    },
+    filled: {
+      field: {
+        borderRadius: '5px',
+        background: 'rgba(0, 127, 130, 0.2)',
+        boxSizing: 'border-box',
+        height: '4rem',
+        border: 'none',
+        _focus: {
+          borderColor: 'brand.200',
+          border: '1px solid',
+          background: 'rgba(0, 127, 130, 0.2)',
         },
         _placeholder: {
           fontSize: '.8rem',
@@ -23,4 +40,4 @@ const Button: DeepPartial<Theme['components']['Input']> = {
   },
 };
 
-export default Button;
+export default Input;

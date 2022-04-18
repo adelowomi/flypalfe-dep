@@ -16,10 +16,16 @@ import {
 
 import NextLink from 'next/link';
 import MenuItems from './Props/MenuItems';
+import { useRouter } from 'next/router';
 
 function Footer() {
+  const router = useRouter();
   return (
-    <Box w="full" bgColor="brand.200">
+    <Box
+      w="full"
+      bgColor="brand.200"
+      display={router.pathname.startsWith('/admin') ? 'none' : 'block'}
+    >
       <Container maxW="90%" pt="2rem">
         <Flex justify="space-between" alignItems="center" h="6rem">
           <Box>

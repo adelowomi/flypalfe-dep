@@ -7,12 +7,16 @@ function Header() {
   const router = useRouter();
 
   return (
-    <Box w="full" bgColor="white">
+    <Box
+      w="full"
+      bgColor="white"
+      display={router.pathname.startsWith('/admin') ? 'none' : 'block'}
+    >
       <Container maxW="90%">
         <Flex justify="space-between" alignItems="center" h="6rem">
-          <Box cursor="pointer">
+          <Box cursor="pointer" w="126px">
             <NextLink href={'/'}>
-              <Image src="/assets/logoblue.png" w="126px" h="29px" />
+              <Image src="/assets/logoblue.png" w="full" h="auto" />
             </NextLink>
           </Box>
           <Box>

@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, VStack, Text, Image } from '@chakra-ui/react';
-import React from 'react';
+import 'animate.css';
 
 function AboutTempltr() {
   return (
@@ -47,6 +47,7 @@ function AboutTempltr() {
                   borderRadius="10px"
                   overflow="hidden"
                   mb="2rem"
+                  className="animate__animated animate__fadeInDown animate__delay-1s"
                 >
                   <Image
                     src="assets/whoarewe.png"
@@ -61,6 +62,7 @@ function AboutTempltr() {
                   h="213px"
                   borderRadius="10px"
                   overflow="hidden"
+                  className="animate__animated animate__fadeInUp animate__delay-2s"
                 >
                   <Image
                     src="assets/whoarewe.png"
@@ -78,6 +80,7 @@ function AboutTempltr() {
                   borderRadius="10px"
                   overflow="hidden"
                   mt="3rem"
+                  className="animate__animated animate__fadeInRight animate__delay-2s"
                 >
                   <Image
                     src="assets/whoarewe.png"

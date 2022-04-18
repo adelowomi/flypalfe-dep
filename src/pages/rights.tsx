@@ -1,15 +1,5 @@
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
-  Text,
-  Container,
-} from '@chakra-ui/react';
+import { Accordion, Box, Container } from '@chakra-ui/react';
 import Accordions from 'lib/layout/Props/Accordions';
-import React from 'react';
 
 function rights() {
   return (

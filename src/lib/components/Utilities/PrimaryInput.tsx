@@ -1,3 +1,4 @@
+import { FormControl, FormLabel, GridItem, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import {
   FieldError,
@@ -51,73 +52,25 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
   const inputStyle = error
     ? 'shadow-sm focus:ring-red-500 focus:border-red-500 focus:border-0 block w-full h-11 sm:text-sm border border-red-500 rounded pl-4'
     : 'shadow-sm focus:ring-vca-green focus:border-vca-orange-2 focus:border-0 block w-full h-11 sm:text-sm border border-gray-400 rounded pl-4';
-  return type === 'password' ? (
-    <div className="form-group">
-      <div className="form-label-group">
-        <label className="form-label" htmlFor={`${name}`}>
+  return (
+    <GridItem colSpan={2}>
+      <FormControl isInvalid={error ? true : false}>
+        <FormLabel color="brand.100" fontSize="1.1rem">
           {label}
-        </label>
-        {/* <a
-          className="link link-primary link-sm"
-          href="html/pages/auths/auth-reset-v2.html"
-        >
-          Forgot password
-        </a> */}
-      </div>
-      <div className="form-control-wrap">
-        <a
-          href="#"
-          className="form-icon form-icon-right passcode-switch lg"
-          data-target="password"
-          onClick={() => setShow(!show)}
-        >
-          {show ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-        </a>
-        <input
+        </FormLabel>
+        <Input
+          placeholder={placeholder}
+          type="email"
           {...register(name, { required, ...validate })}
-          className={
-            'form-control form-control-lg ' + (error ? ' is-invalid' : '')
-          }
-          placeholder={`${placeholder}`}
-          type={show ? 'text' : type}
-          aria-describedby={`${name}`}
           defaultValue={defaultValue}
-          aria-labelledby={`${name}`}
-          aria-label={`${name}`}
-          value={value}
-          data-testid={testId}
-          id="password"
         />
-      </div>
-    </div>
-  ) : (
-    <div className="form-group">
-      <label htmlFor={`${name}`} className="form-label">
-        {label}
-      </label>
-      <div className="form-control-wrap">
-        <input
-          {...register(name, { required, ...validate })}
-          className={
-            'form-control form-control-lg ' + (error ? ' is-invalid' : '')
-          }
-          placeholder={`${placeholder}`}
-          type={type}
-          aria-describedby={`${name}`}
-          defaultValue={defaultValue}
-          aria-labelledby={`${name}`}
-          aria-label={`${name}`}
-          value={value}
-          data-testid={testId}
-        />
-      </div>
-
+      </FormControl>
       <p className="small text-danger">
         <em>
           {(error?.type === 'required' && `${label} is required`) ||
             error?.message}
         </em>
       </p>
-    </div>
+    </GridItem>
   );
 };

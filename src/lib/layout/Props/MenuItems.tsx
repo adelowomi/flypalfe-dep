@@ -10,7 +10,7 @@ type CardsType = {
 };
 function MenuItems({ text, url, color, p }: CardsType) {
   const router = useRouter();
-  const getNavLinks = ({ url }: { url: string }) => {
+  const getNavLinks = () => {
     if (router.asPath === url) return '3px solid #007F82';
   };
   return (
@@ -19,7 +19,7 @@ function MenuItems({ text, url, color, p }: CardsType) {
         <Link
           color={color}
           fontSize="1rem"
-          borderBottom={getNavLinks({ url })}
+          borderBottom={getNavLinks()}
           _hover={{ color: 'brand.200', textDecoration: 'unset' }}
           _focus={{ boxShadow: '0' }}
         >

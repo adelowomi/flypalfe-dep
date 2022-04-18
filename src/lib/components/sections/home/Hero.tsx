@@ -8,8 +8,11 @@ import {
   Button,
 } from '@chakra-ui/react';
 import 'animate.css';
+import { useScrollTo } from 'react-use-window-scroll';
 
 function Hero() {
+  const scrollTo = useScrollTo();
+
   return (
     <Box overflowX="hidden" h="auto" w="94%" ml="auto">
       <Flex
@@ -47,7 +50,12 @@ function Hero() {
             </Text>
             through FLYPAL. Both local and international
           </Text>
-          <Button variant="outline">Get Started</Button>
+          <Button
+            variant="outline"
+            onClick={() => scrollTo({ top: 800, left: 0, behavior: 'smooth' })}
+          >
+            Get Started
+          </Button>
         </VStack>
         <VStack
           alignItems="flex-start"

@@ -2,8 +2,33 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
-/* 
-body {
-  overflow: hidden;
-  width: 100%;
-} */
+
+.radio {
+  width: 2rem !important;
+  height: 2rem !important;
+  position: relative;
+  margin-right: 0.5rem;
+  border: 0;
+}
+.css-1rggdzb[aria-checked='true'],
+.css-1rggdzb[data-checked] {
+  background: rgba(197, 220, 250, 0.5) !important;
+  border: 0 !important;
+}
+
+.css-1rggdzb[aria-checked='true'],
+.css-1rggdzb[data-checked]::before {
+  background: #0f56b3 !important;
+  width: 25% !important;
+  height: 25% !important;
+  left: 1%;
+}
+.css-1rggdzb[aria-checked='true'],
+.css-1rggdzb[data-checked]::after {
+  width: 1.2rem;
+  height: 1.2rem;
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #0f56b3;
+}
