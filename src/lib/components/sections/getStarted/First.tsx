@@ -37,29 +37,29 @@ function First({
       >
         <PrimaryInput<LoginModel>
           register={register}
-          name={'email'}
+          name="email"
           error={errors.email}
-          defaultValue={''}
+          defaultValue=""
           label="Email"
           placeholder="chigozie@gmail.com"
-        ></PrimaryInput>
+        />
 
         <PrimaryInput<LoginModel>
           register={register}
-          name={'firstName'}
+          name="firstName"
           error={errors.firstName}
-          defaultValue={''}
+          defaultValue=""
           label="First Name"
           placeholder="Chigozie"
-        ></PrimaryInput>
+        />
         <PrimaryInput<LoginModel>
           register={register}
-          name={'lastName'}
+          name="lastName"
           error={errors.lastName}
-          defaultValue={''}
+          defaultValue=""
           label="Last Name"
           placeholder="Jessie"
-        ></PrimaryInput>
+        />
       </SimpleGrid>
     </Box>
   );

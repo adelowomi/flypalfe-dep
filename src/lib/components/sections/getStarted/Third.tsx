@@ -8,7 +8,7 @@ function Third() {
         Kindly download the document, print, sign, scan and click proceed to
         upload it back to us
       </Text>
-      <Box h="700px" w="full" bgColor="gray" mb="3rem" mt="2rem"></Box>
+      <Box h="700px" w="full" bgColor="gray" mb="3rem" mt="2rem" />
     </Box>
   );
 }

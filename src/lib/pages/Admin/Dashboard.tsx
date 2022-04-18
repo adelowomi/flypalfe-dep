@@ -11,12 +11,12 @@ function Dashboard() {
           <AdminStats />
         </GridItem>
         <GridItem colSpan={2}>
-          <AdminGraphs name={'New user Survey'} option={'New user'} />
+          <AdminGraphs name="New user Survey" option="New user" />
         </GridItem>
         <GridItem colSpan={2}>
           <HStack columnGap={5}>
-            <AdminGraphs name={'Resolved complaint'} option={'Current month'} />
-            <AdminGraphs name={'Pending complaint'} option={'Current month'} />
+            <AdminGraphs name="Resolved complaint" option="Current month" />
+            <AdminGraphs name="Pending complaint" option="Current month" />
           </HStack>
         </GridItem>
         <GridItem colSpan={2}>

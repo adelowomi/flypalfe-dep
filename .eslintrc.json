@@ -4,11 +4,18 @@
     "plugin:react/jsx-runtime",
     "plugin:@next/next/recommended"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
   "rules": {
     "no-unsafe-arguments": "off",
     "no_unresolved": "off",
+    "no-void": "off"
   },
-  "parser": "typescript-eslint-parser",
+  "parserOptions": {},
+  "parser": "@typescript-eslint/parser",
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"], // Your TypeScript files extension

@@ -15,8 +15,8 @@ import {
 } from 'react-icons/fa';
 
 import NextLink from 'next/link';
-import MenuItems from './Props/MenuItems';
 import { useRouter } from 'next/router';
+import MenuItems from './Props/MenuItems';
 
 function Footer() {
   const router = useRouter();
@@ -29,7 +29,7 @@ function Footer() {
       <Container maxW="90%" pt="2rem">
         <Flex justify="space-between" alignItems="center" h="6rem">
           <Box>
-            <NextLink href={'/'}>
+            <NextLink href="/">
               <Image src="/assets/logowhite.png" w="194px" h="45px" />
             </NextLink>
           </Box>

@@ -6,9 +6,10 @@ import {
   VStack,
   Text,
   Link,
+  Icon,
 } from '@chakra-ui/react';
 import React from 'react';
-import { Icon } from '@chakra-ui/react';
+
 import { FiArrowUpRight } from 'react-icons/fi';
 import NextLink from 'next/link';
 import { string } from 'yup';

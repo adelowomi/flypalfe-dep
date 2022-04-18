@@ -82,7 +82,7 @@ function index() {
               mt="2rem !important"
               w="100%"
             >
-              <NextLink href={''} passHref>
+              <NextLink href="" passHref>
                 <Link>Forgot Password</Link>
               </NextLink>
               <Button variant="solid" type="submit">

@@ -16,7 +16,7 @@ function SideNavLinks({ color, content, circle, line, name }: SideNav) {
       pos="relative"
       w="260px"
       _after={{
-        content: content,
+        content,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

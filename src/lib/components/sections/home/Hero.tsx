@@ -18,7 +18,7 @@ function Hero() {
       <Flex
         width="full"
         height="fit-content"
-        my={'3.8rem'}
+        my="3.8rem"
         align="center"
         position="relative"
       >

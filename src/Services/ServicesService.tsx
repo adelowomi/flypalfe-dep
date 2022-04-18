@@ -7,6 +7,7 @@ const agent = new https.Agent({
 });
 export class ServicesService {
   baseURL: string;
+
   constructor(baseURL: string) {
     this.baseURL = baseURL;
   }
@@ -20,7 +21,7 @@ export class ServicesService {
           httpsAgent: agent,
         })
       ).data;
-      return new Promise<ServiceView>((resolve, reject) => {
+      return await new Promise<ServiceView>((resolve, reject) => {
         resolve(result.data as ServiceView);
       });
     } catch (error) {
@@ -29,9 +30,9 @@ export class ServicesService {
       });
     }
   };
-  public static generateServiceLogoUrl = (logoReference: string) => {
-    return logoReference
+
+  public static generateServiceLogoUrl = (logoReference: string) =>
+    logoReference
       ? `${process.env.NEXT_PUBLIC_FILE_SERVICE_BASEURL}/api/file/${logoReference}/${process.env.NEXT_PUBLIC_FILE_SERVICE_KEY}`
       : null;
-  };
 }

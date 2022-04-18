@@ -53,13 +53,11 @@ function GetStarted() {
             <form
               onSubmit={handleSubmit(onSubmit, (errors) => console.log(errors))}
             >
-              <>
-                {step === 0 && <First register={register} errors={errors} />}
-                {step === 1 && <Second />}
-                {step === 2 && <Third />}
-                {step === 3 && <Fourth />}
-                {step === 4 && <Fifth />}
-              </>
+              {step === 0 && <First register={register} errors={errors} />}
+              {step === 1 && <Second />}
+              {step === 2 && <Third />}
+              {step === 3 && <Fourth />}
+              {step === 4 && <Fifth />}
               <FormButton step={step} setStep={setStep} />
             </form>
           </Box>

@@ -19,7 +19,7 @@ function Locations() {
         <Flex
           width="full"
           height="fit-content"
-          my={'4rem'}
+          my="4rem"
           align="start"
           position="relative"
         >

@@ -6,7 +6,7 @@ function Users() {
   return (
     <Box mb="4rem">
       <SimpleGrid column={2} spacing={8}>
-        <AdminGraphs name={'New user Survey'} option={'New user'} />
+        <AdminGraphs name="New user Survey" option="New user" />
         <UsersList />
       </SimpleGrid>
     </Box>

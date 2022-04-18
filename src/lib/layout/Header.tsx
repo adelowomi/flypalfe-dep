@@ -15,7 +15,7 @@ function Header() {
       <Container maxW="90%">
         <Flex justify="space-between" alignItems="center" h="6rem">
           <Box cursor="pointer" w="126px">
-            <NextLink href={'/'}>
+            <NextLink href="/">
               <Image src="/assets/logoblue.png" w="full" h="auto" />
             </NextLink>
           </Box>
@@ -45,7 +45,7 @@ function Header() {
                 <Image src="/assets/nig.png" h="auto" w="auto" />
                 <Text pl=".3rem">NGN</Text>
               </Flex>
-              <NextLink href={'/contact'}>
+              <NextLink href="/contact">
                 <Button
                   variant="outline"
                   cursor="pointer"

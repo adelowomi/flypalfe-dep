@@ -54,7 +54,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
     : 'shadow-sm focus:ring-vca-green focus:border-vca-orange-2 focus:border-0 block w-full h-11 sm:text-sm border border-gray-400 rounded pl-4';
   return (
     <GridItem colSpan={2}>
-      <FormControl isInvalid={error ? true : false}>
+      <FormControl isInvalid={!!error}>
         <FormLabel color="brand.100" fontSize="1.1rem">
           {label}
         </FormLabel>

@@ -39,19 +39,19 @@ function UserTable() {
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
-              <TableHead title={'Name'} />
-              <TableHead title={'Airline'} />
-              <TableHead title={'Departure'} />
-              <TableHead title={'Date'} />
+              <TableHead title="Name" />
+              <TableHead title="Airline" />
+              <TableHead title="Departure" />
+              <TableHead title="Date" />
             </Tr>
           </Thead>
 
           <Tbody h="500px">
             <Tr>
-              <TableData name={'Jesse Chigozie'} />
-              <TableData name={'Air Peace'} />
-              <TableData name={'Lagos'} />
-              <TableData name={'Feb, 23rd 2022'} />
+              <TableData name="Jesse Chigozie" />
+              <TableData name="Air Peace" />
+              <TableData name="Lagos" />
+              <TableData name="Feb, 23rd 2022" />
             </Tr>
           </Tbody>
         </Table>

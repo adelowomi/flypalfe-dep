@@ -39,11 +39,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
           />
           <title>FlyPal</title>
-          <link
-            rel="shortcut icon"
-            href="/assets/flyfav.png"
-            type="image/x-icon"
-          />
+          <link rel="icon" href="/assets/flyfav.png" type="image/x-icon" />
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
         {/* <Layout> */}

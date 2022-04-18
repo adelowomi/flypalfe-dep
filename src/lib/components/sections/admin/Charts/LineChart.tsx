@@ -11,9 +11,10 @@ import {
   Filler,
 } from 'chart.js';
 
-ChartJS.register(Filler);
-
 import { Line } from 'react-chartjs-2';
+import { CoinResult } from 'types/AppTypes';
+
+ChartJS.register(Filler);
 
 ChartJS.register(
   CategoryScale,
@@ -26,34 +27,30 @@ ChartJS.register(
 );
 
 const LineChart = () => {
-  const [chart, setChart] = useState({});
-  var baseUrl = 'https://api.coinranking.com/v2/coins/?limit=12';
-  var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  var apiKey = 'coinrankingf94be80616bac2ca8911497c5f9d48806688d0e4788432e4';
+  const [chart, setChart] = useState<CoinData>();
+  const baseUrl = 'https://api.coinranking.com/v2/coins/?limit=12';
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  const apiKey = 'coinrankingf94be80616bac2ca8911497c5f9d48806688d0e4788432e4';
 
   useEffect(() => {
     const fetchCoins = async () => {
-      await fetch(`${proxyUrl}${baseUrl}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-access-token': `${apiKey}`,
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-        .then((response) => {
-          if (response.ok) {
-            response.json().then((json) => {
-              console.log(json.data);
-              setChart(json.data);
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
+      try {
+        const result = await fetch(`${proxyUrl}${baseUrl}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': `${apiKey}`,
+            'Access-Control-Allow-Origin': '*',
+          },
         });
+        const sResult: CoinResult =
+          (await result.json()) as unknown as CoinResult;
+        setChart(sResult?.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
-    fetchCoins();
+    void fetchCoins();
   }, [baseUrl, proxyUrl, apiKey]);
 
   console.log('chart', chart);
@@ -77,7 +74,7 @@ const LineChart = () => {
     ],
   };
 
-  var options = {
+  const options = {
     maintainAspectRatio: false,
     scales: {
       y: {
@@ -100,11 +97,7 @@ const LineChart = () => {
     },
   };
 
-  return (
-    <>
-      <Line data={data} height={300} options={options} />
-    </>
-  );
+  return <Line data={data} height={300} options={options} />;
 };
 
 export default LineChart;

@@ -13,7 +13,11 @@ export default function PrimaryButton({
   return (
     <div className="form-group">
       <button className="btn btn-lg btn-primary btn-block" type={type}>
-        {isLoading ? <RotatingLines width="20" strokeColor="#FFF" strokeWidth="3" /> : text}
+        {isLoading ? (
+          <RotatingLines width="20" strokeColor="#FFF" strokeWidth="3" />
+        ) : (
+          text
+        )}
       </button>
     </div>
   );

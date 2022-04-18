@@ -40,12 +40,12 @@ function UsersList() {
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
-              <TableHead title={'Name'} />
-              <TableHead title={'Departure'} />
-              <TableHead title={'Airline'} />
-              <TableHead title={'Complains'} />
-              <TableHead title={'Date'} />
-              <TableHead title={'Status'} />
+              <TableHead title="Name" />
+              <TableHead title="Departure" />
+              <TableHead title="Airline" />
+              <TableHead title="Complains" />
+              <TableHead title="Date" />
+              <TableHead title="Status" />
             </Tr>
           </Thead>
           <Tbody h="500px">

@@ -1,8 +1,7 @@
-import { Grid } from '@chakra-ui/react';
+import { Grid, Icon } from '@chakra-ui/react';
 import AdminCard from 'lib/layout/Props/AdminCard';
 import { FaUser } from 'react-icons/fa';
 import { MdPendingActions, MdAutoFixHigh } from 'react-icons/md';
-import { Icon } from '@chakra-ui/react';
 
 const ElevatorDecline = (props: any) => (
   <Icon viewBox="0 0 22 18" {...props}>
@@ -17,27 +16,27 @@ function AdminStats() {
     <Grid templateColumns="repeat(4, 1fr)" gap={6}>
       <AdminCard
         icon={FaUser}
-        color={'#0D73FF'}
-        title={'Unique user'}
-        sub={'2,000'}
+        color="#0D73FF"
+        title="Unique user"
+        sub="2,000"
       />
       <AdminCard
         icon={MdAutoFixHigh}
-        color={'#007F82'}
-        title={'Resolve complain'}
-        sub={'1,100'}
+        color="#007F82"
+        title="Resolve complain"
+        sub="1,100"
       />
       <AdminCard
         icon={MdPendingActions}
-        color={'#FFA42F'}
-        title={'Pending complain'}
-        sub={'350'}
+        color="#FFA42F"
+        title="Pending complain"
+        sub="350"
       />
       <AdminCard
         icon={ElevatorDecline}
-        color={'#FF0303'}
-        title={'Decline complain'}
-        sub={'500'}
+        color="#FF0303"
+        title="Decline complain"
+        sub="500"
       />
     </Grid>
   );

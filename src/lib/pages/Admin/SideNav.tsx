@@ -15,11 +15,11 @@ function SideNav() {
         <Image src="../assets/logow.png" w="full" />
       </Flex>
       <VStack align="flex-start">
-        <AdminMenu text={'Dashboard'} url={'/admin/dashboard'} />
-        <AdminMenu text={'Users'} url={'/admin/users'} />
-        <AdminMenu text={'Complaints'} url={'/admin/complaints'} />
-        <AdminMenu text={'Settings'} url={'/admin/settings'} />
-        <AdminMenu text={'Log out'} url={'/admin/logout'} />
+        <AdminMenu text="Dashboard" url="/admin/dashboard" />
+        <AdminMenu text="Users" url="/admin/users" />
+        <AdminMenu text="Complaints" url="/admin/complaints" />
+        <AdminMenu text="Settings" url="/admin/settings" />
+        <AdminMenu text="Log out" url="/admin/logout" />
       </VStack>
     </Box>
   );

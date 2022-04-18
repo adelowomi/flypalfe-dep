@@ -15,7 +15,7 @@ function HeroMini() {
       <Flex
         width="full"
         height="fit-content"
-        my={'17.8rem'}
+        my="17.8rem"
         align="center"
         position="relative"
       >
@@ -107,7 +107,7 @@ function HeroMini() {
             w="220px"
             h="220px"
             borderRadius="50%"
-          ></Box>
+          />
         </VStack>
       </Flex>
     </Box>
