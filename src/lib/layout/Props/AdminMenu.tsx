@@ -10,7 +10,7 @@ type CardsType = {
 function AdminMenu({ text, url }: CardsType) {
   const router = useRouter();
   const getNavLinks = (style: string) => {
-    if (router.asPath === url) return `${style}`;
+    if (router.asPath.startsWith(url)) return `${style}`;
   };
   return (
     // <Box p={p} display="inline">

@@ -9,14 +9,18 @@ import {
   Text,
   Th,
   Thead,
+  toast,
   Tr,
 } from '@chakra-ui/react';
 import { TableData, TableHead, TableStatus } from 'lib/layout/Props/Tables';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { MdFilterList } from 'react-icons/md';
+import { useOperationMethod } from 'react-openapi-client';
+import { useToasts } from 'react-toast-notifications';
 import Pagination from './Pagination';
 
-function UsersList() {
+function UsersList({ users }: { users: any }) {
   return (
     <Box
       w="full"
@@ -36,7 +40,7 @@ function UsersList() {
         <Text fontSize="1.1rem">User</Text>
         <Icon as={MdFilterList} fontSize="1.1rem" />
       </Flex>
-      <TableContainer h="500px">
+      <TableContainer h="500px" overflow="hidden">
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
@@ -48,11 +52,11 @@ function UsersList() {
               <TableHead title="Status" />
             </Tr>
           </Thead>
-          <Tbody h="500px">
-            {/* {users.map((user: any) => (
-              <Link href={'/users/' + user.id}>
+          <Tbody>
+            {users.map((user: any) => (
+              <Link href={'/admin/users/' + user.id} key={user.id}>
                 <Tr>
-                  <TableData name={user.name} />
+                  <TableData name={user.fullName} />
                   <TableData name={'Lagos'} />
                   <TableData name={'Air Peace'} />
                   <TableData name={'Cancelled flight'} />
@@ -60,7 +64,7 @@ function UsersList() {
                   <TableStatus name={'resolved'} />
                 </Tr>
               </Link>
-            ))} */}
+            ))}
           </Tbody>
         </Table>
       </TableContainer>

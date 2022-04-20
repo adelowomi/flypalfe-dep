@@ -8,11 +8,21 @@ import {
   InputRightElement,
   Box,
 } from '@chakra-ui/react';
+import { UserContext } from 'lib/Utils/MainContext';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 export default function TopNav() {
+  const router = useRouter();
+  const { user } = useContext(UserContext);
   return (
-    <Flex align="center" h="6rem" bg="transparent">
+    <Flex
+      align="center"
+      h="6rem"
+      bg="transparent"
+      display={router.pathname === '/admin/settings' ? 'none' : 'flex'}
+    >
       <Box as="div" w="60%">
         <InputGroup w="100">
           <Input
@@ -34,14 +44,14 @@ export default function TopNav() {
       <Flex align="center" w="40%" justify="flex-end">
         <Circle size="50px" overflow="hidden" bg="gray">
           <Image
-            src="../assets/whoarewe.png"
+            src="../../../assets/whoarewe.png"
             w="full"
             h="full"
             objectFit="cover"
           />
         </Circle>
         <Text fontWeight="600" fontSize="1rem" pl=".8rem">
-          Hi, Balogun
+          {`Hi, ${user.firstName}`}
         </Text>
       </Flex>
     </Flex>

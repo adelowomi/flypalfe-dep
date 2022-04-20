@@ -60,7 +60,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
         </FormLabel>
         <Input
           placeholder={placeholder}
-          type="email"
+          type={type}
           {...register(name, { required, ...validate })}
           defaultValue={defaultValue}
         />

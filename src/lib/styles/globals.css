@@ -32,3 +32,9 @@
   border-radius: 50%;
   border: 2px solid #0f56b3;
 }
+tr {
+  cursor: pointer;
+}
+tr:hover {
+  background-color: rgba(230, 230, 230, 0.233);
+}

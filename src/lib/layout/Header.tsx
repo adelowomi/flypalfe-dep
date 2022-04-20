@@ -16,7 +16,7 @@ function Header() {
         <Flex justify="space-between" alignItems="center" h="6rem">
           <Box cursor="pointer" w="126px">
             <NextLink href="/">
-              <Image src="/assets/logoblue.png" w="full" h="auto" />
+              <Image src="/assets/logoblue2.png" w="full" h="auto" />
             </NextLink>
           </Box>
           <Box>

@@ -35,7 +35,7 @@ function UserTable() {
         <Text fontSize="1.1rem">Complaints</Text>
         <Icon as={MdFilterList} fontSize="1.1rem" />
       </Flex>
-      <TableContainer h="500px">
+      <TableContainer h="500px" overflow="hidden">
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
@@ -46,7 +46,7 @@ function UserTable() {
             </Tr>
           </Thead>
 
-          <Tbody h="500px">
+          <Tbody>
             <Tr>
               <TableData name="Jesse Chigozie" />
               <TableData name="Air Peace" />

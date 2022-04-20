@@ -1,4 +1,5 @@
 import axios from 'axios';
+//@ts-ignore
 import { ServiceView, ServiceViewStandardResponse } from 'types/api';
 import https from 'https';
 

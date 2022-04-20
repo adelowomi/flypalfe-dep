@@ -13,7 +13,7 @@ const ElevatorDecline = (props: any) => (
 );
 function AdminStats() {
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+    <Grid templateColumns="repeat(4, 1fr)" gap={6} w="full">
       <AdminCard
         icon={FaUser}
         color="#0D73FF"

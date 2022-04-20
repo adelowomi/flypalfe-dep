@@ -5,7 +5,6 @@ function FormButton({ step, setStep }: { step: number; setStep: any }) {
   const handleProceed = () => {
     setStep((cur: number) => cur + 1);
   };
-  const [loading, setLoading] = useState(false);
   return (
     <Box w={step === 2 ? '90%' : '60%'} mx="auto">
       <Flex
@@ -39,7 +38,6 @@ function FormButton({ step, setStep }: { step: number; setStep: any }) {
         <Button
           variant="solid"
           ml={step === 2 ? '0' : 'auto'}
-          isLoading={loading}
           type={step === 4 ? 'submit' : 'button'}
           onClick={() => handleProceed()}
         >

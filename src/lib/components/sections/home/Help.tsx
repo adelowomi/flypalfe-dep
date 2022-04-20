@@ -37,27 +37,27 @@ function Help() {
           <Grid templateColumns="repeat(5, 1fr)" gap="3rem" mt="3rem">
             <Cards
               icon={MdFlight}
-              title="Cancelled flights"
+              title="cancelled flights"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdFlight}
-              title="Flight Delayed"
+              title="flight delayed"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={GiWorld}
-              title="Denied Boarding"
+              title="denied boarding"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdCardTravel}
-              title="Baggage claim"
+              title="baggage claim"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdWifiProtectedSetup}
-              title="Refund"
+              title="refund"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
           </Grid>

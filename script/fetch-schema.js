@@ -29,7 +29,7 @@ function addOperationIdsToSchema(schema) {
 }
 
 instance
-  .get('https://localhost:44316/swagger/v1/swagger.json')
+  .get('https://flypalapi.herokuapp.com/swagger/v1/swagger.json')
   .then((response) => {
     const updatedSchema = addOperationIdsToSchema(response.data);
     fs.writeFileSync(

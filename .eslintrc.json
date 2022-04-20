@@ -12,7 +12,8 @@
   "rules": {
     "no-unsafe-arguments": "off",
     "no_unresolved": "off",
-    "no-void": "off"
+    "no-void": "off",
+    "ts-ignore": false
   },
   "parserOptions": {},
   "parser": "@typescript-eslint/parser",

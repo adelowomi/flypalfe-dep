@@ -19,34 +19,10 @@ function SideNav({ step }: Steps) {
     >
       <Flex w="full" mt="6rem" justify="center">
         <VStack spacing={14} alignItems="flex-start">
-          <SideNavLinks
-            color={step >= 0 ? 'brand.500' : 'white'}
-            content={step >= 1 ? '"🙂"' : '""'}
-            circle={step >= 0 ? '5px solid #FCC13F' : '5px solid white'}
-            line={step >= 0 ? '3px solid #FCC13F' : '3px solid white'}
-            name="Personal information"
-          />
-          <SideNavLinks
-            color={step >= 1 ? 'brand.500' : 'white'}
-            content={step >= 2 ? '"🙂"' : '""'}
-            circle={step >= 1 ? '5px solid #FCC13F' : '5px solid white'}
-            line={step >= 1 ? '3px solid #FCC13F' : '3px solid white'}
-            name="Flight details"
-          />
-          <SideNavLinks
-            color={step >= 2 ? 'brand.500' : 'white'}
-            content={step >= 4 ? '"🙂"' : '""'}
-            circle={step >= 2 ? '5px solid #FCC13F' : '5px solid white'}
-            line={step >= 2 ? '3px solid #FCC13F' : '3px solid white'}
-            name="Document"
-          />
-          <SideNavLinks
-            color={step >= 4 ? 'brand.500' : 'white'}
-            content={step >= 4 ? '"🙂"' : '""'}
-            circle={step >= 4 ? '5px solid #FCC13F' : '5px solid white'}
-            line={step >= 4 ? '0' : '0'}
-            name="Finsh"
-          />
+          <SideNavLinks step={step} steps={0} name="Personal information" />
+          <SideNavLinks step={step} steps={1} name="Flight details" />
+          <SideNavLinks step={step} steps={2} name="Document" />
+          <SideNavLinks step={step} steps={4} name="Finsh" />
         </VStack>
       </Flex>
     </Box>

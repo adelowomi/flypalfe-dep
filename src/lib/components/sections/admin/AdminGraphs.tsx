@@ -2,7 +2,17 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import LineChart from './Charts/LineChart';
 
-function AdminGraphs({ name, option }: { name: string; option: string }) {
+function AdminGraphs({
+  name,
+  option,
+  users,
+}: {
+  name: string;
+  option: string;
+  users: any;
+}) {
+  console.log(users);
+
   return (
     <Flex
       w="full"
@@ -25,7 +35,7 @@ function AdminGraphs({ name, option }: { name: string; option: string }) {
           </Text>
         </Flex>
         <Box w="full" h="300px" mt="1rem">
-          <LineChart />
+          <LineChart users={users} />
         </Box>
       </Box>
     </Flex>

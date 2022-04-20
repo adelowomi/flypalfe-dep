@@ -10,6 +10,7 @@ import defaultSEOConfig from '../../next-seo.config';
 import '../lib/styles/globals.css';
 import { ToastProvider } from 'react-toast-notifications';
 import Layout from 'lib/layout';
+import { UserProvider } from 'lib/Utils/MainContext';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let headers: HeadersInit;
@@ -43,11 +44,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
         {/* <Layout> */}
-        <ToastProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ToastProvider>
+        <UserProvider>
+          <ToastProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ToastProvider>
+        </UserProvider>
       </OpenAPIProvider>
     </ChakraProvider>
   );

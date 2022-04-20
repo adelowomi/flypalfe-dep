@@ -7,8 +7,8 @@ import InfoBox from 'lib/components/sections/home/InfoBox';
 import Locations from 'lib/components/sections/home/Locations';
 import Services from 'lib/components/sections/home/Services';
 import Head from 'next/head';
-// import Fade from 'react-reveal/Fade';
-const Fade = require('react-reveal/Fade');
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 function Home() {
   return (

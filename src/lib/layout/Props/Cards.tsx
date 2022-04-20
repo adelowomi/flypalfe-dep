@@ -12,7 +12,6 @@ import React from 'react';
 
 import { FiArrowUpRight } from 'react-icons/fi';
 import NextLink from 'next/link';
-import { string } from 'yup';
 
 type CardsType = {
   title: string;
@@ -56,6 +55,7 @@ function Cards({ title, note, icon }: CardsType) {
               color="brand.300"
               position="relative"
               top="120px"
+              textTransform="capitalize"
               transition="all .5s ease"
               _groupHover={{ color: 'white', top: '0px' }}
             >
@@ -72,7 +72,7 @@ function Cards({ title, note, icon }: CardsType) {
             >
               {note}
             </Text>
-            <NextLink href="/getstarted" passHref>
+            <NextLink href={`/getstarted/${title.replace(' ', '-')}`} passHref>
               <Link
                 color="white"
                 fontSize=".8rem"

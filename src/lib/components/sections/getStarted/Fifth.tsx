@@ -54,7 +54,7 @@ function Fifth() {
               right="35%"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zagyellow.png" />
+              <Image src="../../assets/zagyellow.png" />
             </Box>
             <Box
               pos="absolute"
@@ -63,7 +63,7 @@ function Fifth() {
               transform="rotate(-22.57deg)"
               className="animate__animated animate__fadeInRight animate__delay-1s"
             >
-              <Image src="assets/arrow.png" />
+              <Image src="../assets/arrow.png" />
             </Box>
             <Box
               pos="absolute"
@@ -72,7 +72,7 @@ function Fifth() {
               transform="rotate(-90deg)"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zagblue.png" />
+              <Image src="../assets/zagblue.png" />
             </Box>
             <Box
               pos="absolute"
@@ -81,7 +81,7 @@ function Fifth() {
               transform="rotate(-22.57deg)"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zigzag.png" />
+              <Image src="../assets/zigzag.png" />
             </Box>
             <Box
               pos="absolute"
@@ -90,7 +90,7 @@ function Fifth() {
               transform="rotate(51.16deg)"
               className="animate__animated animate__fadeInUp animate__delay-1s"
             >
-              <Image src="assets/arrow.png" />
+              <Image src="../assets/arrow.png" />
             </Box>
             <Box
               pos="absolute"
@@ -99,7 +99,7 @@ function Fifth() {
               transform="rotate(68.27deg)"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zagblue.png" />
+              <Image src="../assets/zagblue.png" />
             </Box>
             <Box
               pos="absolute"
@@ -108,7 +108,7 @@ function Fifth() {
               transform="matrix(-0.94, -0.34, -0.34, 0.94, 0, 0)"
               className="animate__animated animate__fadeInLeft animate__delay-1s"
             >
-              <Image src="assets/arrow.png" />
+              <Image src="../assets/arrow.png" />
             </Box>
             <Box
               pos="absolute"
@@ -117,7 +117,7 @@ function Fifth() {
               transform="rotate(-37.8deg);"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zagblue.png" />
+              <Image src="../assets/zagblue.png" />
             </Box>
             <Box
               pos="absolute"
@@ -125,7 +125,7 @@ function Fifth() {
               left="10%"
               className="animate__animated animate__fadeInDown animate__delay-1s"
             >
-              <Image src="assets/zigzag.png" />
+              <Image src="../assets/zigzag.png" />
             </Box>
           </Circle>
           <Box
