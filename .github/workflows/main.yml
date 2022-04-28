@@ -1,12 +1,12 @@
-name: pmapihuroku
+name: flypalng
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,5 +38,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          heroku login
-          git push heroku master
+          git push https://heroku:$HEROKU@git.heroku.com/$APP_NAME.git HEAD
