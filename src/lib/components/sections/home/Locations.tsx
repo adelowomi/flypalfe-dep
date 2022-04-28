@@ -43,7 +43,7 @@ function Locations() {
               templateColumns="repeat(3, 1fr)"
               columnGap="4rem"
               rowGap="2rem"
-              mx="auto !important"
+              mx={['auto !important', '0 !important']}
               as="div"
             >
               <Airlines name="Air Peace" url="assets/airpeace.png" />
@@ -76,7 +76,7 @@ function Locations() {
               as="div"
               templateColumns="repeat(3, 1fr)"
               columnGap="4rem"
-              mx="auto !important"
+              mx={['auto !important', '0 !important']}
               rowGap="2rem"
             >
               <Locate area="Lagos" />
