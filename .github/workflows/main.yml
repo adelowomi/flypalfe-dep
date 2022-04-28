@@ -29,6 +29,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: $HEROKU
+          heroku_app_name: $APP_NAME #Must be unique in Heroku
+          heroku_email: $USERNAME
 
     
       # Runs a single command using the runners shell
@@ -38,4 +43,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          git push https://heroku:$HEROKU@git.heroku.com/$APP_NAME.git HEAD
+          git push heroku main
