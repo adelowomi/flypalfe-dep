@@ -43,6 +43,8 @@ function Locations() {
               templateColumns="repeat(3, 1fr)"
               columnGap="4rem"
               rowGap="2rem"
+              mx="auto !important"
+              as="div"
             >
               <Airlines name="Air Peace" url="assets/airpeace.png" />
               <Airlines name="Arik Air" url="assets/arik.png" />
@@ -71,8 +73,10 @@ function Locations() {
               </Text>
             </Flex>
             <Grid
+              as="div"
               templateColumns="repeat(3, 1fr)"
               columnGap="4rem"
+              mx="auto !important"
               rowGap="2rem"
             >
               <Locate area="Lagos" />

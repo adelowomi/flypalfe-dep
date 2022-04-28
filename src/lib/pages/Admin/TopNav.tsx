@@ -49,7 +49,7 @@ export default function TopNav() {
       >
         <Circle size="50px" overflow="hidden" bg="gray">
           <Image
-            src="../../../assets/whoarewe.png"
+            src="/assets/whoarewe.png"
             w="full"
             h="full"
             objectFit="cover"

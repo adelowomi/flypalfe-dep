@@ -19,7 +19,14 @@ function UserPage() {
       bgImage="url(/assets/lines2.png)"
     >
       <Link href={'/'}>
-        <Flex w="190px" pos="absolute" left="4rem" top="2rem" cursor="pointer">
+        <Flex
+          w="190px"
+          pos="absolute"
+          left={['50%', '4rem']}
+          transform={['translateX(-50%)', '']}
+          top="2rem"
+          cursor="pointer"
+        >
           <Image src="/assets/logoblue.png" w="full" />
         </Flex>
       </Link>

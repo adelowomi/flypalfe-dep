@@ -5,7 +5,7 @@ function RadioInput({
   value,
   label,
 }: {
-  value: string | number;
+  value: string | number | undefined;
   label: string;
 }) {
   return (

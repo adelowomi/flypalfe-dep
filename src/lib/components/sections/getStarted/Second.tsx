@@ -5,7 +5,6 @@ import { PrimaryInput } from 'lib/components/Utilities/PrimaryInput';
 import { ComplaintsModel } from 'types/api';
 import { RadioButton } from 'lib/components/Utilities/RadioButton';
 import RadioInput from 'lib/components/Utilities/RadioInput';
-import { useRouter } from 'next/router';
 
 function Second({
   register,
@@ -16,8 +15,6 @@ function Second({
   errors: any;
   control: any;
 }) {
-  const router = useRouter();
-
   return (
     <Box mb="4rem" w={['full', '70%']} mx="auto">
       <SimpleGrid

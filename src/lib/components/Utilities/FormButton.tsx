@@ -1,26 +1,27 @@
 import { Box, Button, Flex, Text, Image } from '@chakra-ui/react';
-import { useState } from 'react';
 import { saveAs } from 'file-saver';
 
 function FormButton({
   step,
   setStep,
   isValid,
+  loading,
 }: {
   step: number;
   setStep: any;
+  loading: any;
   isValid: boolean;
 }) {
   const handleProceed = () => {
     setStep((cur: number) => cur + 1);
   };
   const saveFile = () => {
-    saveAs('../assets/dummy.pdf', 'mandate.pdf');
+    saveAs('/assets/dummy.pdf', 'mandate.pdf');
     setStep(3);
   };
   return (
     <Box
-      w={[step === 2 ? '90%' : '100%', step === 2 ? '90%' : '60%']}
+      w={[step === 2 ? '90%' : '100%', step === 2 ? '90%' : '70%']}
       mx="auto"
     >
       <Flex
@@ -29,6 +30,7 @@ function FormButton({
         mb="4rem"
         align="center"
         display={step >= 4 ? 'none' : 'flex'}
+        justifyContent="flex-end"
       >
         <Text
           ml="auto"
@@ -36,18 +38,19 @@ function FormButton({
           fontWeight="600"
           color="brand.100"
           cursor="pointer"
-          display={step === 0 ? 'none' : 'block'}
+          display={step === 0 || step === 1 ? 'none' : 'block'}
           onClick={() => setStep(step - 1)}
         >
           Back
         </Text>
         <Button
           variant="solid"
-          ml={'auto'}
+          ml={'3rem'}
           mr={['auto', '0']}
           type={step === 4 ? 'submit' : 'button'}
           disabled={step == 0 ? isValid : !isValid}
           onClick={step === 2 ? saveFile : handleProceed}
+          isLoading={loading}
         >
           {step === 3 ? 'Submit' : step === 2 ? 'Download' : 'Proceed'}
         </Button>

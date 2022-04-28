@@ -3,7 +3,8 @@ import { UserContext } from 'lib/Utils/MainContext';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { HiMenuAlt4 } from 'react-icons/hi';
+import { FaTimes } from 'react-icons/fa';
+import { CgMenuRight } from 'react-icons/cg';
 import MenuItems from './Props/MenuItems';
 
 function Header() {
@@ -115,7 +116,11 @@ function Header() {
                 display={['block', 'none']}
                 onClick={() => openMobileMenu()}
               >
-                <HiMenuAlt4 fontSize="2rem" />
+                {opened ? (
+                  <CgMenuRight fontSize="2rem" />
+                ) : (
+                  <FaTimes fontSize="2rem" fontWeight="400" />
+                )}
               </Box>
               <>
                 {user ? (

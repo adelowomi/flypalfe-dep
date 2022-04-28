@@ -1,4 +1,5 @@
-import { Box, Container, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Grid, Image, Text } from '@chakra-ui/react';
+import Slider from 'lib/components/Slider';
 
 function InfoBox() {
   return (
@@ -17,7 +18,7 @@ function InfoBox() {
         <Container maxW="90%" pos="absolute" bottom={['50px', '0']}>
           <Flex
             bgColor="white"
-            h="9rem"
+            minH="9rem"
             boxShadow="-3px 20px 30px rgba(0, 0, 0, 0.07)"
             borderRadius="5px"
             display="flex"
@@ -54,10 +55,9 @@ function InfoBox() {
                 <Box pos="absolute" top="0" left="0">
                   <Image src="assets/quote.png" maxW={['45%', '100%']} />
                 </Box>
-                <Text textAlign="center" fontSize={['.9rem', '1rem']}>
-                  Since 2019, 1 billion flights has been cancelled "10k flights
-                  were delayed"
-                </Text>
+                <Box as="div" w="100%" height="7rem">
+                  <Slider />
+                </Box>
                 <Box
                   pos="absolute"
                   bottom="0"

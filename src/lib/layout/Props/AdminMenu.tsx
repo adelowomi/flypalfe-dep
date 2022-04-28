@@ -21,8 +21,8 @@ function AdminMenu({ text, url }: CardsType) {
         backgroundColor={getNavLinks('rgba(223, 248, 249, 1)')}
         p="1rem 0 1rem 3rem"
         w="100%"
-        // _hover={{ color: 'brand.200', textDecoration: 'unset' }}
-        // _focus={{ boxShadow: '0' }}
+        _hover={{ color: 'brand.200', textDecoration: 'unset' }}
+        _focus={{ boxShadow: '0' }}
       >
         {text}
       </Link>

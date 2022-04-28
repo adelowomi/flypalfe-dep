@@ -23,7 +23,6 @@ const schema = yup.object().shape({
   connectingFlights: yup.string().required('Departure Location is required'),
   arrivalTime: yup.string().required('Departure Location is required'),
   notificationPeriod: yup.string().required('Departure Location is required'),
-  // delayedFlight: yup.string().required('Departure Location is required'),
 });
 function GetStarted() {
   const [registerComplain, { data, loading, error }] =
@@ -40,7 +39,10 @@ function GetStarted() {
     formState: { errors, isValid },
   } = useForm<ComplaintsModel>({
     resolver: yupResolver(schema),
-    defaultValues: { complaintsCategoryId: id as unknown as number },
+    defaultValues: {
+      complaintsCategoryId: id as unknown as number,
+      // connectingFlights: result as unknown as boolean,
+    },
     mode: 'all',
   });
 
@@ -113,7 +115,12 @@ function GetStarted() {
                 {step === 2 && <Third />}
                 {step === 3 && <Fourth />}
                 {step === 4 && <Fifth />}
-                <FormButton step={step} setStep={setStep} isValid={isValid} />
+                <FormButton
+                  step={step}
+                  setStep={setStep}
+                  isValid={isValid}
+                  loading={loading}
+                />
               </form>
             </Box>
           </VStack>

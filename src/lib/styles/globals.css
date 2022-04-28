@@ -14,7 +14,24 @@
   background: rgba(197, 220, 250, 0.5) !important;
   border: 0 !important;
 }
-
+.react-multi-carousel-dot button {
+  border: 0 !important;
+  background: #dfedff !important;
+  width: 9px !important;
+  height: 9px !important;
+}
+.react-multi-carousel-dot-list {
+  justify-content: flex-start !important;
+}
+.react-multi-carousel-track {
+  align-items: center;
+}
+.react-multi-carousel-dot--active button {
+  background: #007f82 !important;
+}
+.react-multi-carousel-list {
+  height: 100%;
+}
 .css-1rggdzb[aria-checked='true'],
 .css-1rggdzb[data-checked]::before {
   background: #0f56b3 !important;
@@ -112,5 +129,8 @@ tr:hover {
   }
   .st-theme-sourceforge.st-vertical > .nav .nav-link {
     font-size: 1rem;
+  }
+  .react-multi-carousel-dot-list {
+    justify-content: center !important;
   }
 }

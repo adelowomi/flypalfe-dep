@@ -36,7 +36,7 @@ function DeclineButton({ item }: { item: any }) {
       color="red"
       isLoading={loading}
       onClick={() => declineComplaints()}
-      disabled={item.status ? true : false}
+      disabled={item.status == 'PENDING' ? false : true}
       _hover={{ color: 'white', bgColor: 'red' }}
     >
       Decline

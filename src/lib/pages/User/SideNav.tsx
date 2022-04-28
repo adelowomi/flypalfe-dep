@@ -37,7 +37,7 @@ function UserSideNav() {
       left={[opened ? '-100%' : '0', 'unset']}
     >
       <Flex w="106px" ml="3rem" my="3rem">
-        <Image src="../../../assets/logow.png" w="full" />
+        <Image src="/assets/logow.png" w="full" />
       </Flex>
       <Circle
         size="1.5rem"
