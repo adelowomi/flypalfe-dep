@@ -74,7 +74,7 @@ function Register({
         mt="0rem"
       >
         <SimpleGrid columns={2} rowGap="3" columnGap="4" w="100%">
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="email"
@@ -85,7 +85,7 @@ function Register({
               placeholder="Chigozie@gmail.com"
             />
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="firstName"
@@ -96,7 +96,7 @@ function Register({
               placeholder="Chigozie"
             />
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="lastName"
@@ -107,7 +107,7 @@ function Register({
               placeholder="Eze"
             />
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="middleName"
@@ -118,7 +118,7 @@ function Register({
               placeholder="Chukwu"
             />
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="phoneNumber"
@@ -129,7 +129,7 @@ function Register({
               type="text"
             />
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={[2, 1]}>
             <SecondaryInput<Register>
               register={register}
               name="password"

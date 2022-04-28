@@ -392,6 +392,47 @@
         }
       }
     },
+    "/api/Admin/user/get/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminuserget{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Complaints/create": {
       "post": {
         "tags": [
@@ -554,12 +595,12 @@
         }
       }
     },
-    "/api/Complaints/authorize/{complaintsId}": {
+    "/api/Complaints/get/{complaintsId}": {
       "get": {
         "tags": [
           "Complaints"
         ],
-        "operationId": "Complaintsauthorize{complaintsId}",
+        "operationId": "Complaintsget{complaintsId}",
         "parameters": [
           {
             "name": "complaintsId",

@@ -31,21 +31,10 @@ function Authentication() {
   const [logUserIn, { data, loading, error }] =
     useOperationMethod('Admintoken');
   const router = useRouter();
-  const { setUser } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
   const { addToast } = useToasts();
 
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem('user');
-  //   function redirectToLogin() {
-  //     if (loggedInUser === null) {
-  //       router.push('/admin');
-  //     } else if (loggedInUser) {
-  //       router.push('/admin/dashboard');
-  //       return;
-  //     }
-  //   }
-  //   redirectToLogin();
-  // }, []);
+
 
   const {
     handleSubmit,

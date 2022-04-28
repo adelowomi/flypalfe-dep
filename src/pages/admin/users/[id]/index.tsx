@@ -25,6 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const data = (await _dataAccess.get(`/api/Admin/user/get/${id}`)).data;
+
     const complainData = (
       await _dataAccess.get(`/api/Admin/complain/list/user/${id}`)
     ).data;

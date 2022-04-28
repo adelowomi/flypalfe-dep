@@ -32,15 +32,11 @@ function Login({ toggleForms }: { toggleForms: any }) {
   const { addToast } = useToasts();
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
     function redirectToLogin() {
-      if (loggedInUser === null) {
-        router.push('/user');
-        return;
-      }
-      if (loggedInUser) {
-        router.push('/user/dashboard');
-        return;
+      if (cookie.get('token') != null || undefined || false) {
+        router.push('/admin/dashboard');
+      } else {
+        router.push('/admin');
       }
     }
     redirectToLogin();

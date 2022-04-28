@@ -23,7 +23,7 @@ function UserPage() {
           w="190px"
           pos="absolute"
           left={['50%', '4rem']}
-          transform={['translateX(-50%)', '']}
+          transform={['translateX(-50%)', 'translateX(0%)']}
           top="2rem"
           cursor="pointer"
         >

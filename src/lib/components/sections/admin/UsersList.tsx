@@ -46,7 +46,7 @@ function UsersList({ users }: { users: any }) {
               <TableHead title="First Name" />
               <TableHead title="Last Name" />
               <TableHead title="Phone Number" />
-              <TableHead title="No of Complains" />
+              {/* <TableHead title="User Id" /> */}
             </Tr>
           </Thead>
           <Tbody>
@@ -58,7 +58,7 @@ function UsersList({ users }: { users: any }) {
                     <TableData name={user.firstName} />
                     <TableData name={user.lastName} />
                     <TableData name={user.phoneNumber} />
-                    <TableStatus name={user.id} />
+                    {/* <TableStatus name={user.id} /> */}
                   </Tr>
                 </Link>
               );

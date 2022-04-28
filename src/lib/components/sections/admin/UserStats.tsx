@@ -12,7 +12,6 @@ const ElevatorDecline = (props: any) => (
 );
 function UserStats({ item }: { item: any }) {
   const metrics = item.metrics;
-
   return (
     <Grid
       templateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']}
