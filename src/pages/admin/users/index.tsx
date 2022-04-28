@@ -1,31 +1,35 @@
 import Users from 'lib/pages/Admin/Users';
+import { DataAccess } from 'lib/Utils/Api';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
-function users({ item }: { item: any }) {
-  return <Users item={item} />;
+function users({ users }: { users: any }) {
+  return <Users users={users} />;
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context?.params?.id;
-  const res = await fetch(
-    `https://propertymataazapi.herokuapp.com/api/Property/get/${id}`
-  );
-  const data = await res.json();
-  console.log(data);
+  const bearer = `Bearer ${context.req.cookies.token}`;
+  const _dataAccess = new DataAccess(bearer);
 
-  if (!data) {
+  try {
+    const userlist = (await _dataAccess.get('/api/user/list')).data;
+    const complainList = (await _dataAccess.get('/api/Complaints/list/user'))
+      .data;
+    console.log({ userlist });
+
     return {
-      redirect: {
-        destination: '/',
-        permanent: false,
+      props: {
+        users: userlist,
+        complains: complainList,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        users: [],
+        complains: [],
       },
     };
   }
-
-  return {
-    props: {
-      item: data.data,
-    },
-  };
 };
+
 export default users;

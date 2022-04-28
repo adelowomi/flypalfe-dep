@@ -47,7 +47,7 @@ function UploadPhoto({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   color="brand.100"
                   position="absolute"
                   bgColor="white"
-                  width="34%"
+                  width={['40%', '34%']}
                   height="75%"
                   top="10px"
                   left="56px"

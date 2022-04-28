@@ -22,8 +22,9 @@ function Locations() {
           my="4rem"
           align="start"
           position="relative"
+          flexDirection={['column', 'row']}
         >
-          <VStack alignItems="flex-start" height="full" width="60%">
+          <VStack alignItems="flex-start" height="full" width={['100%', '60%']}>
             <Flex
               align="center"
               justify="center"
@@ -32,6 +33,7 @@ function Locations() {
               borderRadius="5px"
               px="2rem"
               mb="1rem"
+              mx={['auto', 'unset']}
             >
               <Text fontSize=".8rem" color="brand.200">
                 All the airlines we support
@@ -52,7 +54,7 @@ function Locations() {
               <Airlines name="Dana Air" url="assets/dana.png" />
             </Grid>
           </VStack>
-          <VStack alignItems="flex-start" height="full" width="50%">
+          <VStack alignItems="flex-start" height="full" width={['100%', '50%']}>
             <Flex
               align="center"
               justify="center"
@@ -61,8 +63,10 @@ function Locations() {
               borderRadius="5px"
               px="2rem"
               mb="1rem"
+              mx={['auto', 'unset']}
+              mt={['2.5rem', '0']}
             >
-              <Text fontSize=".8rem" color="brand.200">
+              <Text fontSize=".8rem" color="brand.200" mx={['auto', 'unset']}>
                 All the airlines we support
               </Text>
             </Flex>

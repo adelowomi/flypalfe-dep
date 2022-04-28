@@ -26,6 +26,7 @@ export const DropAccordion = () => (
         <h2 style={{ height: '3.7rem' }}>
           <AccordionButton
             h="full"
+            fontSize={['.8rem', '1rem']}
             _focus={{
               boxShadow: '0 0 0 0',
               bgColor: 'transparent',
@@ -51,7 +52,10 @@ export const DropAccordion = () => (
             {/* <AccordionIcon color="brand.100" /> */}
           </AccordionButton>
         </h2>
-        <AccordionPanel p="0rem 1.5rem 1rem 3.3rem">
+        <AccordionPanel
+          p="0rem 1.5rem 1rem 3.3rem"
+          fontSize={['.8rem', '1rem']}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </AccordionPanel>
@@ -61,22 +65,33 @@ export const DropAccordion = () => (
 );
 const Faq = () => (
   <Box
-    width="60%"
-    px={20}
-    my="6rem"
+    width={['100%', '60%']}
+    px={[5, 20]}
+    my={['3rem', '6rem']}
     pb={5}
     pos="relative"
     overflow="hidden"
     mx="auto"
   >
-    <VStack mb="4rem">
+    <VStack mb={['2rem', '4rem']}>
       <Heading fontSize="2.5rem" color="brand.200" fontWeight="700" mb={4}>
         FAQs
       </Heading>
-      <Heading fontSize="1.1rem" color="brand.100" fontWeight="800" mb={4}>
+      <Heading
+        fontSize={['1rem', '1.1rem']}
+        color="brand.100"
+        fontWeight="800"
+        mb={4}
+        textAlign="center"
+      >
         Quam lacus suspendisse faucibus interdum posuere
       </Heading>
-      <Text fontSize="1rem" color="brand.200" textAlign="center" w="90%">
+      <Text
+        fontSize={['.8rem', '1rem']}
+        color="brand.200"
+        textAlign="center"
+        w="90%"
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </Text>

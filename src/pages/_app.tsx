@@ -14,15 +14,17 @@ import { UserProvider } from 'lib/Utils/MainContext';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let headers: HeadersInit;
-  if (typeof window !== 'undefined') {
-    headers = {
-      cor: 'no-cors',
-      Authorization: `Bearer ${localStorage.getItem('token') || ''}`,
-    };
-  }
+
   headers = {
     cor: 'no-cors',
   };
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    headers = {
+      cor: 'no-cors',
+      Authorization: `Bearer ${token}`,
+    };
+  }
 
   return (
     <ChakraProvider theme={customTheme}>

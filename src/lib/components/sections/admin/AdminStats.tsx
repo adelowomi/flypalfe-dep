@@ -2,6 +2,7 @@ import { Grid, Icon } from '@chakra-ui/react';
 import AdminCard from 'lib/layout/Props/AdminCard';
 import { FaUser } from 'react-icons/fa';
 import { MdPendingActions, MdAutoFixHigh } from 'react-icons/md';
+import { AdminmetricsResponse, DashboardMetricsView } from 'types/api';
 
 const ElevatorDecline = (props: any) => (
   <Icon viewBox="0 0 22 18" {...props}>
@@ -11,32 +12,36 @@ const ElevatorDecline = (props: any) => (
     />
   </Icon>
 );
-function AdminStats() {
+function AdminStats({ metrics }: { metrics: DashboardMetricsView }) {
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={6} w="full">
+    <Grid
+      templateColumns={['repeat(1, 1fr)', 'repeat(4, 1fr)']}
+      gap={6}
+      w="full"
+    >
       <AdminCard
         icon={FaUser}
         color="#0D73FF"
         title="Unique user"
-        sub="2,000"
+        sub={metrics.users}
       />
       <AdminCard
         icon={MdAutoFixHigh}
         color="#007F82"
         title="Resolve complain"
-        sub="1,100"
+        sub={metrics.resolvedComplaints}
       />
       <AdminCard
         icon={MdPendingActions}
         color="#FFA42F"
         title="Pending complain"
-        sub="350"
+        sub={metrics.pendingComplaints}
       />
       <AdminCard
         icon={ElevatorDecline}
         color="#FF0303"
         title="Decline complain"
-        sub="500"
+        sub={metrics.declinedComplaints}
       />
     </Grid>
   );

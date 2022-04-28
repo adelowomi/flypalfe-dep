@@ -23,7 +23,7 @@ export default function TopNav() {
       bg="transparent"
       display={router.pathname === '/admin/settings' ? 'none' : 'flex'}
     >
-      <Box as="div" w="60%">
+      <Box as="div" w={['40%', '60%']}>
         <InputGroup w="100">
           <Input
             placeholder="Searching"
@@ -41,7 +41,12 @@ export default function TopNav() {
           />
         </InputGroup>
       </Box>
-      <Flex align="center" w="40%" justify="flex-end">
+      <Flex
+        align="center"
+        w={['58%', '40%']}
+        justify={['flex-start', 'flex-end']}
+        flexDirection={['row-reverse', 'row']}
+      >
         <Circle size="50px" overflow="hidden" bg="gray">
           <Image
             src="../../../assets/whoarewe.png"
@@ -50,7 +55,12 @@ export default function TopNav() {
             objectFit="cover"
           />
         </Circle>
-        <Text fontWeight="600" fontSize="1rem" pl=".8rem">
+        <Text
+          fontWeight="600"
+          fontSize="1rem"
+          pl={['0', '.8rem']}
+          pr={['.8rem', '0rem']}
+        >
           {`Hi, ${user.firstName}`}
         </Text>
       </Flex>

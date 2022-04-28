@@ -9,10 +9,9 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import shadeColor from 'lib/components/Utilities/Functions/ColorShade';
-import { FaUser } from 'react-icons/fa';
+const moment = require('moment');
 
-function ComplaintsDetails() {
+function ComplaintsDetails({ item }: { item: any }) {
   return (
     <Box
       bg="white"
@@ -24,52 +23,66 @@ function ComplaintsDetails() {
       <Text fontWeight="700" fontSize="1rem" mb="1.5rem">
         Flight details
       </Text>
-      <Flex align="flex-start" color="brand.200">
-        <Box w="60%" as="div">
-          <HStack align="flex-start" spacing="3rem">
-            <VStack as="div" align="flex-start" spacing={4}>
+      <Flex
+        align="flex-start"
+        color="brand.200"
+        flexDirection={['column', 'row']}
+      >
+        <Box w={['full', '60%']} as="div">
+          <HStack
+            align="flex-start"
+            spacing="3rem"
+            flexDirection={['column', 'row']}
+          >
+            <VStack as="div" align="flex-start" spacing={[1, 4]}>
               <Text fontWeight="500" fontSize="1rem">
                 Departing from?
               </Text>
               <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                Port Harcourt
+                {item.departureLocation}
               </Text>
               <Text fontWeight="500" fontSize="1rem">
                 Final destination
               </Text>
               <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                Lagos
+                {item.finalDestination}
               </Text>
             </VStack>
-            <VStack as="div" align="flex-start" spacing={4}>
+            <VStack
+              as="div"
+              align="flex-start"
+              spacing={[1, 4]}
+              my={['1rem !important', '0 !important']}
+              marginInlineStart={['0 !important', '3rem !important']}
+            >
               <Text fontWeight="500" fontSize="1rem">
                 Do you have any connecting flights?
               </Text>
               <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                No
+                {item.connectingFlights == true ? 'Yes' : 'No'}
               </Text>
               <Text fontWeight="500" fontSize="1rem">
                 Departure date
               </Text>
               <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                Feb, 23rd 2022
+                {moment(item.departureDate).format('MMM Do YYYY')}
               </Text>
             </VStack>
           </HStack>
         </Box>
-        <Box w="40%" as="div">
-          <VStack as="div" align="flex-start" spacing={4}>
+        <Box w={['full', '40%']} as="div">
+          <VStack as="div" align="flex-start" spacing={[1, 4]}>
             <Text fontWeight="500" fontSize="1rem">
               Sorry for the cancellation. When did you arrive at the airport?
             </Text>
             <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-              0 - 1 hour early
+              {item.arrivalTime}
             </Text>
             <Text fontWeight="500" fontSize="1rem">
               How far in advance did the airline notify you of the cancellation?
             </Text>
             <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-              0 - 1 hour early
+              {item.notificationPeriod}
             </Text>
           </VStack>
         </Box>

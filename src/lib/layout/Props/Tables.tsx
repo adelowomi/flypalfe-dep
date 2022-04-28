@@ -32,16 +32,16 @@ export function TableStatus({ name }: { name: string }) {
     <Td pl="2.5rem">
       <Box
         bgColor={
-          name === 'resolved'
+          name === 'APPROVED'
             ? 'rgba(0, 127, 130, 0.12)'
-            : name === 'pending'
+            : name === 'PENDING'
             ? 'rgba(252, 193, 63, 0.13)'
-            : '(255, 3, 3, 0.13)'
+            : 'rgba(255, 3, 3, 0.13)'
         }
         color={
-          name === 'resolved'
+          name === 'APPROVED'
             ? 'brand.100'
-            : name === 'pending'
+            : name === 'PENDING'
             ? 'brand.500'
             : '#FF0303'
         }

@@ -2,6 +2,8 @@ import { Box, Flex } from '@chakra-ui/react';
 import Authentication from 'lib/pages/Admin/Authentication';
 import SideNav from 'lib/pages/Admin/SideNav';
 import TopNav from 'lib/pages/Admin/TopNav';
+import UserSideNav from 'lib/pages/User/SideNav';
+import UserPage from 'lib/pages/User/UserPage';
 import { UserContext } from 'lib/Utils/MainContext';
 import { useRouter } from 'next/router';
 import { ReactNode, useContext, useEffect } from 'react';
@@ -33,7 +35,36 @@ const Layout = ({ children }: LayoutProps) => {
           ) : (
             <Flex pos="relative" minH="100vh">
               <SideNav />
-              <Box w="80%" h="full" bg="#f4f8fb" as="main" ml="auto">
+              <Box
+                w={['full', '80%']}
+                h="full"
+                bg="#f4f8fb"
+                as="main"
+                ml="auto"
+              >
+                <Box as="div" w="95%" mx="auto" minH="100vh">
+                  <TopNav />
+                  {children}
+                </Box>
+              </Box>
+            </Flex>
+          )}
+        </>
+      ) : router.pathname.startsWith('/user/') &&
+        router.asPath !== '/user/reset' ? (
+        <>
+          {user === null || user === undefined ? (
+            <UserPage />
+          ) : (
+            <Flex pos="relative" minH="100vh">
+              <UserSideNav />
+              <Box
+                w={['full', '80%']}
+                h="full"
+                bg="#f4f8fb"
+                as="main"
+                ml="auto"
+              >
                 <Box as="div" w="95%" mx="auto" minH="100vh">
                   <TopNav />
                   {children}

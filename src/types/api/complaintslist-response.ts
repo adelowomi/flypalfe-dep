@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { ComplaintsViewIEnumerableStandardResponse } from './complaints-view-i-enumerable-standard-response';
+import { ComplaintsViewPagedCollectionStandardResponse } from './complaints-view-paged-collection-standard-response';
 
 export type ComplaintslistResponse<
   TCode extends 200 = 200,
@@ -9,10 +9,10 @@ export type ComplaintslistResponse<
     | 'text/json'
 > = TCode extends 200
   ? TContentType extends 'text/plain'
-    ? ComplaintsViewIEnumerableStandardResponse
+    ? ComplaintsViewPagedCollectionStandardResponse
     : TContentType extends 'application/json'
-    ? ComplaintsViewIEnumerableStandardResponse
+    ? ComplaintsViewPagedCollectionStandardResponse
     : TContentType extends 'text/json'
-    ? ComplaintsViewIEnumerableStandardResponse
+    ? ComplaintsViewPagedCollectionStandardResponse
     : any
   : any;

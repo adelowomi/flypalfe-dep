@@ -12,8 +12,12 @@ import {
 import { TableData, TableHead, TableStatus } from 'lib/layout/Props/Tables';
 import { MdFilterList } from 'react-icons/md';
 import Pagination from './Pagination';
+const moment = require('moment');
 
-function UserComplaints() {
+function UserComplaints({ complaints }: { complaints: any }) {
+  const complain = complaints.value;
+  console.log(complaints);
+
   return (
     <Box
       w="full"
@@ -33,7 +37,7 @@ function UserComplaints() {
         <Text fontSize="1.1rem">User</Text>
         <Icon as={MdFilterList} fontSize="1.1rem" />
       </Flex>
-      <TableContainer h="500px" overflow="hidden">
+      <TableContainer h="500px" overflowY="hidden">
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
@@ -46,13 +50,19 @@ function UserComplaints() {
           </Thead>
 
           <Tbody>
-            <Tr>
-              <TableData name="Cancelled flight" />
-              <TableData name="Air Peace" />
-              <TableData name="Lagos" />
-              <TableData name="Feb, 23rd 2022" />
-              <TableStatus name={'decline'} />
-            </Tr>
+            {complain.map((x: any) => {
+              return (
+                <Tr>
+                  <TableData name={x.complaintsCategory} />
+                  <TableData name={x.airline ? x.airline : 'null'} />
+                  <TableData name={x.departureLocation} />
+                  <TableData
+                    name={moment(x.departureDate).format('MMM Do YYYY')}
+                  />
+                  <TableStatus name={x.status} />
+                </Tr>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>
