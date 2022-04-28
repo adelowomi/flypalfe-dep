@@ -5,13 +5,11 @@ type SideNav = {
   steps: number;
   name: string;
   step: number;
+  isValid: boolean;
 };
 
-function SideNavLinks({ steps, name, step }: SideNav) {
+function SideNavLinks({ steps, name, step, isValid }: SideNav) {
   let num = steps + 1;
-  console.log(step);
-  console.log(steps);
-  console.log(num);
 
   return (
     <Text
@@ -21,12 +19,9 @@ function SideNavLinks({ steps, name, step }: SideNav) {
       w="260px"
       _after={{
         content:
-          step >= num || step === 4
+          (isValid && step > steps) || step == 4
             ? 'url(../assets/check.png)'
-            : num === 3
-            ? '""'
             : '""',
-
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -39,10 +34,11 @@ function SideNavLinks({ steps, name, step }: SideNav) {
         top: '50%',
         transform: 'translateY(-50%)',
         border:
-          step === steps
-            ? '5px solid #FCC13F'
-            : step > steps || step !== 5
+          (isValid && step >= steps && isValid && step != steps) ||
+          (step == 4 && num === 5)
             ? ''
+            : step === steps && num >= 1
+            ? '5px solid #FCC13F'
             : '5px solid white',
       }}
       _before={{
@@ -50,14 +46,11 @@ function SideNavLinks({ steps, name, step }: SideNav) {
         w: '70px',
         pos: 'absolute',
         border:
-          step === steps || step >= num
+          (isValid && step >= steps && steps < 4) || steps === 0
             ? '3px solid #FCC13F'
-            : steps !== 4
-            ? '3px solid white'
-            : num === 5
+            : (step >= 4 && num >= 4) || steps >= 4
             ? ''
-            : '',
-
+            : '3px solid white',
         transform: 'rotate(-90deg)',
         right: '-24px',
         top: '173%',

@@ -12,10 +12,15 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { TableData, TableHead, TableStatus } from 'lib/layout/Props/Tables';
+import Link from 'next/link';
 import { MdFilterList } from 'react-icons/md';
 import Pagination from './Pagination';
+const moment = require('moment');
 
-function ComplaintsTable() {
+function ComplaintsTable({ complains }: { complains: any }) {
+  const complaints = complains.value;
+  console.log(complaints);
+
   return (
     <Box
       w="full"
@@ -35,7 +40,7 @@ function ComplaintsTable() {
         <Text fontSize="1.1rem">Complaints</Text>
         <Icon as={MdFilterList} fontSize="1.1rem" />
       </Flex>
-      <TableContainer h="500px" overflow="hidden">
+      <TableContainer h="500px" overflowY="hidden">
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
@@ -48,13 +53,21 @@ function ComplaintsTable() {
           </Thead>
 
           <Tbody>
-            <Tr>
-              <TableData name="Jesse Chigozie" />
-              <TableData name="Air Peace" />
-              <TableData name="Lagos" />
-              <TableData name="Feb, 23rd 2022" />
-              <TableStatus name={'decline'} />
-            </Tr>
+            {complaints.map((x: any) => {
+              return (
+                <Link href={`/admin/complaints/${x.id}`} key={x.id}>
+                  <Tr>
+                    <TableData name={x.user.fullName} />
+                    <TableData name={x.airline ? x.airline : 'null'} />
+                    <TableData name={x.finalDestination} />
+                    <TableData name={x.complaintsCategory} />
+                    <TableData
+                      name={moment(x.departureDate).format('MMM Do YYYY')}
+                    />
+                  </Tr>
+                </Link>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>

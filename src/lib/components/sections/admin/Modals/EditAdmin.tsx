@@ -14,9 +14,11 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React from 'react';
+import { UserContext } from 'lib/Utils/MainContext';
+import React, { useContext } from 'react';
 
 function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
+  const { user } = useContext(UserContext);
   return (
     <Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
@@ -35,7 +37,12 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   Username
                 </FormLabel>
                 <InputGroup>
-                  <Input placeholder="Balogun" type="text" />
+                  <Input
+                    placeholder="Balogun"
+                    type="text"
+                    defaultValue={user.firstName}
+                    disabled
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -43,7 +50,12 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   Phone Number
                 </FormLabel>
                 <InputGroup>
-                  <Input placeholder="08123456789" type="number" />
+                  <Input
+                    placeholder="08123456789"
+                    type="number"
+                    defaultValue={user.phoneNumber}
+                    disabled
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -51,7 +63,12 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   Email
                 </FormLabel>
                 <InputGroup>
-                  <Input placeholder="balogun@gmail.com" type="number" />
+                  <Input
+                    placeholder="balogun@gmail.com"
+                    type="text"
+                    defaultValue={user.email}
+                    disabled
+                  />
                 </InputGroup>
                 <Text fontSize="14px" color="brand.200" mt="1rem">
                   This can not be edited. Reach out to support if you need to
@@ -63,7 +80,9 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
               <Button variant="outline" onClick={onClose}>
                 Cancel
               </Button>
-              <Button variant="solid">Save</Button>
+              <Button variant="solid" disabled>
+                Save
+              </Button>
             </HStack>
           </form>
         </ModalBody>

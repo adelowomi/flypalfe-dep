@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { MetricsViewStandardResponse } from './metrics-view-standard-response';
+import { DashboardMetricsViewStandardResponse } from './dashboard-metrics-view-standard-response';
 
 export type AdminmetricsResponse<
   TCode extends 200 = 200,
@@ -9,10 +9,10 @@ export type AdminmetricsResponse<
     | 'text/json'
 > = TCode extends 200
   ? TContentType extends 'text/plain'
-    ? MetricsViewStandardResponse
+    ? DashboardMetricsViewStandardResponse
     : TContentType extends 'application/json'
-    ? MetricsViewStandardResponse
+    ? DashboardMetricsViewStandardResponse
     : TContentType extends 'text/json'
-    ? MetricsViewStandardResponse
+    ? DashboardMetricsViewStandardResponse
     : any
   : any;

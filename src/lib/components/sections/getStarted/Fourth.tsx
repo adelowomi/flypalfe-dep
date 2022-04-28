@@ -15,14 +15,14 @@ import { BsFillCloudUploadFill } from 'react-icons/bs';
 
 function Fourth() {
   return (
-    <Box w="60%" mx="auto">
+    <Box w={['full', '60%']} mx="auto">
       <SimpleGrid
-        column={2}
+        columns={2}
         rowGap="3"
         columnGap="4"
         w="100%"
         mt="2rem !important"
-        background="#F4F8FB"
+        background={['unset', '#F4F8FB']}
         borderRadius="10px"
         p="2rem"
       >
@@ -44,7 +44,7 @@ function Fourth() {
                   color="brand.100"
                   position="absolute"
                   bgColor="white"
-                  width="27%"
+                  width={['36%', '27%']}
                   height="75%"
                   top="10px"
                   left="56px"

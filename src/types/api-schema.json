@@ -187,17 +187,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MetricsViewStandardResponse"
+                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MetricsViewStandardResponse"
+                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MetricsViewStandardResponse"
+                  "$ref": "#/components/schemas/DashboardMetricsViewStandardResponse"
                 }
               }
             }
@@ -239,6 +239,152 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/complaints/decline/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Admincomplaintsdecline{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/complaints/resolve/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Admincomplaintsresolve{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/complain/list/user/{userId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Admincomplainlistuser{userId}",
+        "parameters": [
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "maximum": 99999,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComplaintsViewPagedCollectionStandardResponse"
                 }
               }
             }
@@ -300,12 +446,12 @@
         }
       }
     },
-    "/api/Complaints/list": {
+    "/api/Complaints/list/user": {
       "get": {
         "tags": [
           "Complaints"
         ],
-        "operationId": "Complaintslist",
+        "operationId": "Complaintslistuser",
         "parameters": [
           {
             "name": "Offset",
@@ -354,12 +500,12 @@
         }
       }
     },
-    "/api/Complaints/property/{propertyId}/list": {
+    "/api/Complaints/list": {
       "get": {
         "tags": [
           "Complaints"
         ],
-        "operationId": "Complaintsproperty{propertyId}list",
+        "operationId": "Complaintslist",
         "parameters": [
           {
             "name": "Offset",
@@ -381,15 +527,6 @@
               "type": "integer",
               "format": "int32",
               "nullable": true
-            }
-          },
-          {
-            "name": "propertyId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
             }
           }
         ],
@@ -873,6 +1010,36 @@
         }
       }
     },
+    "/api/User/getbyid": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "Usergetbyid",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserViewPagedCollectionStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/User/update": {
       "put": {
         "tags": [
@@ -1001,25 +1168,20 @@
         },
         "additionalProperties": false
       },
-      "MediaView": {
+      "UserMetricsView": {
         "type": "object",
         "properties": {
-          "id": {
+          "pendingComplaints": {
             "type": "integer",
             "format": "int32"
           },
-          "url": {
-            "type": "string",
-            "nullable": true
+          "resolvedComplaints": {
+            "type": "integer",
+            "format": "int32"
           },
-          "isImage": {
-            "type": "boolean"
-          },
-          "isVideo": {
-            "type": "boolean"
-          },
-          "isDocument": {
-            "type": "boolean"
+          "declinedComplaints": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1047,10 +1209,6 @@
             "type": "string",
             "nullable": true
           },
-          "companyName": {
-            "type": "string",
-            "nullable": true
-          },
           "token": {
             "type": "string",
             "nullable": true
@@ -1059,51 +1217,8 @@
             "type": "string",
             "nullable": true
           },
-          "phoneNumber1": {
-            "type": "string",
-            "nullable": true
-          },
-          "passportPhotograph": {
-            "$ref": "#/components/schemas/MediaView"
-          },
-          "workId": {
-            "$ref": "#/components/schemas/MediaView"
-          },
-          "annualIncome": {
-            "type": "string",
-            "nullable": true
-          },
-          "maritalStatus": {
-            "type": "string",
-            "nullable": true
-          },
-          "occupation": {
-            "type": "string",
-            "nullable": true
-          },
-          "nationality": {
-            "type": "string",
-            "nullable": true
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "profilePicture": {
-            "type": "string",
-            "nullable": true
-          },
-          "bank": {
-            "type": "string",
-            "nullable": true
-          },
-          "accountNumber": {
-            "type": "string",
-            "nullable": true
+          "metrics": {
+            "$ref": "#/components/schemas/UserMetricsView"
           }
         },
         "additionalProperties": false
@@ -1304,25 +1419,33 @@
         },
         "additionalProperties": false
       },
-      "MetricsView": {
+      "DashboardMetricsView": {
         "type": "object",
         "properties": {
+          "users": {
+            "type": "integer",
+            "format": "int32"
+          },
           "newUsers": {
             "type": "integer",
             "format": "int32"
           },
-          "activeUsers": {
+          "resolvedComplaints": {
             "type": "integer",
             "format": "int32"
           },
-          "users": {
+          "pendingComplaints": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "declinedComplaints": {
             "type": "integer",
             "format": "int32"
           }
         },
         "additionalProperties": false
       },
-      "MetricsViewStandardResponse": {
+      "DashboardMetricsViewStandardResponse": {
         "type": "object",
         "properties": {
           "href": {
@@ -1356,7 +1479,7 @@
             "nullable": true
           },
           "data": {
-            "$ref": "#/components/schemas/MetricsView"
+            "$ref": "#/components/schemas/DashboardMetricsView"
           },
           "statusCode": {
             "type": "string",
@@ -1368,24 +1491,6 @@
         },
         "additionalProperties": false
       },
-      "ComplaintsModel": {
-        "type": "object",
-        "properties": {
-          "complaintsSubCategoryId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "comment": {
-            "type": "string",
-            "nullable": true
-          },
-          "propertyId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "ComplaintsView": {
         "type": "object",
         "properties": {
@@ -1393,19 +1498,53 @@
             "type": "integer",
             "format": "int32"
           },
+          "user": {
+            "$ref": "#/components/schemas/UserView"
+          },
           "complaintsCategory": {
             "type": "string",
             "nullable": true
           },
-          "complaintsSubCategory": {
-            "type": "string",
-            "nullable": true
-          },
-          "comment": {
-            "type": "string",
-            "nullable": true
-          },
           "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "departureLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "finalDestination": {
+            "type": "string",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "connectingFlights": {
+            "type": "boolean"
+          },
+          "arrivalTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "notificationPeriod": {
+            "type": "string",
+            "nullable": true
+          },
+          "delayedFlight": {
+            "type": "string",
+            "nullable": true
+          },
+          "airline": {
+            "type": "string",
+            "nullable": true
+          },
+          "flightNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalInformation": {
             "type": "string",
             "nullable": true
           }
@@ -1447,56 +1586,6 @@
           },
           "data": {
             "$ref": "#/components/schemas/ComplaintsView"
-          },
-          "statusCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "errors": {
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ComplaintsViewIEnumerableStandardResponse": {
-        "type": "object",
-        "properties": {
-          "href": {
-            "type": "string",
-            "nullable": true
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "method": {
-            "type": "string",
-            "default": "GET",
-            "nullable": true
-          },
-          "routeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "routeValues": {
-            "nullable": true
-          },
-          "status": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ComplaintsView"
-            },
-            "nullable": true
           },
           "statusCode": {
             "type": "string",
@@ -1585,6 +1674,105 @@
           },
           "data": {
             "$ref": "#/components/schemas/ComplaintsViewPagedCollection"
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComplaintsModel": {
+        "type": "object",
+        "properties": {
+          "complaintsCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "departureLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "finalDestination": {
+            "type": "string",
+            "nullable": true
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "connectingFlights": {
+            "type": "boolean"
+          },
+          "arrivalTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "notificationPeriod": {
+            "type": "string",
+            "nullable": true
+          },
+          "delayedFlight": {
+            "type": "string",
+            "nullable": true
+          },
+          "airline": {
+            "type": "string",
+            "nullable": true
+          },
+          "flightNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalInformation": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComplaintsViewIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComplaintsView"
+            },
+            "nullable": true
           },
           "statusCode": {
             "type": "string",

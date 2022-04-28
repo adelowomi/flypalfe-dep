@@ -10,25 +10,59 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { ComplaintsModel, LoginModel, Register } from 'types/api';
+import { useOperationMethod } from 'react-openapi-client';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useToasts } from 'react-toast-notifications';
 
+const schema = yup.object().shape({
+  departureLocation: yup.string().required('Departure Location is required'),
+  finalDestination: yup.string().required('Final Destination is required'),
+  departureDate: yup.string().required('Departure Location is required'),
+  connectingFlights: yup.string().required('Departure Location is required'),
+  arrivalTime: yup.string().required('Departure Location is required'),
+  notificationPeriod: yup.string().required('Departure Location is required'),
+  // delayedFlight: yup.string().required('Departure Location is required'),
+});
 function GetStarted() {
+  const [registerComplain, { data, loading, error }] =
+    useOperationMethod('Complaintscreate');
   const router = useRouter();
-  const [step, setStep] = useState(0);
-  type LoginModel = {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  };
+  const [step, setStep] = useState(1);
+  const { addToast } = useToasts();
+  const { id } = router.query;
+  console.log({ id });
 
   const {
     handleSubmit,
     register,
-    formState: { errors },
-  } = useForm<LoginModel>();
+    control,
+    formState: { errors, isValid },
+  } = useForm<ComplaintsModel>({
+    resolver: yupResolver(schema),
+    defaultValues: { complaintsCategoryId: id as unknown as number },
+    mode: 'all',
+  });
 
-  const onSubmit = (data: LoginModel) => {
-    console.log({ data });
+  const onSubmit = async (data: ComplaintsModel) => {
+    try {
+      const result = await registerComplain(undefined, data);
+      console.log(data);
+      const value = result.data;
+      console.log({ value });
+      if (value.status) {
+        addToast('Successful', {
+          appearance: 'success',
+          autoDismiss: true,
+        });
+        return;
+      }
+      addToast(value.message, { appearance: 'error', autoDismiss: true });
+      return;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -36,34 +70,30 @@ function GetStarted() {
       <Head>
         <title>
           Get Started |{' '}
-          {router.asPath.replace('/getstarted/', '').replace('-', ' ')}
+          {router.asPath
+            .replace(/getstarted|-/gi, ' ')
+            .replace('/ /', '')
+            .slice(0, -1)}
         </title>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          // crossorigin="anonymous"
-          // referrerpolicy="no-referrer"
-        />
       </Head>
-      <Flex align="flex-start" minH="70rem" pos="relative">
-        <SideNav step={step} />
-        <Box w="70%" ml="auto">
+      <Flex align="flex-start" minH={['35rem', '70rem']} pos="relative">
+        <SideNav step={step} isValid={isValid} />
+        <Box w={['100%', '70%']} ml="auto">
           <VStack
-            ml="4rem"
             mt={step === 0 ? '2rem' : step === 2 ? '3.5rem' : '2rem'}
-            mx="3rem"
+            mx={['0', '3rem']}
           >
             <Text
-              fontSize="2rem"
+              fontSize={['1.1rem', '2rem']}
               color={step === 0 ? 'brand.200' : 'brand.100'}
               textAlign="center"
-              w="90%"
+              w={['85%', '90%']}
             >
               {step === 0
                 ? `Hi! Let's help you get compensation for your ${router.asPath
-                    .replace('/getstarted/', '')
-                    .replace('-', ' ')}`
+                    .replace(/getstarted|-/gi, ' ')
+                    .replace('/ /', '')
+                    .slice(0, -1)}`
                 : step === 2
                 ? 'Mandate form'
                 : ''}
@@ -76,14 +106,17 @@ function GetStarted() {
                 )}
               >
                 {step === 0 && <First register={register} errors={errors} />}
-                {step === 1 && <Second />}
+                {step === 1 && (
+                  <Second
+                    register={register}
+                    errors={errors}
+                    control={control}
+                  />
+                )}
                 {step === 2 && <Third />}
                 {step === 3 && <Fourth />}
                 {step === 4 && <Fifth />}
-                <FormButton
-                  step={step}
-                  setStep={setStep}
-                />
+                <FormButton step={step} setStep={setStep} isValid={isValid} />
               </form>
             </Box>
           </VStack>

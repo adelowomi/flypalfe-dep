@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  VStack,
-  Text,
-  Image,
-  background,
-} from '@chakra-ui/react';
+import { Box, Flex, Heading, VStack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 
 function HeroMini() {
@@ -15,19 +7,22 @@ function HeroMini() {
       <Flex
         width="full"
         height="fit-content"
-        my="17.8rem"
+        my={['0', '17.8rem']}
         align="center"
         position="relative"
+        flexDirection={['column-reverse', 'row']}
       >
         <VStack
           alignItems="flex-start"
           height="full"
           width="full"
           pos="relative"
+          mt={['7rem', '0']}
+          mb={['9rem', '0']}
         >
           <Box
             w="full"
-            height="525px"
+            height={['340px', '525px']}
             bg="brand.200"
             borderRadius="0 10px 10px 0"
             overflow="hidden"
@@ -46,33 +41,48 @@ function HeroMini() {
               borderRadius="50%"
             />
           </Box>
-          <Box pos="absolute" top="-50%" left="-533px" zIndex="3">
+          <Box
+            pos="absolute"
+            top={['-41%', '-50%']}
+            left={['-300px', '-533px']}
+            zIndex="3"
+          >
             <Box
-              width="1000px"
-              height="1000px"
-              border="135px solid rgba(5, 156, 159, 0.36)"
+              width={['600px', '1000px']}
+              height={['600px', '1000px']}
+              border={[
+                '90px solid rgba(5, 156, 159, 0.36)',
+                '135px solid rgba(5, 156, 159, 0.36)',
+              ]}
               borderRadius="50%"
             />
           </Box>
-          <Box pos="absolute" top="-50%" left="-533px" zIndex="1">
+          <Box
+            pos="absolute"
+            top={['-41%', '-50%']}
+            left={['-300px', '-533px']}
+            zIndex="1"
+          >
             <Box
-              width="1000px"
-              height="1000px"
-              border="135px solid #1B345B"
+              width={['600px', '1000px']}
+              height={['600px', '1000px']}
+              border={['90px solid #1B345B', '135px solid #1B345B']}
               borderRadius="50%"
             />
           </Box>
         </VStack>
         <VStack
-          alignItems="flex-start"
+          alignItems={['center', 'flex-start']}
           spacing="10"
-          width="full"
+          width={['85%', 'full']}
           height="full"
-          ml="6rem"
-          pr="5rem"
+          ml={['0', '6rem']}
+          pr={['0', '5rem']}
+          mb={['2rem', '0']}
         >
           <Heading
-            fontSize="2.5rem"
+            fontSize={['2rem', '2.5rem']}
+            textAlign={['center', 'left']}
             color="brand.200"
             pos="relative"
             _after={{
@@ -81,13 +91,14 @@ function HeroMini() {
               height: '12px',
               backgroundColor: 'brand.500',
               bottom: '-12px',
-              left: '0',
+              left: ['50%', '0'],
+              transform: ['translate(-50%)', 'translate(0%)'],
               content: '""',
             }}
           >
             Who we are
           </Heading>
-          <Text fontSize="1rem" fontWeight="regular" w="95%">
+          <Text fontSize={['.9rem', '1rem']} fontWeight="regular" w="95%">
             FlyPal has a mission to put smiles on the faces of all passengers by
             helping to solve all their flying challenges. All flying passengers
             must know their rights and we have positioned ourselves as the
@@ -107,6 +118,7 @@ function HeroMini() {
             w="220px"
             h="220px"
             borderRadius="50%"
+            display={['none', 'block']}
           />
         </VStack>
       </Flex>

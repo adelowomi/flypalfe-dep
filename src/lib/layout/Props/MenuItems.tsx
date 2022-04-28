@@ -6,7 +6,7 @@ type CardsType = {
   text: string;
   url: string;
   color: string;
-  p: string;
+  p: any;
 };
 function MenuItems({ text, url, color, p }: CardsType) {
   const router = useRouter();

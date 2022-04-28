@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   GridItem,
-  HStack,
   Input,
   SimpleGrid,
   Text,
@@ -14,9 +13,14 @@ import {
 
 function contact() {
   return (
-    <Flex align="center" h="auto">
+    <Flex
+      align="center"
+      h="auto"
+      // bg={['rgba(226, 232, 240, 0.3)', 'unset']}
+      py={['1rem', '0']}
+    >
       <Flex alignItems="center" w="full">
-        <VStack w="full" h="full">
+        <VStack w="full" h="full" display={['none', 'flex']}>
           <Box
             width="full"
             h="800px"
@@ -39,31 +43,41 @@ function contact() {
             </Text>
           </Box>
         </VStack>
-        <VStack w="full" align="flex-start" ml="4rem">
+        <VStack
+          w="full"
+          align={['center', 'flex-start']}
+          ml={['0', '4rem']}
+          mb={['2rem', '0']}
+        >
           <Text
-            fontSize="2.5rem"
+            fontSize={{ base: '2rem', md: '2.5rem' }}
             color="brand.100"
             // mb={5}
-            textAlign="left"
+            textAlign={['center', 'left']}
           >
             Say hi! 👋
           </Text>
-          <Text fontSize="20px" color="black" w="60%">
+          <Text
+            fontSize={['18px', '20px']}
+            color="black"
+            w={['80%', 'full']}
+            textAlign={['center', 'left']}
+          >
             Send us a note and we’ll get back to you as soon as possible.
           </Text>
 
           <SimpleGrid
-            column={2}
+            columns={2}
             rowGap="3"
-            columnGap="4"
-            w="80%"
+            columnGap={['2', '4']}
+            w={['full', '80%']}
             mt="2rem !important"
           >
             <GridItem
               colSpan={2}
-              background="rgba(226, 232, 240, 0.3)"
+              background={['unset', 'rgba(226, 232, 240, 0.3)']}
               borderRadius="5px"
-              p="2rem"
+              p={['.5rem 2rem', '2rem']}
             >
               <FormControl>
                 <FormLabel color="brand.100" fontSize="1.1rem">
@@ -72,33 +86,47 @@ function contact() {
                 <Input placeholder="Johndoe@studiomart.com" type="email" />
               </FormControl>
             </GridItem>
-            <GridItem
-              colSpan={2}
-              background="rgba(226, 232, 240, 0.3)"
-              borderRadius="5px"
-              p="2rem"
-            >
-              <HStack justify="space-between" spacing={6}>
-                <FormControl>
-                  <FormLabel color="brand.100" fontSize="1.1rem">
-                    First Name
-                  </FormLabel>
-                  <Input placeholder="John" />
-                </FormControl>
-
-                <FormControl>
-                  <FormLabel color="brand.100" fontSize="1.1rem">
-                    Last Name
-                  </FormLabel>
-                  <Input placeholder="Doe" />
-                </FormControl>
-              </HStack>
+            <GridItem colSpan={2}>
+              <SimpleGrid
+                columns={2}
+                rowGap="3"
+                columnGap={['2', '4']}
+                w="full"
+                background={['unset', 'rgba(226, 232, 240, 0.3)']}
+              >
+                <GridItem
+                  colSpan={[2, 1]}
+                  background={['unset', 'unset']}
+                  borderRadius="5px"
+                  p={['.5rem 2rem', '2rem']}
+                >
+                  <FormControl>
+                    <FormLabel color="brand.100" fontSize="1.1rem">
+                      First Name
+                    </FormLabel>
+                    <Input placeholder="John" />
+                  </FormControl>
+                </GridItem>
+                <GridItem
+                  colSpan={[2, 1]}
+                  background={['unset', 'unset']}
+                  borderRadius="5px"
+                  p={['.5rem 2rem', '2rem']}
+                >
+                  <FormControl>
+                    <FormLabel color="brand.100" fontSize="1.1rem">
+                      Last Name
+                    </FormLabel>
+                    <Input placeholder="Doe" />
+                  </FormControl>
+                </GridItem>
+              </SimpleGrid>
             </GridItem>
             <GridItem
               colSpan={2}
-              background="rgba(226, 232, 240, 0.3)"
+              background={['unset', 'rgba(226, 232, 240, 0.3)']}
               borderRadius="5px"
-              p="2rem"
+              p={['.5rem 2rem', '2rem']}
             >
               <FormControl>
                 <FormLabel color="brand.100" fontSize="1.1rem">
@@ -108,10 +136,12 @@ function contact() {
               </FormControl>
             </GridItem>
             <GridItem colSpan={2}>
-              <Flex w="full">
-                <Button variant="solid" ml="auto">
-                  Proceed
-                </Button>
+              <Flex
+                w="full"
+                justify={['center', 'flex-end']}
+                mt={['2rem', '0']}
+              >
+                <Button variant="solid">Proceed</Button>
               </Flex>
             </GridItem>
           </SimpleGrid>

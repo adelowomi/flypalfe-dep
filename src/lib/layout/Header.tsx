@@ -1,43 +1,97 @@
 import { Box, Button, Container, Flex, Image, Text } from '@chakra-ui/react';
+import { UserContext } from 'lib/Utils/MainContext';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
+import { HiMenuAlt4 } from 'react-icons/hi';
 import MenuItems from './Props/MenuItems';
 
 function Header() {
   const router = useRouter();
+  const [opened, setOpened] = useState(true);
+  const { user } = useContext(UserContext);
+  const openMobileMenu = () => {
+    setOpened(!opened);
+  };
 
   return (
     <Box
       w="full"
       bgColor="white"
-      display={router.pathname.startsWith('/admin') ? 'none' : 'block'}
+      display={
+        router.pathname.startsWith('/admin') ||
+        router.pathname.startsWith('/user')
+          ? 'none'
+          : 'block'
+      }
     >
       <Container maxW="90%">
-        <Flex justify="space-between" alignItems="center" h="6rem">
-          <Box cursor="pointer" w="126px">
+        <Flex justify="space-between" alignItems="center" h="6rem" zIndex="5">
+          <Box cursor="pointer" w={['95px', '126px']}>
             <NextLink href="/">
               <Image src="/assets/logoblue2.png" w="full" h="auto" />
             </NextLink>
           </Box>
-          <Box>
+          <Box
+            pos={['absolute', 'unset']}
+            display={['flex', 'block']}
+            flexDirection="column"
+            top="120px"
+            left={opened ? '-100%' : '25%'}
+            zIndex="5"
+            transition="all .3s ease-in-out"
+            h={['40vh', 'unset']}
+            justifyContent="space-between"
+            onClick={() => openMobileMenu()}
+            textAlign={['center', 'left']}
+          >
+            <Box d={['block', 'none']}>
+              <MenuItems
+                text="Home"
+                url="/"
+                color="brand.200"
+                p={['0', '0 2rem .2rem 0']}
+              />
+            </Box>
             <MenuItems
               text="Know your rights"
               url="/rights"
               color="brand.200"
-              p="0 2rem .2rem 0"
+              p={['0', '0 2rem .2rem 0']}
             />
             <MenuItems
               text="About"
               url="/about"
               color="brand.200"
-              p="0 2rem .2rem 0"
+              p={['0', '0 2rem .2rem 0']}
             />
             <MenuItems
               text="FAQs"
               url="/faqs"
               color="brand.200"
-              p="0 2rem .2rem 0"
+              p={['0', '0 2rem .2rem 0']}
             />
+            <NextLink href="/contact">
+              <Box display={{ base: 'block', md: 'none' }}>
+                <MenuItems
+                  text="Login"
+                  url="/user"
+                  color="brand.200"
+                  p={['0', '0 0rem .2rem 2rem']}
+                />
+              </Box>
+            </NextLink>
+            <NextLink href="/contact">
+              <Box display={{ base: 'block', md: 'none' }}>
+                <Button
+                  variant="outline"
+                  cursor="pointer"
+                  display={router.pathname === '/contact' ? 'none' : 'initial'}
+                >
+                  Contact us
+                </Button>
+              </Box>
+            </NextLink>
           </Box>
           <Box>
             <Flex alignItems="center">
@@ -45,19 +99,61 @@ function Header() {
                 <Image src="/assets/nig.png" h="auto" w="auto" />
                 <Text pl=".3rem">NGN</Text>
               </Flex>
+              <Box
+                ml="2rem"
+                display={['block', 'none']}
+                onClick={() => openMobileMenu()}
+              >
+                <HiMenuAlt4 fontSize="2rem" />
+              </Box>
+              <>
+                {user ? (
+                  <Box display={{ base: 'none', md: 'block' }}>
+                    <MenuItems
+                      text="Dashboard"
+                      url="/user/dashboard"
+                      color="brand.200"
+                      p={['0', '0 0rem .2rem 2rem']}
+                    />
+                  </Box>
+                ) : (
+                  <Box display={{ base: 'none', md: 'block' }}>
+                    <MenuItems
+                      text="Login"
+                      url="/user"
+                      color="brand.200"
+                      p={['0', '0 0rem .2rem 2rem']}
+                    />
+                  </Box>
+                )}
+              </>
               <NextLink href="/contact">
-                <Button
-                  variant="outline"
-                  cursor="pointer"
-                  ml="5rem"
-                  display={router.pathname === '/contact' ? 'none' : 'initial'}
-                >
-                  Contact us
-                </Button>
+                <Box display={{ base: 'none', md: 'block' }}>
+                  <Button
+                    variant="outline"
+                    cursor="pointer"
+                    ml="2rem"
+                    display={
+                      router.pathname === '/contact' ? 'none' : 'initial'
+                    }
+                  >
+                    Contact us
+                  </Button>
+                </Box>
               </NextLink>
             </Flex>
           </Box>
         </Flex>
+        <Box
+          display={{ base: 'block', md: 'none' }}
+          pos="absolute"
+          left={opened ? '-100%' : '0'}
+          transition="all .3s ease-in-out"
+          h="100vh"
+          bg="white"
+          w="100%"
+          zIndex="4"
+        ></Box>
       </Container>
     </Box>
   );

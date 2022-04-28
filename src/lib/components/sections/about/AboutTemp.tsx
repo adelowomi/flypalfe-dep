@@ -16,6 +16,7 @@ function AboutTemp() {
           height="fit-content"
           align="center"
           position="relative"
+          flexDirection={['column-reverse', 'row']}
         >
           <VStack
             alignItems="flex-start"
@@ -23,7 +24,13 @@ function AboutTemp() {
             width="full"
             pos="relative"
           >
-            <Box w="auto" height="auto" overflow="hidden" zIndex="2">
+            <Box
+              w="auto"
+              height="auto"
+              overflow="hidden"
+              zIndex="2"
+              mt={['2rem', '0']}
+            >
               <Image src="/assets/abt.png" objectFit="cover" height="full" />
             </Box>
             <Box pos="absolute" bottom="-140px" left="50px" zIndex="3">
@@ -48,29 +55,31 @@ function AboutTemp() {
             </Box>
           </VStack>
           <VStack
-            alignItems="flex-start"
+            alignItems={['center', 'flex-start']}
             spacing="10"
             width="full"
             height="full"
-            ml="6rem"
-            pr="5rem"
+            ml={['0', '6rem']}
+            pr={['0', '5rem']}
           >
             <Heading
-              fontSize="2.5rem"
-              color="brand.200"
-              pos="relative"
-              _after={{
-                position: 'absolute',
-                width: '70%',
-                height: '12px',
-                backgroundColor: 'brand.500',
-                bottom: '-12px',
-                left: '0',
-                content: '""',
-              }}
-            >
-              Who we are
-            </Heading>
+            fontSize={['2rem', '2.5rem']}
+            textAlign={['center', 'left']}
+            color="brand.200"
+            pos="relative"
+            _after={{
+              position: 'absolute',
+              width: '70%',
+              height: '12px',
+              backgroundColor: 'brand.500',
+              bottom: '-12px',
+              left: ['50%', '0'],
+              transform: ['translate(-50%)', 'translate(0%)'],
+              content: '""',
+            }}
+          >
+            Who we are
+          </Heading>
             <Text fontSize="1rem" fontWeight="regular" w="95%">
               FlyPal has a mission to put smiles on the faces of all passengers
               by helping to solve all their flying challenges. All flying

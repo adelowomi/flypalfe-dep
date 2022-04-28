@@ -17,7 +17,7 @@ function Fifth() {
       >
         <Box w="full" mt="10rem">
           <Circle
-            size="388px"
+            size={['300px', '388px']}
             bgColor="rgba(0, 127, 130, 0.05)"
             display="flex"
             alignItems="center"
@@ -26,14 +26,14 @@ function Fifth() {
             pos="relative"
           >
             <Circle
-              size="276px"
+              size="60%"
               bgColor="brand.100"
               display="flex"
               alignItems="center"
               justifyContent="center"
             >
               <Circle
-                size="113px"
+                size="50%"
                 bgColor="brand.500"
                 display="flex"
                 alignItems="center"
@@ -145,7 +145,7 @@ function Fifth() {
             fontSize="20px"
             color="brand.200"
             textAlign="center"
-            w="70%"
+            w={['full', '70%']}
             mx="auto"
             mt="7rem"
             mb="3rem"
@@ -154,7 +154,7 @@ function Fifth() {
             eiusmod tempor incididunt ut.
           </Text>
           <Box mx="auto" w="fit-content">
-            <Link href="/">
+            <Link href="/user/dashboard">
               <Button variant="solid" bgColor="brand.200">
                 Go back Home
               </Button>

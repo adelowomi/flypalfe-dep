@@ -14,13 +14,14 @@ function Hero() {
   const scrollTo = useScrollTo();
 
   return (
-    <Box overflowX="hidden" h="auto" w="94%" ml="auto">
+    <Box overflow="hidden" h="auto" w="94%" ml="auto">
       <Flex
         width="full"
         height="fit-content"
-        my="3.8rem"
+        my={['1.8rem', '3.8rem']}
         align="center"
         position="relative"
+        flexDirection={['column', 'row']}
       >
         <VStack
           alignItems="flex-start"
@@ -30,7 +31,7 @@ function Hero() {
           //   pr="5rem"
         >
           <Heading
-            fontSize="2.5rem"
+            fontSize={['1.6rem', '2.5rem']}
             color="brand.200"
             pos="relative"
             className="animate__animated animate__fadeInUp"
@@ -62,6 +63,7 @@ function Hero() {
           height="full"
           width="full"
           pos="relative"
+          mt={['4rem', '0']}
         >
           <Box
             w="full"
@@ -165,10 +167,15 @@ function Hero() {
             <Image src="/assets/heroa.png" />
           </Box>
 
-          <Box pos="absolute" top="-15%" right="-270px" zIndex="1">
+          <Box
+            pos="absolute"
+            top={['-19%',"-15%"]}
+            right={['-215px', '-270px']}
+            zIndex="1"
+          >
             <Box
-              width="540px"
-              height="540px"
+              width={['350px', '540px']}
+              height={['350px', '540px']}
               bgColor="brand.100"
               borderRadius="50%"
             />

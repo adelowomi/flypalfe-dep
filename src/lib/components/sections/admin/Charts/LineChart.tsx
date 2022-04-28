@@ -26,15 +26,15 @@ ChartJS.register(
 );
 
 const LineChart = ({ users }: { users: any }) => {
-  console.log({ users });
+  const uinqueUser = users.value;
 
   const data: any = {
-    labels: users.map((user: any) => user.firstName),
+    labels: uinqueUser.map((user: any) => user.firstName),
     // labels: ['Janurary', 'Feburary', 'March', 'June', 'May', 'July'],
     datasets: [
       {
         label: '',
-        data: users.map((user: any) => user.id),
+        data: uinqueUser.map((user: any) => user.id),
         borderWidth: [2, 1],
         fill: true,
         tension: 0.3,

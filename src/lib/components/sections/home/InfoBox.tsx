@@ -7,13 +7,14 @@ function InfoBox() {
         w="full"
         bgColor="brand.200"
         bgImage="url(/assets/lines.png)"
-        h="80px"
+        h={['135px', '80px']}
         display="flex"
         justifyContent="center"
         alignItems="center"
         pos="relative"
+        mb={['-0.5rem', '0']}
       >
-        <Container maxW="90%" pos="absolute" bottom="0">
+        <Container maxW="90%" pos="absolute" bottom={['50px', '0']}>
           <Flex
             bgColor="white"
             h="9rem"
@@ -22,31 +23,38 @@ function InfoBox() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            px={20}
+            px={[0, 20]}
             py="1rem"
           >
-            <Box width="full" display="flex" h="full" alignItems="center">
+            <Box
+              width="full"
+              display="flex"
+              h="full"
+              alignItems="center"
+              flexDirection={['column', 'row']}
+            >
               <Text
-                w="15%"
+                w={['100%', '15%']}
                 color="brand.200"
-                fontSize="1.3rem"
+                fontSize={['1rem', '1.3rem']}
                 fontWeight="800"
+                textAlign={['center', 'left']}
               >
                 DO YOU KNOW THAT:
               </Text>
               <Box
                 pos="relative"
-                w="75%"
+                w={['80%', '75%']}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
                 height="full"
-                ml="2rem"
+                ml={['0', '2rem']}
               >
                 <Box pos="absolute" top="0" left="0">
-                  <Image src="assets/quote.png" />
+                  <Image src="assets/quote.png" maxW={['45%', '100%']} />
                 </Box>
-                <Text textAlign="center">
+                <Text textAlign="center" fontSize={['.9rem', '1rem']}>
                   Since 2019, 1 billion flights has been cancelled "10k flights
                   were delayed"
                 </Text>
@@ -56,7 +64,7 @@ function InfoBox() {
                   right="0"
                   transform="scale(-1, 1)"
                 >
-                  <Image src="assets/quote.png" />
+                  <Image src="assets/quote.png" maxW={['45%', '100%']} />
                 </Box>
               </Box>
             </Box>

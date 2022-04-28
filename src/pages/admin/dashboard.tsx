@@ -1,25 +1,54 @@
 import axios from 'axios';
 import Dashboard from 'lib/pages/Admin/Dashboard';
 import { GetServerSideProps } from 'next';
-import { UserView } from 'types/api';
+import cookie from 'js-cookie';
+import { DashboardMetricsView, UserView } from 'types/api';
+import { DataAccess } from 'lib/Utils/Api';
 
-function dashboard({users}:{users:UserView}) {
-  return <Dashboard users={users}/>;
+function dashboard({
+  users,
+  adminMetrics,
+  complains,
+}: {
+  users: UserView;
+  adminMetrics: DashboardMetricsView;
+  complains: any;
+}) {
+  console.log(cookie.get('token'));
+  return (
+    <Dashboard
+      users={users}
+      adminMetrics={adminMetrics}
+      complains={complains}
+    />
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log({ context });
+  const bearer = `Bearer ${context.req.cookies.token}`;
+  const _dataAccess = new DataAccess(bearer);
 
-  const res = await (await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASEURL}/api/user/list`
-  )).data;
-  console.log({ res });
-
-  return {
-    props: {
-      users: res.data.value,
-    },
-  };
+  try {
+    const userlist = (await _dataAccess.get('/api/user/list')).data;
+    // console.log(userlist);
+    const complainList = (await _dataAccess.get('/api/Complaints/list')).data;
+    const metrics = (await _dataAccess.get('/api/Admin/metrics')).data;
+    return {
+      props: {
+        users: userlist,
+        adminMetrics: metrics,
+        complains: complainList,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        users: [],
+        adminMetrics: {},
+        complains: [],
+      },
+    };
+  }
 };
 
 export default dashboard;

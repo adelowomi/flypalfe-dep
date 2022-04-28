@@ -14,13 +14,11 @@ import {
 } from '@chakra-ui/react';
 import { TableData, TableHead, TableStatus } from 'lib/layout/Props/Tables';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { MdFilterList } from 'react-icons/md';
-import { useOperationMethod } from 'react-openapi-client';
-import { useToasts } from 'react-toast-notifications';
 import Pagination from './Pagination';
 
 function UsersList({ users }: { users: any }) {
+  const uniqueUser = users.value;
   return (
     <Box
       w="full"
@@ -40,31 +38,31 @@ function UsersList({ users }: { users: any }) {
         <Text fontSize="1.1rem">User</Text>
         <Icon as={MdFilterList} fontSize="1.1rem" />
       </Flex>
-      <TableContainer h="500px" overflow="hidden">
+      <TableContainer h="500px" overflowY="hidden">
         <Table variant="simple">
           <Thead>
             <Tr w="full" bgColor="#EFEFEF" h="3rem">
-              <TableHead title="Name" />
-              <TableHead title="Departure" />
-              <TableHead title="Airline" />
-              <TableHead title="Complains" />
-              <TableHead title="Date" />
-              <TableHead title="Status" />
+              <TableHead title="Email" />
+              <TableHead title="First Name" />
+              <TableHead title="Last Name" />
+              <TableHead title="Phone Number" />
+              <TableHead title="No of Complains" />
             </Tr>
           </Thead>
           <Tbody>
-            {users.map((user: any) => (
-              <Link href={'/admin/users/' + user.id} key={user.id}>
-                <Tr>
-                  <TableData name={user.fullName} />
-                  <TableData name={'Lagos'} />
-                  <TableData name={'Air Peace'} />
-                  <TableData name={'Cancelled flight'} />
-                  <TableData name={'Feb, 23rd 2022'} />
-                  <TableStatus name={'resolved'} />
-                </Tr>
-              </Link>
-            ))}
+            {uniqueUser.map((user: any) => {
+              return (
+                <Link href={'/admin/users/' + user.id} key={user.id}>
+                  <Tr>
+                    <TableData name={user.email} />
+                    <TableData name={user.firstName} />
+                    <TableData name={user.lastName} />
+                    <TableData name={user.phoneNumber} />
+                    <TableStatus name={user.id} />
+                  </Tr>
+                </Link>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>
