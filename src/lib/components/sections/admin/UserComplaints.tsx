@@ -10,13 +10,13 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { TableData, TableHead, TableStatus } from 'lib/layout/Props/Tables';
+import Link from 'next/link';
 import { MdFilterList } from 'react-icons/md';
 import Pagination from './Pagination';
 const moment = require('moment');
 
 function UserComplaints({ complaints }: { complaints: any }) {
   const complain = complaints.value;
-  console.log(complaints);
 
   return (
     <Box
@@ -52,15 +52,17 @@ function UserComplaints({ complaints }: { complaints: any }) {
           <Tbody>
             {complain.map((x: any) => {
               return (
-                <Tr>
-                  <TableData name={x.complaintsCategory} />
-                  <TableData name={x.airline ? x.airline : 'null'} />
-                  <TableData name={x.departureLocation} />
-                  <TableData
-                    name={moment(x.departureDate).format('MMM Do YYYY')}
-                  />
-                  <TableStatus name={x.status} />
-                </Tr>
+                <Link href={`/admin/complaints/${x.id}`} key={x.id}>
+                  <Tr>
+                    <TableData name={x.complaintsCategory} />
+                    <TableData name={x.airline ? x.airline : 'null'} />
+                    <TableData name={x.departureLocation} />
+                    <TableData
+                      name={moment(x.departureDate).format('MMM Do YYYY')}
+                    />
+                    <TableStatus name={x.status} />
+                  </Tr>
+                </Link>
               );
             })}
           </Tbody>

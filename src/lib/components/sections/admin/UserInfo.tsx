@@ -13,7 +13,6 @@ import shadeColor from 'lib/components/Utilities/Functions/ColorShade';
 import { FaUser } from 'react-icons/fa';
 
 function UserInfo({ display, item }: { display: string; item?: any }) {
-  console.log({ item });
 
   return (
     <Box

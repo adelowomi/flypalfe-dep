@@ -19,8 +19,8 @@ function SideNavLinks({ steps, name, step, isValid }: SideNav) {
       w="260px"
       _after={{
         content:
-          (isValid && step > steps) || step == 4
-            ? 'url(../assets/check.png)'
+          (isValid && step > steps && steps != 0) || step == 4 || steps === 0
+            ? 'url(/assets/check.png)'
             : '""',
         display: 'flex',
         justifyContent: 'center',
@@ -35,7 +35,8 @@ function SideNavLinks({ steps, name, step, isValid }: SideNav) {
         transform: 'translateY(-50%)',
         border:
           (isValid && step >= steps && isValid && step != steps) ||
-          (step == 4 && num === 5)
+          (step == 4 && num === 5) ||
+          steps === 0
             ? ''
             : step === steps && num >= 1
             ? '5px solid #FCC13F'

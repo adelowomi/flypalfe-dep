@@ -24,7 +24,6 @@ function UserInfoWithComplain({
   item?: any;
 }) {
   const userItem = item.user;
-  console.log({ item });
 
   const router = useRouter();
   const { addToast } = useToasts();
@@ -117,7 +116,7 @@ function UserInfoWithComplain({
               borderColor="brand.100"
               isLoading={loading}
               onClick={() => approveComplaints()}
-              disabled={item.status ? true : false}
+              disabled={item.status == 'PENDING' ? false : true}
             >
               Resolve
             </Button>

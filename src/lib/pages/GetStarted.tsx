@@ -32,7 +32,6 @@ function GetStarted() {
   const [step, setStep] = useState(1);
   const { addToast } = useToasts();
   const { id } = router.query;
-  console.log({ id });
 
   const {
     handleSubmit,
@@ -48,9 +47,7 @@ function GetStarted() {
   const onSubmit = async (data: ComplaintsModel) => {
     try {
       const result = await registerComplain(undefined, data);
-      console.log(data);
       const value = result.data;
-      console.log({ value });
       if (value.status) {
         addToast('Successful', {
           appearance: 'success',

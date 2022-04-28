@@ -11,7 +11,6 @@ function AdminGraphs({
   option: string;
   users: any;
 }) {
-  console.log(users);
 
   return (
     <Flex

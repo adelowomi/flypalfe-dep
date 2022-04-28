@@ -71,16 +71,27 @@ function Header() {
               color="brand.200"
               p={['0', '0 2rem .2rem 0']}
             />
-            <NextLink href="/contact">
-              <Box display={{ base: 'block', md: 'none' }}>
-                <MenuItems
-                  text="Login"
-                  url="/user"
-                  color="brand.200"
-                  p={['0', '0 0rem .2rem 2rem']}
-                />
-              </Box>
-            </NextLink>
+            <>
+              {user ? (
+                <Box display={{ base: 'block', md: 'none' }}>
+                  <MenuItems
+                    text="Login"
+                    url="/user/dashboard"
+                    color="brand.200"
+                    p={['0', '0 0rem .2rem 2rem']}
+                  />
+                </Box>
+              ) : (
+                <Box display={{ base: 'block', md: 'none' }}>
+                  <MenuItems
+                    text="Login"
+                    url="/user"
+                    color="brand.200"
+                    p={['0', '0 0rem .2rem 2rem']}
+                  />
+                </Box>
+              )}
+            </>
             <NextLink href="/contact">
               <Box display={{ base: 'block', md: 'none' }}>
                 <Button

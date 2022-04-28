@@ -12,7 +12,6 @@ const ElevatorDecline = (props: any) => (
 );
 function UserStats({ item }: { item: any }) {
   const metrics = item.metrics;
-  console.log({ item });
 
   return (
     <Grid

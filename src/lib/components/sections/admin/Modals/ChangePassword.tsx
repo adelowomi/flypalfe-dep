@@ -49,7 +49,6 @@ function ChangePassword({
   const onSubmit = async (data: PasswordResetModel) => {
     try {
       const result = await (await changePassword(undefined, data)).data;
-      console.log(result);
       if (result.status) {
         addToast('Password update Successful', {
           appearance: 'success',

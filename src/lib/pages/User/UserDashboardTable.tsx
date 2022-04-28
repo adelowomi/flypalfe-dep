@@ -50,7 +50,7 @@ function UserDashboardTable({ complains }: { complains: any }) {
           <Tbody>
             {complaints.map((x: any) => {
               return (
-                <Tr>
+                <Tr key={x.id}>
                   <TableData name={x.departureLocation} />
                   <TableData name={x.finalDestination} />
                   <TableData name={x.complaintsCategory} />

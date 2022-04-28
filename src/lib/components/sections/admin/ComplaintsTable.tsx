@@ -19,7 +19,6 @@ const moment = require('moment');
 
 function ComplaintsTable({ complains }: { complains: any }) {
   const complaints = complains.value;
-  console.log(complaints);
 
   return (
     <Box

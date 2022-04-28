@@ -46,9 +46,8 @@ function AddAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
   });
   const onSubmit = async (data: Register) => {
     try {
-      const result = await createAdmin(undefined, data);
-      const value = result.data;
-      if (value.status) {
+      const result = await (await createAdmin(undefined, data)).data;
+      if (result.status) {
         addToast('Admin created succesfully', {
           appearance: 'success',
           autoDismiss: true,
@@ -56,7 +55,7 @@ function AddAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
         onClose();
         return;
       }
-      addToast(value.message, { appearance: 'error', autoDismiss: true });
+      addToast(result.message, { appearance: 'error', autoDismiss: true });
       onClose();
       return;
     } catch (error) {

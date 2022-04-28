@@ -14,8 +14,6 @@ function Dashboard({
   adminMetrics: DashboardMetricsView;
   complains: any;
 }) {
-  console.log({ users });
-
   return (
     <Box mb="4rem">
       <SimpleGrid columns={2} spacing={8}>

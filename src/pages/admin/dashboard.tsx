@@ -14,7 +14,6 @@ function dashboard({
   adminMetrics: DashboardMetricsView;
   complains: any;
 }) {
-  console.log(cookie.get('token'));
   return (
     <Dashboard
       users={users}

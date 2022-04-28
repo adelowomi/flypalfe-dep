@@ -1,4 +1,5 @@
 import { Box, Flex, Image, VStack, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useState } from 'react';
 import Login from './Login';
 import Register from './Register';
@@ -17,16 +18,18 @@ function UserPage() {
       bgColor="brand.800"
       bgImage="url(/assets/lines2.png)"
     >
-      <Flex w="190px" pos="absolute" left="4rem" top="2rem">
-        <Image src="assets/logoblue.png" w="full" />
-      </Flex>
+      <Link href={'/'}>
+        <Flex w="190px" pos="absolute" left="4rem" top="2rem" cursor="pointer">
+          <Image src="/assets/logoblue.png" w="full" />
+        </Flex>
+      </Link>
       <Box
         w="60%"
         display={['none', 'flex']}
         justifyContent="center"
         alignItems="center"
       >
-        <Image src="assets/admin.png" />
+        <Image src="/assets/admin.png" />
       </Box>
       <Box
         w={['100%', '40%']}
