@@ -5,7 +5,7 @@ import React from 'react';
 type AdminCards = {
   color: string;
   title: string;
-  sub?: string;
+  sub?: number;
   icon: any;
 };
 function AdminCard({ color, title, sub, icon }: AdminCards) {
