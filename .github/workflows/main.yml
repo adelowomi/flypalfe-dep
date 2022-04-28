@@ -34,7 +34,7 @@ jobs:
           heroku_api_key: $HEROKU
           heroku_app_name: $APP_NAME #Must be unique in Heroku
           heroku_email: $USERNAME
-          remote_branch: "main"
+          branch: "main"
 
     
       # # Runs a single command using the runners shell
