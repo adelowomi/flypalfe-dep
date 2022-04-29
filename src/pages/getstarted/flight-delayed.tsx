@@ -2,7 +2,6 @@ import { Box, Flex, VStack, Text } from '@chakra-ui/react';
 import Fifth from 'lib/components/sections/getStarted/Fifth';
 import First from 'lib/components/sections/getStarted/First';
 import Fourth from 'lib/components/sections/getStarted/Fourth';
-import Second from 'lib/components/sections/getStarted/Second';
 import SideNav from 'lib/components/sections/getStarted/SideNav';
 import Third from 'lib/components/sections/getStarted/Third';
 import FormButton from 'lib/components/Utilities/FormButton';
@@ -10,11 +9,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ComplaintsModel, LoginModel, Register } from 'types/api';
+import { ComplaintsModel } from 'types/api';
 import { useOperationMethod } from 'react-openapi-client';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToasts } from 'react-toast-notifications';
+import Delayed from 'lib/components/sections/getStarted/Delayed';
 
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
@@ -30,7 +30,7 @@ function GetStarted() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const { addToast } = useToasts();
-  const { id } = router.query;
+  const id = 2;
 
   const {
     handleSubmit,
@@ -41,7 +41,6 @@ function GetStarted() {
     resolver: yupResolver(schema),
     defaultValues: {
       complaintsCategoryId: id as unknown as number,
-      // connectingFlights: values as unknown as boolean,
     },
     mode: 'all',
   });
@@ -109,7 +108,7 @@ function GetStarted() {
               >
                 {step === 0 && <First register={register} errors={errors} />}
                 {step === 1 && (
-                  <Second
+                  <Delayed
                     register={register}
                     errors={errors}
                     control={control}

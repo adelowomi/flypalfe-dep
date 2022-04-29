@@ -17,13 +17,13 @@ function UserLogoutModal({
 }: {
   isOpen: boolean;
   onClose: any;
-}) {
+}): JSX.Element {
   const router = useRouter();
-  const LogOut = () => {
+  function LogOut(): void {
     Cookies.remove('token');
     localStorage.clear();
     router.push('/user');
-  };
+  }
 
   return (
     <Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen}>

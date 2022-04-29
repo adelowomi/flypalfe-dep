@@ -18,8 +18,9 @@ type CardsType = {
   note: string;
   icon: any;
   categoryId: number;
+  link: string;
 };
-function Cards({ title, note, icon, categoryId }: CardsType) {
+function Cards({ title, note, icon, categoryId, link }: CardsType) {
   return (
     <GridItem w="100%">
       <Flex
@@ -73,10 +74,7 @@ function Cards({ title, note, icon, categoryId }: CardsType) {
             >
               {note}
             </Text>
-            <NextLink
-              href={`/getstarted/${title.replace(' ', '')}/${categoryId}`}
-              passHref
-            >
+            <NextLink href={`/getstarted/${link}`} passHref>
               <Link
                 color="white"
                 fontSize=".8rem"

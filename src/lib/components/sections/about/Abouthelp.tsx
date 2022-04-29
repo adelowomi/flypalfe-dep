@@ -36,30 +36,35 @@ function Abouthelp() {
               icon={MdFlight}
               title="cancelled flights"
               categoryId={1}
+              link="cancelled-flights"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdFlight}
               title="flight delayed"
               categoryId={2}
+              link="flight-delayed"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={GiWorld}
               title="denied boarding"
               categoryId={3}
+              link="denied-boarding"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdCardTravel}
               title="baggage claim"
               categoryId={4}
+              link="baggage-claim"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
             <Cards
               icon={MdWifiProtectedSetup}
               title="refund"
               categoryId={5}
+              link="refund-claim"
               note="Flight cancelled with little notice? You could be entitled to up to ₦50,520 compensation on top of your refund."
             />
           </Grid>

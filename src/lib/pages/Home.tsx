@@ -15,7 +15,6 @@ function Home() {
       <Hero />
       <Fade bottom>
         <HeroInfo />
-
         <Help />
         <Locations />
         <HeroMini />
