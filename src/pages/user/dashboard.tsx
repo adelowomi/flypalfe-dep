@@ -12,10 +12,12 @@ export default dashboard;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
+  const { url } = context.query;
 
   try {
-    const complainList = (await _dataAccess.get('/api/Complaints/list/user'))
-      .data;
+    const complainList = (
+      await _dataAccess.get(`/api/Complaints/list/user?${url}`)
+    ).data;
     const userDetails = (await _dataAccess.get('/api/User/getbyid')).data;
     console.log(userDetails);
 

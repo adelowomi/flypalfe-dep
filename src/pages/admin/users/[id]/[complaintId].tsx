@@ -1,54 +1,58 @@
-import { Box, VStack } from '@chakra-ui/react';
+import { Box, GridItem, SimpleGrid, VStack } from '@chakra-ui/react';
+import AdminStats from 'lib/components/sections/admin/AdminStats';
 import ComplaintsDetails from 'lib/components/sections/admin/ComplaintsDetails';
 import UserInfo from 'lib/components/sections/admin/UserInfo';
 import UserMandate from 'lib/components/sections/admin/UserMandate';
-import UserStats from 'lib/components/sections/admin/UserStats';
+import UserInfoWithComplain from 'lib/pages/Admin/UserInfoWithComplain';
 import { DataAccess } from 'lib/Utils/Api';
 import { GetServerSideProps } from 'next';
 import React from 'react';
+import { DashboardMetricsView } from 'types/api/dashboard-metrics-view';
 
-function userDetails({
+function complainDetails({
   item,
-  complainsById,
+  adminMetrics,
 }: {
   item: any;
-  complainsById: any;
+  adminMetrics: DashboardMetricsView;
 }) {
   return (
     <Box mb="4rem" w="full">
       <VStack spacing={8} w="full">
-        {/* <UserStats item={item} /> */}
-        <UserInfo display="block" item={item} />
-        <ComplaintsDetails item={complainsById} />
+        <SimpleGrid columns={2} spacing={8}>
+          <GridItem colSpan={2}>
+            <AdminStats metrics={adminMetrics} />
+          </GridItem>
+        </SimpleGrid>
+        <UserInfoWithComplain display={'block'} item={item} />
+        <ComplaintsDetails item={item} />
         <UserMandate />
       </VStack>
     </Box>
   );
 }
-
-export default userDetails;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
   const complaintsId = context?.params?.id;
-
   try {
-    const complains = (
-      await _dataAccess.get(`/api/Complaints/authorize/${complaintsId}`)
-    ).data;
+    const data = (await _dataAccess.get(`/api/Complaints/get/${complaintsId}`))
+      .data;
 
+    const metrics = (await _dataAccess.get('/api/Admin/metrics')).data;
     return {
       props: {
-        item: complains.user,
-        complainsById: complains,
+        item: data,
+        adminMetrics: metrics,
       },
     };
   } catch (error) {
     return {
       props: {
-        item: {},
-        complainsById: [],
+        item: [],
+        adminMetrics: {},
       },
     };
   }
 };
+export default complainDetails;

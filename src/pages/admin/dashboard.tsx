@@ -26,12 +26,14 @@ function dashboard({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
+  const { url } = context.query;
 
   try {
     const userlist = (await _dataAccess.get('/api/user/list')).data;
-    // console.log(userlist);
-    const complainList = (await _dataAccess.get('/api/Complaints/list')).data;
+    const complainList = (await _dataAccess.get(`/api/Complaints/list?${url}`))
+      .data;
     const metrics = (await _dataAccess.get('/api/Admin/metrics')).data;
+
     return {
       props: {
         users: userlist,

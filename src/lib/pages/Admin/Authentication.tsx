@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useForm } from 'react-hook-form';
-import { LoginModel, Register } from 'types/api';
+import { LoginModel } from 'types/api';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useOperationMethod } from 'react-openapi-client';
@@ -20,7 +20,7 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from 'lib/Utils/MainContext';
 import { useToasts } from 'react-toast-notifications';
 import { SecondaryInput } from 'lib/components/Utilities/SecondaryInput';
-import cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 
 const schema = yup.object().shape({
   email: yup.string().required('Email is required'),
@@ -31,10 +31,19 @@ function Authentication() {
   const [logUserIn, { data, loading, error }] =
     useOperationMethod('Admintoken');
   const router = useRouter();
-  const { setUser, user } = useContext(UserContext);
+  const { setAdmin } = useContext(UserContext);
   const { addToast } = useToasts();
 
-
+  useEffect(() => {
+    function redirectToLogin() {
+      if (localStorage.getItem('admin')) {
+        router.push('/admin/dashboard');
+      } else {
+        router.push('/admin');
+      }
+    }
+    redirectToLogin();
+  }, []);
 
   const {
     handleSubmit,
@@ -55,11 +64,10 @@ function Authentication() {
           appearance: 'success',
           autoDismiss: true,
         });
-        setUser(value.data);
-        cookie.set('token', value.data.token);
+        setAdmin(value.data);
+        Cookies.set('token', value.data.token);
+        localStorage.setItem('admin', JSON.stringify(value.data));
         router.push('/admin/dashboard');
-        localStorage.setItem('user', JSON.stringify(value.data));
-        localStorage.setItem('token', value.data.token);
         return;
       }
       addToast(value.message, { appearance: 'error', autoDismiss: true });

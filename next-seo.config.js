@@ -1,25 +1,25 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "nextarter-chakra",
-  titleTemplate: "%s | nextarter-chakra",
-  defaultTitle: "nextarter-chakra",
-  description: "Next.js + chakra-ui + TypeScript template",
-  canonical: "https://nextarter-chakra.sznm.dev",
+  title: 'Flypal ng',
+  titleTemplate: '%s | Airline Solutions',
+  defaultTitle: 'Flypal ng',
+  description: 'Airline solutions',
+  canonical: 'https://flypal.ng',
   openGraph: {
-    url: "https://nextarter-chakra.sznm.dev",
-    title: "nextarter-chakra",
-    description: "Next.js + chakra-ui + TypeScript template",
+    url: 'https://flypal.ng',
+    title: 'Flypal ng',
+    description: 'Airline solutions',
     images: [
       {
-        url: "https://og-image.sznm.dev/**nextarter-chakra**.sznm.dev.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fsznm.dev%2Favataaars.svg&widths=250",
-        alt: "nextarter-chakra.sznm.dev og-image",
+        url: '/assets/logowhite.png',
+        alt: 'Flypal ng',
       },
     ],
-    site_name: "nextarter-chakra",
+    site_name: 'Flypal ng',
   },
   twitter: {
-    handle: "@sozonome",
-    cardType: "summary_large_image",
+    handle: '@sozonome',
+    cardType: 'summary_large_image',
   },
 };
 

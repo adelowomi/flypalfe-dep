@@ -17,20 +17,27 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, admin, setAdmin } = useContext(UserContext);
+
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
+    const isUser = localStorage.getItem('user') as unknown as string;
+    if (isUser != null || undefined) {
+      setUser(JSON.parse(isUser));
+      return;
+    }
+    const isAdmin = localStorage.getItem('admin') as unknown as string;
+    if (isAdmin != null || undefined) {
+      setAdmin(JSON.parse(isAdmin));
+      return;
     }
   }, []);
+  console.log({ user });
 
   return (
     <>
       {router.pathname.startsWith('/admin/') ? (
         <>
-          {user === null || user === undefined ? (
+          {admin === null || admin === undefined ? (
             <Authentication />
           ) : (
             <Flex pos="relative" minH="100vh">

@@ -9,11 +9,13 @@ function users({ users }: { users: any }) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
+  const { url } = context.query;
 
   try {
-    const userlist = (await _dataAccess.get('/api/user/list')).data;
-    const complainList = (await _dataAccess.get('/api/Complaints/list/user'))
-      .data;
+    const userlist = (await _dataAccess.get(`/api/user/list?${url}`)).data;
+    const complainList = (
+      await _dataAccess.get(`/api/Complaints/list/user?${url}`)
+    ).data;
     console.log({ userlist });
 
     return {

@@ -18,7 +18,7 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from 'lib/Utils/MainContext';
 import { useToasts } from 'react-toast-notifications';
 import { SecondaryInput } from 'lib/components/Utilities/SecondaryInput';
-import cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 
 const schema = yup.object().shape({
   email: yup.string().required('Email is required'),
@@ -33,10 +33,10 @@ function Login({ toggleForms }: { toggleForms: any }) {
 
   useEffect(() => {
     function redirectToLogin() {
-      if (cookie.get('token') != null || undefined || false) {
-        router.push('/admin/dashboard');
+      if (localStorage.getItem('user')) {
+        router.push('/user/dashboard');
       } else {
-        router.push('/admin');
+        router.push('/user');
       }
     }
     redirectToLogin();
@@ -60,10 +60,9 @@ function Login({ toggleForms }: { toggleForms: any }) {
           autoDismiss: true,
         });
         setUser(result.data);
-        cookie.set('token', result.data.token);
-        router.push('/user/dashboard');
+        Cookies.set('token', result.data.token);
         localStorage.setItem('user', JSON.stringify(result.data));
-        localStorage.setItem('token', result.data.token);
+        router.push('/user/dashboard');
         return;
       }
       addToast(result.message, { appearance: 'error', autoDismiss: true });

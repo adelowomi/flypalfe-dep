@@ -15,9 +15,11 @@ export default index;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
+  const { url } = context.query;
 
   try {
-    const complainList = (await _dataAccess.get('/api/Complaints/list')).data;
+    const complainList = (await _dataAccess.get(`/api/Complaints/list?${url}`))
+      .data;
     return {
       props: {
         complains: complainList,

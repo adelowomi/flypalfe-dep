@@ -70,7 +70,7 @@ function ComplaintsTable({ complains }: { complains: any }) {
           </Tbody>
         </Table>
       </TableContainer>
-      <Pagination />
+      <Pagination data={complains} />
     </Box>
   );
 }

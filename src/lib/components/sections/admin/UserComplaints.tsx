@@ -68,7 +68,7 @@ function UserComplaints({ complaints }: { complaints: any }) {
           </Tbody>
         </Table>
       </TableContainer>
-      <Pagination />
+      <Pagination data={complaints} />
     </Box>
   );
 }

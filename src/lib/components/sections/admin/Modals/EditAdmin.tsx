@@ -22,7 +22,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
   return (
     <Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
-      <ModalContent py={5} borderRadius="0" px={5}>
+      <ModalContent py={5} borderRadius="0" px={5} w={['91%', '100%']}>
         <ModalHeader>
           <Text color="brand.200" fontSize="1.1rem" textAlign="center">
             Edit Account Details

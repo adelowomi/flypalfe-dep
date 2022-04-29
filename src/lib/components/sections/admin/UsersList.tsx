@@ -19,6 +19,8 @@ import Pagination from './Pagination';
 
 function UsersList({ users }: { users: any }) {
   const uniqueUser = users.value;
+  console.log({ users });
+
   return (
     <Box
       w="full"
@@ -66,7 +68,7 @@ function UsersList({ users }: { users: any }) {
           </Tbody>
         </Table>
       </TableContainer>
-      <Pagination />
+      <Pagination data={users} />
     </Box>
   );
 }

@@ -22,12 +22,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
   const id = context?.params?.id;
+  const { url } = context.query;
 
   try {
     const data = (await _dataAccess.get(`/api/Admin/user/get/${id}`)).data;
-
     const complainData = (
-      await _dataAccess.get(`/api/Admin/complain/list/user/${id}`)
+      await _dataAccess.get(`/api/Admin/complain/list/user/${id}?${url}`)
     ).data;
 
     return {

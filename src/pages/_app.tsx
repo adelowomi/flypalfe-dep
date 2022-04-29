@@ -11,6 +11,7 @@ import '../lib/styles/globals.css';
 import { ToastProvider } from 'react-toast-notifications';
 import Layout from 'lib/layout';
 import { UserProvider } from 'lib/Utils/MainContext';
+import Cookies from 'js-cookie';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let headers: HeadersInit;
@@ -19,7 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     cor: 'no-cors',
   };
   if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     headers = {
       cor: 'no-cors',
       Authorization: `Bearer ${token}`,
