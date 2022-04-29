@@ -23,7 +23,7 @@ function RadioInput({
       alignItems="center"
       _focus={{ borderColor: 'brand.200' }}
     >
-      <Radio value={value} className="radio">
+      <Radio value={value} className="radio"  >
         {label}
       </Radio>
     </Box>

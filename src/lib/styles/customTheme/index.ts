@@ -4,6 +4,7 @@ import colors from './colors';
 import Button from './components/button';
 import fonts from './fonts';
 import Input from './components/input';
+import Textarea from './components/textarea';
 
 const customTheme = extendTheme({
   fonts,
@@ -11,6 +12,7 @@ const customTheme = extendTheme({
   components: {
     Button,
     Input,
+    Textarea,
   },
 });
 

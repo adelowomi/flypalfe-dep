@@ -41,12 +41,15 @@ function GetStarted() {
     resolver: yupResolver(schema),
     defaultValues: {
       complaintsCategoryId: id as unknown as number,
-      // connectingFlights: result as unknown as boolean,
+      // connectingFlights: values as unknown as boolean,
     },
     mode: 'all',
   });
 
   const onSubmit = async (data: ComplaintsModel) => {
+    data.connectingFlights = data.connectingFlights as boolean;
+    console.log(data.connectingFlights);
+
     try {
       const result = await registerComplain(undefined, data);
       const value = result.data;
@@ -72,7 +75,7 @@ function GetStarted() {
           {router.asPath
             .replace(/getstarted|-/gi, ' ')
             .replace('/ /', '')
-            .slice(0, -1)}
+            .slice(0, -2)}
         </title>
       </Head>
       <Flex align="flex-start" minH={['35rem', '70rem']} pos="relative">
