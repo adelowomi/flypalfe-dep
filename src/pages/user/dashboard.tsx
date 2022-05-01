@@ -19,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       await _dataAccess.get(`/api/Complaints/list/user?${url}`)
     ).data;
     const userDetails = (await _dataAccess.get('/api/User/getbyid')).data;
-    console.log(userDetails);
 
     return {
       props: {

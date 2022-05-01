@@ -7,7 +7,7 @@ import Third from 'lib/components/sections/getStarted/Third';
 import FormButton from 'lib/components/Utilities/FormButton';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ComplaintsModel } from 'types/api';
 import { useOperationMethod } from 'react-openapi-client';
@@ -19,10 +19,14 @@ import Delayed from 'lib/components/sections/getStarted/Delayed';
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
   finalDestination: yup.string().required('Final Destination is required'),
-  departureDate: yup.string().required('Departure Location is required'),
-  connectingFlights: yup.string().required('Departure Location is required'),
-  arrivalTime: yup.string().required('Departure Location is required'),
-  notificationPeriod: yup.string().required('Departure Location is required'),
+  departureDate: yup.string().required('Departure Date is required'),
+  connectingFlights: yup.string().required('Connecting Flight is required'),
+  arrivalTime: yup.string().required('Arrival Time is required'),
+  delayedFlight: yup.string().required('Flight Delayed is required'),
+  airline: yup.string().required('Airline is required'),
+  flightNumber: yup.string().required('Flight Number is required'),
+  connectingFlightAirLine: yup.string().required('Airline is required'),
+  connectingFlightNumber: yup.string().required('Flight Number is required'),
 });
 function GetStarted() {
   const [registerComplain, { data, loading, error }] =
@@ -31,6 +35,14 @@ function GetStarted() {
   const [step, setStep] = useState(1);
   const { addToast } = useToasts();
   const id = 2;
+
+  useEffect(() => {
+    const isUser = localStorage.getItem('user') as unknown as string;
+    if (isUser == null || undefined) {
+      router.push('/user');
+      return;
+    }
+  });
 
   const {
     handleSubmit,

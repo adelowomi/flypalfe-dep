@@ -9,16 +9,19 @@ function dashboard({
   users,
   adminMetrics,
   complains,
+  charts,
 }: {
   users: UserView;
   adminMetrics: DashboardMetricsView;
   complains: any;
+  charts: any;
 }) {
   return (
     <Dashboard
       users={users}
       adminMetrics={adminMetrics}
       complains={complains}
+      charts={charts}
     />
   );
 }
@@ -30,13 +33,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const userlist = (await _dataAccess.get('/api/user/list')).data;
+    const userChart = (await _dataAccess.get('/api/Admin/chart/users')).data;
     const complainList = (await _dataAccess.get(`/api/Complaints/list?${url}`))
       .data;
     const metrics = (await _dataAccess.get('/api/Admin/metrics')).data;
+    console.log({ userChart });
 
     return {
       props: {
         users: userlist,
+        charts: userChart,
         adminMetrics: metrics,
         complains: complainList,
       },
@@ -45,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       props: {
         users: [],
+        charts: {},
         adminMetrics: {},
         complains: [],
       },

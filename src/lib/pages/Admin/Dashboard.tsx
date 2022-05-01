@@ -4,15 +4,18 @@ import AdminStats from 'lib/components/sections/admin/AdminStats';
 import ComplaintsTable from 'lib/components/sections/admin/ComplaintsTable';
 import UserTable from 'lib/components/sections/admin/UserTable';
 import { DashboardMetricsView, UserView } from 'types/api';
+import { MonthlyUserView } from 'types/api/monthly-user-view';
 
 function Dashboard({
   users,
   adminMetrics,
   complains,
+  charts,
 }: {
   users: UserView;
   adminMetrics: DashboardMetricsView;
   complains: any;
+  charts: MonthlyUserView[];
 }) {
   return (
     <Box mb="4rem">
@@ -21,19 +24,23 @@ function Dashboard({
           <AdminStats metrics={adminMetrics} />
         </GridItem>
         <GridItem colSpan={2}>
-          <AdminGraphs name="New user Survey" option="New user" users={users} />
+          <AdminGraphs
+            name="New user Survey"
+            option="New user"
+            charts={charts}
+          />
         </GridItem>
         <GridItem colSpan={2}>
           <HStack columnGap={5} flexDirection={['column', 'row']}>
             <AdminGraphs
               name="Resolved complaint"
               option="Current month"
-              users={users}
+              charts={charts}
             />
             <AdminGraphs
               name="Pending complaint"
               option="Current month"
-              users={users}
+              charts={charts}
             />
           </HStack>
         </GridItem>

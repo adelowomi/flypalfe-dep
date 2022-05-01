@@ -433,6 +433,36 @@
         }
       }
     },
+    "/api/Admin/chart/users": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminchartusers",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyUserViewIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Complaints/create": {
       "post": {
         "tags": [
@@ -1767,6 +1797,70 @@
         },
         "additionalProperties": false
       },
+      "MonthlyUserView": {
+        "type": "object",
+        "properties": {
+          "month": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MonthlyUserViewIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthlyUserView"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ComplaintsModel": {
         "type": "object",
         "properties": {
@@ -1788,6 +1882,18 @@
           },
           "connectingFlights": {
             "type": "boolean"
+          },
+          "connectingFlightAirLine": {
+            "type": "string",
+            "nullable": true
+          },
+          "connectingFlightNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "boardingPass": {
+            "type": "string",
+            "nullable": true
           },
           "arrivalTime": {
             "type": "string",

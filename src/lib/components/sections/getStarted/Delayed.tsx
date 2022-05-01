@@ -131,7 +131,7 @@ function Delayed({
       >
         <GridItem colSpan={2}>
           <RadioButton<ComplaintsModel>
-            label=" Sorry for the cancellation. When did you arrive at the airport?"
+            label=" Sorry for the Delay. When did you arrive at the airport?"
             name="arrivalTime"
             register={register}
             defaultValue=""
@@ -282,10 +282,10 @@ function Delayed({
               <PrimaryInput<ComplaintsModel>
                 label="Airline"
                 register={register}
-                error={errors.airline}
+                error={errors.connectingFlightAirLine}
                 defaultValue={''}
                 placeholder="e.g Air peace"
-                name="airline"
+                name="connectingFlightAirLine"
               />
             </GridItem>
             <GridItem
@@ -297,9 +297,9 @@ function Delayed({
               <PrimaryInput<ComplaintsModel>
                 label="Flight number"
                 register={register}
-                error={errors.flightNumber}
+                error={errors.connectingFlightNumber}
                 defaultValue={''}
-                name="flightNumber"
+                name="connectingFlightNumber"
                 placeholder="JP9856457"
               />
             </GridItem>

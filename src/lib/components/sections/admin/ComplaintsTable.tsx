@@ -58,11 +58,11 @@ function ComplaintsTable({ complains }: { complains: any }) {
                   <Tr>
                     <TableData name={x.user.fullName} />
                     <TableData name={x.airline ? x.airline : 'null'} />
-                    <TableData name={x.finalDestination} />
-                    <TableData name={x.complaintsCategory} />
+                    <TableData name={x.departureLocation} />
                     <TableData
                       name={moment(x.departureDate).format('MMM Do YYYY')}
                     />
+                    <TableStatus name={x.status} />
                   </Tr>
                 </Link>
               );

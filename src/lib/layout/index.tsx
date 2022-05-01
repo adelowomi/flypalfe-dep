@@ -31,7 +31,6 @@ const Layout = ({ children }: LayoutProps) => {
       return;
     }
   }, []);
-  console.log({ user });
 
   return (
     <>

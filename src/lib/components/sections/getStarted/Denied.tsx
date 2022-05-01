@@ -146,10 +146,10 @@ function Denied({
               <PrimaryInput<ComplaintsModel>
                 label="Enter your boarding pass"
                 register={register}
-                error={errors.delayedFlight}
+                error={errors.boardingPass}
                 defaultValue={''}
                 placeholder="Lagos to Abuja"
-                name="delayedFlight"
+                name="boardingPass"
                 icon={<GiAirplaneArrival size="1.8rem" />}
               />
             </GridItem>
@@ -168,7 +168,7 @@ function Denied({
       >
         <GridItem colSpan={2}>
           <RadioButton<ComplaintsModel>
-            label=" Sorry for the cancellation. When did you arrive at the airport?"
+            label=" Sorry for the Denial. When did you arrive at the airport?"
             name="arrivalTime"
             register={register}
             defaultValue=""

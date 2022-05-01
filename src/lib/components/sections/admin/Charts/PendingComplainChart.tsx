@@ -26,7 +26,7 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ charts }: { charts: MonthlyUserView[] }) => {
+const PendingChart = ({ charts }: { charts: MonthlyUserView[] }) => {
   const data: any = {
     labels: charts.map((chart: any) => chart.month),
     // labels: ['Janurary', 'Feburary', 'March', 'June', 'May', 'July'],
@@ -68,4 +68,4 @@ const LineChart = ({ charts }: { charts: MonthlyUserView[] }) => {
   return <Line data={data} height={300} options={options} />;
 };
 
-export default LineChart;
+export default PendingChart;

@@ -19,7 +19,6 @@ import Pagination from './Pagination';
 
 function UsersList({ users }: { users: any }) {
   const uniqueUser = users.value;
-  console.log({ users });
 
   return (
     <Box

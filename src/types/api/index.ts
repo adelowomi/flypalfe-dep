@@ -1,3 +1,4 @@
+export * from './adminchartusers-response';
 export * from './admincomplainlistuser-user-id-parameters';
 export * from './admincomplainlistuser-user-id-response';
 export * from './admincomplaintsdecline-id-parameters';
@@ -40,6 +41,8 @@ export * from './dashboard-metrics-view-standard-response';
 export * from './link';
 export * from './login-model';
 export * from './media-model';
+export * from './monthly-user-view';
+export * from './monthly-user-view-i-enumerable-standard-response';
 export * from './name-model';
 export * from './password-reset';
 export * from './password-reset-model';

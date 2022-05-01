@@ -5,6 +5,9 @@ export interface ComplaintsModel {
   finalDestination?: null | string;
   departureDate?: string;
   connectingFlights?: boolean;
+  connectingFlightAirLine?: null | string;
+  connectingFlightNumber?: null | string;
+  boardingPass?: null | string;
   arrivalTime?: null | string;
   notificationPeriod?: null | string;
   delayedFlight?: null | string;
