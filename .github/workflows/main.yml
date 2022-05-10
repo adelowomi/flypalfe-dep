@@ -34,7 +34,7 @@ jobs:
               login $USERNAME
               password $HEROKU_API_KEY
             machine git.heroku.com
-              login $HEROKU_EMAIL
+              login $USERNAME
               password $HEROKU_API_KEY
           EOF
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
