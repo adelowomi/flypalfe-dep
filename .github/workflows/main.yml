@@ -27,14 +27,21 @@ jobs:
       APP_NAME: ${{ 'flypalng' }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Heroku login credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $USERNAME
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: $HEROKU
-          heroku_app_name: $APP_NAME #Must be unique in Heroku
-          heroku_email: $USERNAME
-          branch: "main"
+      - name: Add Heroku remote
+        run: heroku git:remote --app $APP_NAME
+      - name: Push to Heroku
+        run: git push heroku master
 
     
       # # Runs a single command using the runners shell
