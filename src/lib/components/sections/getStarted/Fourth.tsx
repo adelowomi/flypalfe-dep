@@ -44,11 +44,7 @@ function Fourth({
               <FormLabel color="brand.100" fontSize="1.1rem">
                 Upload your signed and scanned mandate form
               </FormLabel>
-              <Widget
-                publicKey="fda3a71102659f95625f"
-                id="file"
-                onChange={onChange}
-              />
+              <Widget publicKey="fda3a71102659f95625f" onChange={onChange} />
             </FormControl>
           </HStack>
         </GridItem>
