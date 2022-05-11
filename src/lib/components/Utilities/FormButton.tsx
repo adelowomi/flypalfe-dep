@@ -6,11 +6,13 @@ function FormButton({
   setStep,
   isValid,
   loading,
+  canSubmit,
 }: {
   step: number;
   setStep: any;
   loading: any;
   isValid: boolean;
+  canSubmit: boolean;
 }) {
   const handleProceed = () => {
     setStep((cur: number) => cur + 1);
@@ -19,6 +21,8 @@ function FormButton({
     saveAs('/assets/dummy.pdf', 'mandate.pdf');
     setStep(3);
   };
+  // console.log(canSubmit);
+
   return (
     <Box
       w={[step === 2 ? '90%' : '100%', step === 2 ? '90%' : '70%']}
@@ -48,7 +52,9 @@ function FormButton({
           ml={'3rem'}
           mr={['auto', '0']}
           type={step === 4 ? 'submit' : 'button'}
-          disabled={step == 0 ? isValid : !isValid}
+          disabled={
+            step == 1 ? !isValid : canSubmit || step === 2 ? false : true
+          }
           onClick={step === 2 ? saveFile : handleProceed}
           isLoading={loading}
         >

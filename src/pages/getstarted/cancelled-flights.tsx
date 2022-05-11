@@ -25,6 +25,8 @@ const schema = yup.object().shape({
   notificationPeriod: yup.string().required('Notification Period is required'),
 });
 function GetStarted() {
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [value, setValue] = useState<any>(false);
   const [registerComplain, { data, loading, error }] =
     useOperationMethod('Complaintscreate');
   const router = useRouter();
@@ -55,15 +57,18 @@ function GetStarted() {
   const onSubmit = async (data: ComplaintsModel) => {
     data.connectingFlights = data.connectingFlights as boolean;
     console.log(data.connectingFlights);
-
+    let value;
     try {
       const result = await registerComplain(undefined, data);
-      const value = result.data;
+      value = result.data;
       if (value.status) {
         addToast('Successful', {
           appearance: 'success',
           autoDismiss: true,
         });
+        setValue(result.status);
+        console.log(data);
+
         return;
       }
       addToast(value.message, { appearance: 'error', autoDismiss: true });
@@ -119,13 +124,22 @@ function GetStarted() {
                   />
                 )}
                 {step === 2 && <Third />}
-                {step === 3 && <Fourth />}
-                {step === 4 && <Fifth />}
+                {step === 3 && (
+                  <Fourth canSubmit={canSubmit} setCanSubmit={setCanSubmit} />
+                )}
+                {step === 4 && value ? (
+                  <Fifth />
+                ) : step != 4 ? (
+                  ''
+                ) : (
+                  'Please wait'
+                )}
                 <FormButton
                   step={step}
                   setStep={setStep}
                   isValid={isValid}
                   loading={loading}
+                  canSubmit={canSubmit}
                 />
               </form>
             </Box>

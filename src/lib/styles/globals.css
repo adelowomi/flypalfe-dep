@@ -1,6 +1,7 @@
 /* Global Styling here */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
 
 .radio {
   width: 2rem !important;
@@ -113,6 +114,32 @@ tr:hover {
   background-color: #dff8f9 !important;
   cursor: pointer;
   border-right: 5px solid #1b345b !important;
+}
+.uploadcare--widget__button {
+  height: 3.7rem;
+  border-radius: 5px;
+  border: 1px solid #007f82;
+  background-color: white;
+  color: #1b345b;
+  width: 100%;
+  box-shadow: 0px 0px 9px rgb(0 127 130 / 37%);
+}
+.uploadcare--widget__button:hover,
+.uploadcare--widget__button:focus {
+  background-color: #dfedff;
+  color: #1b345b;
+}
+.uploadcare--widget__button::before {
+  content: '\f0ee';
+  position: absolute;
+  margin-right: 2rem;
+  left: 5%;
+  font: var(--fa-font-solid);
+  color: #007f82;
+  font-size: 1.5rem;
+}
+.uploadcare--widget {
+  width: 100%;
 }
 @media screen and (max-width: 760px) {
   .st-theme-sourceforge > .tab-content > .tab-pane {

@@ -1,4 +1,4 @@
-import { Link } from "./api";
+import { Link } from './api';
 
 export const UserTypes = {
   ADMIN_USER: 'ADMIN_USER',
@@ -52,4 +52,10 @@ export interface PagedCollection {
   self?: Link;
   value?: null | Array<any>;
 }
-
+export type ContactData = {
+  name: string;
+  email: string;
+  message: string;
+  phone: string;
+  company: string;
+};

@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormLabel,
   GridItem,
@@ -10,12 +11,23 @@ import {
   InputRightElement,
   SimpleGrid,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
+import { Widget } from '@uploadcare/react-widget';
 
-function Fourth() {
+function Fourth({
+  canSubmit,
+  setCanSubmit,
+}: {
+  canSubmit: any;
+  setCanSubmit: any;
+}) {
+  const onChange = (info: any) => {
+    setCanSubmit(true);
+    console.log('Upload completed:', info);
+  };
   return (
-    <Box w={['full', '60%']} mx="auto">
+    <Box w={['full', '70%']} mx="auto">
       <SimpleGrid
         columns={2}
         rowGap="3"
@@ -32,24 +44,11 @@ function Fourth() {
               <FormLabel color="brand.100" fontSize="1.1rem">
                 Upload your signed and scanned mandate form
               </FormLabel>
-              <InputGroup>
-                <InputLeftElement
-                  pointerEvents="none"
-                  color="brand.100"
-                  children={<BsFillCloudUploadFill size="1.8rem" />}
-                />
-                <Input p="1rem 4rem" type="file" />
-                <InputRightElement
-                  pointerEvents="none"
-                  color="brand.100"
-                  position="absolute"
-                  bgColor="white"
-                  width={['36%', '27%']}
-                  height="75%"
-                  top="10px"
-                  left="56px"
-                />
-              </InputGroup>
+              <Widget
+                publicKey="fda3a71102659f95625f"
+                id="file"
+                onChange={onChange}
+              />
             </FormControl>
           </HStack>
         </GridItem>
