@@ -17,14 +17,17 @@ function UserPage() {
       minH="100vh"
       bgColor="brand.800"
       bgImage="url(/assets/lines2.png)"
+      flexDirection={['column', 'row']}
     >
       <Link href={'/'}>
         <Flex
           w="190px"
-          pos="absolute"
+          pos={['unset', 'absolute']}
           left={['50%', '4rem']}
-          transform={['translateX(-50%)', 'translateX(0%)']}
+          transform={['translateX(0%)', 'translateX(0%)']}
           top="2rem"
+          my={['1rem', '0']}
+          mx="auto"
           cursor="pointer"
         >
           <Image src="/assets/logoblue.png" w="full" />

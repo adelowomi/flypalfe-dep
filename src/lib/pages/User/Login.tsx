@@ -61,7 +61,7 @@ function Login({ toggleForms }: { toggleForms: any }) {
         });
         setUser(result.data);
         Cookies.set('token', result.data.token);
-        localStorage.setItem('user', JSON.stringify(result.data));
+        sessionStorage.setItem('user', JSON.stringify(result.data));
         router.push('/user/dashboard');
         return;
       }
