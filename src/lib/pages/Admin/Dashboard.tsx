@@ -1,9 +1,10 @@
 import { Box, Flex, GridItem, HStack, SimpleGrid } from '@chakra-ui/react';
 import AdminGraphs from 'lib/components/sections/admin/AdminGraphs';
 import AdminStats from 'lib/components/sections/admin/AdminStats';
+import AdminUserChart from 'lib/components/sections/admin/AdminUserChart';
 import ComplaintsTable from 'lib/components/sections/admin/ComplaintsTable';
 import UserTable from 'lib/components/sections/admin/UserTable';
-import { DashboardMetricsView, UserView } from 'types/api';
+import { DailyComplaintCount, DashboardMetricsView, UserView } from 'types/api';
 import { MonthlyUserView } from 'types/api/monthly-user-view';
 
 function Dashboard({
@@ -11,11 +12,15 @@ function Dashboard({
   adminMetrics,
   complains,
   charts,
+  pendingChart,
+  resolvedChart,
 }: {
   users: UserView;
   adminMetrics: DashboardMetricsView;
   complains: any;
   charts: MonthlyUserView[];
+  pendingChart: DailyComplaintCount[];
+  resolvedChart: DailyComplaintCount[];
 }) {
   return (
     <Box mb="4rem">
@@ -24,7 +29,7 @@ function Dashboard({
           <AdminStats metrics={adminMetrics} />
         </GridItem>
         <GridItem colSpan={2}>
-          <AdminGraphs
+          <AdminUserChart
             name="New user Survey"
             option="New user"
             charts={charts}
@@ -35,12 +40,12 @@ function Dashboard({
             <AdminGraphs
               name="Resolved complaint"
               option="Current month"
-              charts={charts}
+              charts={resolvedChart}
             />
             <AdminGraphs
               name="Pending complaint"
               option="Current month"
-              charts={charts}
+              charts={pendingChart}
             />
           </HStack>
         </GridItem>

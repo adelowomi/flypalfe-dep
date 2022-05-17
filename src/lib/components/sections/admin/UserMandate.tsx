@@ -1,8 +1,26 @@
 import { Box, Flex, Icon, Text } from '@chakra-ui/react';
+import { useState } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { FaFileUpload } from 'react-icons/fa';
+import { ComplaintsView } from 'types/api';
+import { saveAs } from 'file-saver';
+import { useToasts } from 'react-toast-notifications';
 
-function UserMandate() {
+function UserMandate({ item }: { item: ComplaintsView }) {
+  const [showDownload, setShowDownload] = useState(false);
+  const { addToast } = useToasts();
+  const saveFile = () => {
+    if (item.mandateFormReference != null) {
+      saveAs(item.mandateFormReference as unknown as string, 'mandate.pdf');
+      setShowDownload(false);
+      return;
+    }
+    addToast('No mandate file found', {
+      appearance: 'error',
+      autoDismiss: true,
+    });
+    setShowDownload(false);
+  };
   return (
     <Box
       bg="white"
@@ -29,11 +47,26 @@ function UserMandate() {
           </Flex>
         </Box>
         <Box w="40%" as="div">
-          <Flex justify="space-between" align="start">
+          <Flex justify="space-between" align="start" pos="relative">
             <Text fontWeight="400" fontSize=".9rem" color="brand.200">
               Feb, 23rd 2022
             </Text>
-            <Icon as={BsThreeDotsVertical} cursor="pointer" />
+            <Box onClick={() => setShowDownload(!showDownload)}>
+              <Icon as={BsThreeDotsVertical} cursor="pointer" />
+            </Box>
+            <Box
+              pos="absolute"
+              right="0"
+              bgColor="white"
+              p="1rem"
+              bottom="100%"
+              display={showDownload ? 'block' : 'none'}
+              boxShadow="0 0 5px rgba(0,0,0,0.1)"
+              cursor="pointer"
+              onClick={() => saveFile()}
+            >
+              <Text fontSize=".8rem">Download</Text>
+            </Box>
           </Flex>
         </Box>
       </Flex>

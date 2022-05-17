@@ -33,7 +33,7 @@ function Login({ toggleForms }: { toggleForms: any }) {
 
   useEffect(() => {
     function redirectToLogin() {
-      if (localStorage.getItem('user')) {
+      if (sessionStorage.getItem('user')) {
         router.push('/user/dashboard');
       } else {
         router.push('/user');

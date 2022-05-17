@@ -16,10 +16,11 @@ import { UserContext } from 'lib/Utils/MainContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Parameters } from 'openapi-client-axios';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useOperationMethod } from 'react-openapi-client';
 import { UserView } from 'types/api';
+import listenForOutsideClick from '../../layout/Props/OnclickOutside';
 
 export default function TopNav() {
   const router = useRouter();
@@ -29,10 +30,14 @@ export default function TopNav() {
     useOperationMethod('Usersearch{search}');
 
   const [searchResult, setSearchResult] = useState<any>();
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const searchRef = useRef(null);
+  const [listening, setListening] = useState(false);
+
+  useEffect(
+    listenForOutsideClick(listening, setListening, searchRef, setIsSearchOpen)
+  );
 
   const userSearch = async (search: string) => {
     const params: Parameters = {
@@ -41,7 +46,7 @@ export default function TopNav() {
     try {
       const result = (await searchUser(params)).data;
       setSearchResult(result.data);
-      openModal();
+      setIsSearchOpen(true);
     } catch (error) {
       console.error(error);
     }
@@ -54,7 +59,7 @@ export default function TopNav() {
       bg="transparent"
       display={router.pathname === '/admin/settings' ? 'none' : 'flex'}
     >
-      <Box as="div" w={['40%', '60%']} pos="relative">
+      <Box as="div" w={['40%', '60%']} pos="relative" ref={searchRef}>
         <InputGroup w="100" role="group">
           <Input
             placeholder="Searching"
@@ -69,50 +74,43 @@ export default function TopNav() {
           <InputRightElement
             h="42px"
             w="42px"
-            children={<AiOutlineSearch color="brand.100" />}
+            children={<AiOutlineSearch color="rgba(0, 0, 0, 0.04)" />}
           />
-          <Modal
-            motionPreset="slideInBottom"
-            onClose={() => setIsOpen(!isOpen)}
-            isOpen={isOpen}
-          >
-            <ModalOverlay />
-            <ModalContent
-              py="1.5rem"
-              borderRadius="0"
-              px="2rem"
-              maxW={['91%', '45%']}
-              mt="4.75rem"
-              left={['0', '-75px']}
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <ModalBody>
-                {searchResult
-                  ? searchResult.map((x: UserView) => {
-                      return (
-                        <Link href={'/admin/users/' + x.id} key={x.id} passHref>
-                          <Flex
-                            align="center"
-                            justify="space-between"
-                            mb="1rem"
-                          >
-                            <Box cursor="pointer">
-                              <Text fontWeight="500" color="brand.200">
-                                {x.fullName}
-                              </Text>
-                              <Text fontSize=".6rem">{x.email}</Text>
-                            </Box>
-                            <Text fontSize=".6rem">{`/users/${x.id}`}</Text>
-                          </Flex>
-                        </Link>
-                      );
-                    })
-                  : null}
-              </ModalBody>
-            </ModalContent>
-          </Modal>
         </InputGroup>
+        <Box
+          bgColor="white"
+          py={searchResult ? '2rem' : '0'}
+          px="2rem"
+          pos="absolute"
+          w="full"
+          zIndex={5}
+          display={isSearchOpen ? 'block' : 'none'}
+        >
+          {searchResult
+            ? searchResult.map((x: UserView) => {
+                return (
+                  <Link href={'/admin/users/' + x.id} key={x.id} passHref>
+                    <Flex
+                      align="center"
+                      justify="space-between"
+                      mb="1rem"
+                      onClick={() => setIsSearchOpen(false)}
+                    >
+                      <Box cursor="pointer">
+                        <Text fontWeight="500" color="brand.200">
+                          {x.fullName}
+                        </Text>
+                        <Text fontSize=".6rem">{x.email}</Text>
+                      </Box>
+                      {/* <Text fontSize=".6rem">{`/users/${x.id}`}</Text> */}
+                    </Flex>
+                  </Link>
+                );
+              })
+            : null}
+        </Box>
       </Box>
+
       <Flex
         align="center"
         w={['58%', '40%']}

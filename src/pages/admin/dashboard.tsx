@@ -10,11 +10,15 @@ function dashboard({
   adminMetrics,
   complains,
   charts,
+  resolvedChart,
+  pendingChart,
 }: {
   users: UserView;
   adminMetrics: DashboardMetricsView;
   complains: any;
   charts: any;
+  pendingChart: any;
+  resolvedChart: any;
 }) {
   return (
     <Dashboard
@@ -22,6 +26,8 @@ function dashboard({
       adminMetrics={adminMetrics}
       complains={complains}
       charts={charts}
+      pendingChart={pendingChart}
+      resolvedChart={resolvedChart}
     />
   );
 }
@@ -34,15 +40,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const userlist = (await _dataAccess.get('/api/user/list')).data;
     const userChart = (await _dataAccess.get('/api/Admin/chart/users')).data;
+    const pendingChart = (
+      await _dataAccess.get('/api/Admin/chart/complaints/pending')
+    ).data;
+    const resolvedChart = (
+      await _dataAccess.get('/api/Admin/chart/complaints/resolved')
+    ).data;
     const complainList = (await _dataAccess.get(`/api/Complaints/list?${url}`))
       .data;
     const metrics = (await _dataAccess.get('/api/Admin/metrics')).data;
-    console.log({ userChart });
 
     return {
       props: {
         users: userlist,
         charts: userChart,
+        pendingChart,
+        resolvedChart,
         adminMetrics: metrics,
         complains: complainList,
       },
@@ -52,6 +65,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         users: [],
         charts: {},
+        pendingChart: {},
+        resolvedChart: {},
         adminMetrics: {},
         complains: [],
       },

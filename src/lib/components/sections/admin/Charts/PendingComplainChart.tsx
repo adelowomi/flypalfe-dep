@@ -28,7 +28,7 @@ ChartJS.register(
 
 const PendingChart = ({ charts }: { charts: MonthlyUserView[] }) => {
   const data: any = {
-    labels: charts.map((chart: any) => chart.month),
+    labels: charts.map((chart: any) => chart.date),
     // labels: ['Janurary', 'Feburary', 'March', 'June', 'May', 'July'],
     datasets: [
       {

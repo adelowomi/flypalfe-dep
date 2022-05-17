@@ -36,7 +36,7 @@ function Authentication() {
 
   useEffect(() => {
     function redirectToLogin() {
-      if (localStorage.getItem('admin')) {
+      if (sessionStorage.getItem('admin')) {
         router.push('/admin/dashboard');
       } else {
         router.push('/admin');
@@ -66,7 +66,7 @@ function Authentication() {
         });
         setAdmin(value.data);
         Cookies.set('token', value.data.token);
-        localStorage.setItem('admin', JSON.stringify(value.data));
+        sessionStorage.setItem('admin', JSON.stringify(value.data));
         router.push('/admin/dashboard');
         return;
       }

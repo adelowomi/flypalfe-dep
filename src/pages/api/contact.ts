@@ -19,12 +19,14 @@ export default function handler(
   res: NextApiResponse<StandardResponse>
 ) {
   if (req.method === 'POST') {
-    const client = new ServerClient(process.env.NEXT_PUBLIC_POSTMARK_API_TOKEN);
+    const client = new ServerClient(
+      process.env.NEXT_PUBLIC_POSTMARK_API_TOKEN as unknown as string
+    );
     const data = req.body as ContactData;
     console.log({ data });
     client
       .sendEmail({
-        From: process.env.NEXT_PUBLIC_POSTMARK_FROM_EMAIL,
+        From: process.env.NEXT_PUBLIC_POSTMARK_FROM_EMAIL as unknown as string,
         To: process.env.NEXT_PUBLIC_POSTMARK_FROM_EMAIL,
         Subject: 'New Contact Message from Storyboard',
         TextBody: data.message,

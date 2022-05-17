@@ -1,3 +1,5 @@
+export * from './adminchartcomplaintspending-response';
+export * from './adminchartcomplaintsresolved-response';
 export * from './adminchartusers-response';
 export * from './admincomplainlistuser-user-id-parameters';
 export * from './admincomplainlistuser-user-id-response';
@@ -36,6 +38,8 @@ export * from './complaintslist-parameters';
 export * from './complaintslist-response';
 export * from './complaintslistuser-parameters';
 export * from './complaintslistuser-response';
+export * from './daily-complaint-count';
+export * from './daily-complaint-count-i-enumerable-standard-response';
 export * from './dashboard-metrics-view';
 export * from './dashboard-metrics-view-standard-response';
 export * from './link';

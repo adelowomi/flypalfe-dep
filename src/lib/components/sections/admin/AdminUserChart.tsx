@@ -1,16 +1,16 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
-import { DailyComplaintCount } from 'types/api';
-import PendingChart from './Charts/PendingComplainChart';
+import { MonthlyUserView } from 'types/api/monthly-user-view';
+import LineChart from './Charts/LineChart';
 
-function AdminGraphs({
+function AdminUserChart({
   name,
   option,
   charts,
 }: {
   name: string;
   option: string;
-  charts: DailyComplaintCount[];
+  charts: MonthlyUserView[];
 }) {
   return (
     <Flex
@@ -34,11 +34,11 @@ function AdminGraphs({
           </Text>
         </Flex>
         <Box w="full" h="300px" mt="1rem">
-          <PendingChart charts={charts} />
+          <LineChart charts={charts} />
         </Box>
       </Box>
     </Flex>
   );
 }
 
-export default AdminGraphs;
+export default AdminUserChart;

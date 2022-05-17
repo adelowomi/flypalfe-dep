@@ -1,30 +1,27 @@
 import {
   Box,
-  Button,
   FormControl,
   FormLabel,
   GridItem,
   HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
   SimpleGrid,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { BsFillCloudUploadFill } from 'react-icons/bs';
 import { Widget } from '@uploadcare/react-widget';
 
 function Fourth({
   canSubmit,
   setCanSubmit,
+  setUploadedUrl,
 }: {
   canSubmit: any;
   setCanSubmit: any;
+  setUploadedUrl: (url: string) => void;
 }) {
   const onChange = (info: any) => {
     setCanSubmit(true);
-    console.log('Upload completed:', info);
+    // console.log('Upload completed:', info);
+    setUploadedUrl(info.originalUrl);
   };
   return (
     <Box w={['full', '70%']} mx="auto">

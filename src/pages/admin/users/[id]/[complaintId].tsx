@@ -26,7 +26,7 @@ function complainDetails({
         </SimpleGrid>
         <UserInfoWithComplain display={'block'} item={item} />
         <ComplaintsDetails item={item} />
-        <UserMandate />
+        <UserMandate item={item} />
       </VStack>
     </Box>
   );

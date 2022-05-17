@@ -25,6 +25,12 @@ const schema = yup.object().shape({
     .required('Additional Information is required'),
 });
 function GetStarted() {
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [value, setValue] = useState<any>(false);
+  const [url, setUrl] = useState<string>();
+  const setUrlString = (url: string) => {
+    setUrl(url);
+  };
   const [registerComplain, { data, loading, error }] =
     useOperationMethod('Complaintscreate');
   const router = useRouter();
@@ -56,7 +62,8 @@ function GetStarted() {
   const onSubmit = async (data: ComplaintsModel) => {
     data.connectingFlights = data.connectingFlights as boolean;
     console.log(data.connectingFlights);
-
+    data.mandateFormReference = url;
+    let value;
     try {
       const result = await registerComplain(undefined, data);
       const value = result.data;
@@ -65,6 +72,7 @@ function GetStarted() {
           appearance: 'success',
           autoDismiss: true,
         });
+        setValue(result.status);
         return;
       }
       addToast(value.message, { appearance: 'error', autoDismiss: true });
@@ -120,13 +128,26 @@ function GetStarted() {
                   />
                 )}
                 {step === 2 && <Third />}
-                {step === 3 && <Fourth />}
-                {step === 4 && <Fifth />}
+                {step === 3 && (
+                  <Fourth
+                    canSubmit={canSubmit}
+                    setCanSubmit={setCanSubmit}
+                    setUploadedUrl={setUrlString}
+                  />
+                )}
+                {step === 4 && value ? (
+                  <Fifth />
+                ) : step != 4 ? (
+                  ''
+                ) : (
+                  'Please wait'
+                )}
                 <FormButton
                   step={step}
                   setStep={setStep}
                   isValid={isValid}
                   loading={loading}
+                  canSubmit={canSubmit}
                 />
               </form>
             </Box>

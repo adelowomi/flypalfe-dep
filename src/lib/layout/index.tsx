@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import Authentication from 'lib/pages/Admin/Authentication';
 import SideNav from 'lib/pages/Admin/SideNav';
 import TopNav from 'lib/pages/Admin/TopNav';
+import UserTopNav from 'lib/pages/Admin/UserTopNav';
 import UserSideNav from 'lib/pages/User/SideNav';
 import UserPage from 'lib/pages/User/UserPage';
 import { UserContext } from 'lib/Utils/MainContext';
@@ -20,12 +21,12 @@ const Layout = ({ children }: LayoutProps) => {
   const { user, setUser, admin, setAdmin } = useContext(UserContext);
 
   useEffect(() => {
-    const isUser = localStorage.getItem('user') as unknown as string;
+    const isUser = sessionStorage.getItem('user') as unknown as string;
     if (isUser != null || undefined) {
       setUser(JSON.parse(isUser));
       return;
     }
-    const isAdmin = localStorage.getItem('admin') as unknown as string;
+    const isAdmin = sessionStorage.getItem('admin') as unknown as string;
     if (isAdmin != null || undefined) {
       setAdmin(JSON.parse(isAdmin));
       return;
@@ -72,7 +73,7 @@ const Layout = ({ children }: LayoutProps) => {
                 ml="auto"
               >
                 <Box as="div" w="95%" mx="auto" minH="100vh">
-                  <TopNav />
+                  <UserTopNav />
                   {children}
                 </Box>
               </Box>

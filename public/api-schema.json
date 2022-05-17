@@ -463,6 +463,66 @@
         }
       }
     },
+    "/api/Admin/chart/complaints/pending": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminchartcomplaintspending",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/chart/complaints/resolved": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "Adminchartcomplaintsresolved",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyComplaintCountIEnumerableStandardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Complaints/create": {
       "post": {
         "tags": [
@@ -1659,6 +1719,10 @@
           "additionalInformation": {
             "type": "string",
             "nullable": true
+          },
+          "mandateFormReference": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1861,6 +1925,74 @@
         },
         "additionalProperties": false
       },
+      "DailyComplaintCount": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DailyComplaintCountIEnumerableStandardResponse": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "default": "GET",
+            "nullable": true
+          },
+          "routeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "routeValues": {
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyComplaintCount"
+            },
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ComplaintsModel": {
         "type": "object",
         "properties": {
@@ -1916,6 +2048,10 @@
             "nullable": true
           },
           "additionalInformation": {
+            "type": "string",
+            "nullable": true
+          },
+          "mandateFormReference": {
             "type": "string",
             "nullable": true
           }

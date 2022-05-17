@@ -14,4 +14,5 @@ export interface ComplaintsModel {
   airline?: null | string;
   flightNumber?: null | string;
   additionalInformation?: null | string;
+  mandateFormReference?: null | string;
 }
