@@ -5,7 +5,7 @@ import { RiEditBoxLine } from 'react-icons/ri';
 import EditAdmin from './Modals/EditAdmin';
 
 function SettingsDetails() {
-  const { user } = useContext(UserContext);
+  const { admin } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -48,7 +48,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {user.firstName}
+                  {admin.firstName}
                 </Text>
               </VStack>
               <VStack
@@ -66,7 +66,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {user.phoneNumber}
+                  {admin.phoneNumber}
                 </Text>
               </VStack>
               <VStack
@@ -84,7 +84,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {user.email}
+                  {admin.email}
                 </Text>
               </VStack>
             </HStack>

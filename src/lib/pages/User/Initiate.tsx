@@ -1,7 +1,9 @@
 import { Box, Flex, Image, VStack, Text } from '@chakra-ui/react';
+import { useState } from 'react';
 import CompleteReset from './CompleteReset';
+import InitiateEmail from './InitiateEmail';
 
-function ResetPassword() {
+function Initiate() {
   return (
     <Flex
       w="100%"
@@ -36,11 +38,11 @@ function ResetPassword() {
             </Box>
           </VStack>
 
-          <CompleteReset />
+          <InitiateEmail />
         </Box>
       </Box>
     </Flex>
   );
 }
 
-export default ResetPassword;
+export default Initiate;

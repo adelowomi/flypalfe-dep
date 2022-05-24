@@ -7,11 +7,8 @@ import {
   InputGroup,
   InputRightElement,
   Box,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalBody,
 } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import { UserContext } from 'lib/Utils/MainContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -25,11 +22,12 @@ import listenForOutsideClick from '../../layout/Props/OnclickOutside';
 export default function TopNav() {
   const router = useRouter();
   const { admin, user } = useContext(UserContext);
+  
 
   const [searchUser, { data, loading, error }] =
     useOperationMethod('Usersearch{search}');
 
-  const [searchResult, setSearchResult] = useState<any>();
+  const [searchResult, setSearchResult] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const searchRef = useRef(null);
@@ -45,8 +43,16 @@ export default function TopNav() {
     };
     try {
       const result = (await searchUser(params)).data;
-      setSearchResult(result.data);
-      setIsSearchOpen(true);
+      console.log({ search });
+      const newSearch = result.data.filter((value: any) => {
+        return value.fullName.toLowerCase().includes(search.toLowerCase());
+      });
+      if (search == '') {
+        setSearchResult([]);
+      } else {
+        setSearchResult(newSearch);
+        setIsSearchOpen(true);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -77,38 +83,38 @@ export default function TopNav() {
             children={<AiOutlineSearch color="rgba(0, 0, 0, 0.04)" />}
           />
         </InputGroup>
-        <Box
-          bgColor="white"
-          py={searchResult ? '2rem' : '0'}
-          px="2rem"
-          pos="absolute"
-          w="full"
-          zIndex={5}
-          display={isSearchOpen ? 'block' : 'none'}
-        >
-          {searchResult
-            ? searchResult.map((x: UserView) => {
-                return (
-                  <Link href={'/admin/users/' + x.id} key={x.id} passHref>
-                    <Flex
-                      align="center"
-                      justify="space-between"
-                      mb="1rem"
-                      onClick={() => setIsSearchOpen(false)}
-                    >
-                      <Box cursor="pointer">
-                        <Text fontWeight="500" color="brand.200">
-                          {x.fullName}
-                        </Text>
-                        <Text fontSize=".6rem">{x.email}</Text>
-                      </Box>
-                      {/* <Text fontSize=".6rem">{`/users/${x.id}`}</Text> */}
-                    </Flex>
-                  </Link>
-                );
-              })
-            : null}
-        </Box>
+        {searchResult.length !== 0 && (
+          <Box
+            bgColor="white"
+            py={searchResult ? '2rem' : '0'}
+            px="2rem"
+            pos="absolute"
+            w="full"
+            zIndex={5}
+            display={isSearchOpen ? 'block' : 'none'}
+          >
+            {searchResult.map((x: UserView) => {
+              return (
+                <Link href={'/admin/users/' + x.id} key={x.id} passHref>
+                  <Flex
+                    align="center"
+                    justify="space-between"
+                    mb="1rem"
+                    onClick={() => setIsSearchOpen(false)}
+                  >
+                    <Box cursor="pointer">
+                      <Text fontWeight="500" color="brand.200">
+                        {x.fullName}
+                      </Text>
+                      <Text fontSize=".6rem">{x.email}</Text>
+                    </Box>
+                    {/* <Text fontSize=".6rem">{`/users/${x.id}`}</Text> */}
+                  </Flex>
+                </Link>
+              );
+            })}
+          </Box>
+        )}
       </Box>
 
       <Flex

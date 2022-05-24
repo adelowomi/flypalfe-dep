@@ -21,7 +21,9 @@ function Header() {
       bgColor="white"
       display={
         router.pathname.startsWith('/admin') ||
-        router.pathname.startsWith('/user')
+        router.pathname.startsWith('/user') ||
+        router.pathname.startsWith('/login') ||
+        router.pathname.startsWith('/auth')
           ? 'none'
           : 'block'
       }
@@ -136,7 +138,7 @@ function Header() {
                   <Box display={{ base: 'none', md: 'block' }}>
                     <MenuItems
                       text="Login"
-                      url="/user"
+                      url="/auth"
                       color="brand.200"
                       p={['0', '0 0rem .2rem 2rem']}
                     />

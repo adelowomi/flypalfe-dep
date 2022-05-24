@@ -15,8 +15,8 @@ function LogoutModal({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
   const router = useRouter();
   const LogOut = () => {
     cookie.remove('token');
-    sessionStorage.removeItem('admin');
-    router.push('/admin');
+    cookie.remove('admin');
+    router.push('/login');
   };
 
   return (

@@ -18,7 +18,7 @@ import ChangePassword from './Modals/ChangePassword';
 import UploadPhoto from './Modals/UploadPhoto';
 
 function AdminInfo() {
-  const { user } = useContext(UserContext);
+  const { admin } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -61,10 +61,10 @@ function AdminInfo() {
             >
               <VStack as="div" align={['center', 'flex-start']} spacing={1}>
                 <Text fontWeight="700" fontSize="1rem">
-                  {user.firstName} {user.lastName}
+                  {admin.firstName} {admin.lastName}
                 </Text>
                 <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                  {user.email}
+                  {admin.email}
                 </Text>
                 <Text
                   fontWeight="400"

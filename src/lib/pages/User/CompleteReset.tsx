@@ -27,12 +27,18 @@ function CompleteReset() {
   const router = useRouter();
   const { addToast } = useToasts();
 
+  const { id } = router.query;
+  console.log(id);
+
   const {
     handleSubmit,
     register,
     formState: { errors, isValid },
   } = useForm<PasswordReset>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      code: id as unknown as string,
+    },
     mode: 'all',
   });
   const onSubmit = async (data: PasswordReset) => {
@@ -45,7 +51,7 @@ function CompleteReset() {
           appearance: 'success',
           autoDismiss: true,
         });
-        router.push('/user');
+        router.back();
         return;
       }
       addToast(result.message, { appearance: 'error', autoDismiss: true });
@@ -66,17 +72,6 @@ function CompleteReset() {
         mt="0rem"
       >
         <SimpleGrid columns={2} rowGap="3" columnGap="4" w="100%">
-          <GridItem colSpan={2}>
-            <SecondaryInput<PasswordReset>
-              register={register}
-              name="code"
-              error={errors.code}
-              defaultValue=""
-              label="Reset Code"
-              type="text"
-              placeholder=""
-            />
-          </GridItem>
           <GridItem colSpan={2}>
             <SecondaryInput<PasswordReset>
               register={register}

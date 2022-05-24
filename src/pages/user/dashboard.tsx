@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { retuurnUserData } from 'lib/components/Utilities/Functions/utils';
 import UserDashboard from 'lib/pages/User/UserDashboard';
 import { DataAccess } from 'lib/Utils/Api';
 import { GetServerSideProps } from 'next';
@@ -10,6 +11,17 @@ function dashboard({ complains, item }: { complains: any; item: any }) {
 
 export default dashboard;
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    data: { admin, redirect },
+  } = retuurnUserData(context);
+  if (redirect)
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/auth',
+      },
+      props: {},
+    };
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
   const { url } = context.query;

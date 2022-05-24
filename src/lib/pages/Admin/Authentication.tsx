@@ -34,17 +34,6 @@ function Authentication() {
   const { setAdmin } = useContext(UserContext);
   const { addToast } = useToasts();
 
-  useEffect(() => {
-    function redirectToLogin() {
-      if (sessionStorage.getItem('admin')) {
-        router.push('/admin/dashboard');
-      } else {
-        router.push('/admin');
-      }
-    }
-    redirectToLogin();
-  }, []);
-
   const {
     handleSubmit,
     register,
@@ -66,7 +55,8 @@ function Authentication() {
         });
         setAdmin(value.data);
         Cookies.set('token', value.data.token);
-        sessionStorage.setItem('admin', JSON.stringify(value.data));
+        Cookies.set('admin', 'true');
+        Cookies.set('adminData', JSON.stringify(value.data));
         router.push('/admin/dashboard');
         return;
       }
@@ -148,7 +138,7 @@ function Authentication() {
                 w="100%"
                 flexDirection={['column', 'row']}
               >
-                <NextLink href="" passHref>
+                <NextLink href="/login/reset" passHref>
                   <Link>Forgot Password</Link>
                 </NextLink>
                 <Button

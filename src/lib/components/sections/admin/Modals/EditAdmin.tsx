@@ -18,7 +18,7 @@ import { UserContext } from 'lib/Utils/MainContext';
 import React, { useContext } from 'react';
 
 function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
-  const { user } = useContext(UserContext);
+  const { admin } = useContext(UserContext);
   return (
     <Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
@@ -40,7 +40,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="Balogun"
                     type="text"
-                    defaultValue={user.firstName}
+                    defaultValue={admin.firstName}
                     disabled
                   />
                 </InputGroup>
@@ -53,7 +53,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="08123456789"
                     type="number"
-                    defaultValue={user.phoneNumber}
+                    defaultValue={admin.phoneNumber}
                     disabled
                   />
                 </InputGroup>
@@ -66,7 +66,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="balogun@gmail.com"
                     type="text"
-                    defaultValue={user.email}
+                    defaultValue={admin.email}
                     disabled
                   />
                 </InputGroup>

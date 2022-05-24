@@ -3,6 +3,7 @@ import AdminStats from 'lib/components/sections/admin/AdminStats';
 import ComplaintsDetails from 'lib/components/sections/admin/ComplaintsDetails';
 import UserInfo from 'lib/components/sections/admin/UserInfo';
 import UserMandate from 'lib/components/sections/admin/UserMandate';
+import { retuurnAdminData } from 'lib/components/Utilities/Functions/utils';
 import UserInfoWithComplain from 'lib/pages/Admin/UserInfoWithComplain';
 import { DataAccess } from 'lib/Utils/Api';
 import { GetServerSideProps } from 'next';
@@ -32,6 +33,17 @@ function complainDetails({
   );
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    data: { admin, redirect },
+  } = retuurnAdminData(context);
+  if (redirect)
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+      props: {},
+    };
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
   const complaintsId = context?.params?.id;

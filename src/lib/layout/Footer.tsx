@@ -26,7 +26,9 @@ function Footer() {
       bgColor="brand.200"
       display={
         router.pathname.startsWith('/admin') ||
-        router.pathname.startsWith('/user')
+        router.pathname.startsWith('/user') ||
+        router.pathname.startsWith('/login') ||
+        router.pathname.startsWith('/auth')
           ? 'none'
           : 'block'
       }

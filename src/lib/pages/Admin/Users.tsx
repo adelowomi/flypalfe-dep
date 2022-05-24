@@ -1,5 +1,5 @@
 import { Box, GridItem, SimpleGrid } from '@chakra-ui/react';
-import AdminGraphs from 'lib/components/sections/admin/AdminGraphs';
+import AdminUserChart from 'lib/components/sections/admin/AdminUserChart';
 import UsersList from 'lib/components/sections/admin/UsersList';
 import { UserView } from 'types/api';
 import { MonthlyUserView } from 'types/api/monthly-user-view';
@@ -15,7 +15,7 @@ function Users({
     <Box mb="4rem">
       <SimpleGrid columns={2} spacing={8}>
         <GridItem colSpan={2}>
-          <AdminGraphs
+          <AdminUserChart
             name="New user Survey"
             option="New user"
             charts={charts}

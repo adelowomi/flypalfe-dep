@@ -5,6 +5,7 @@ import { FaFileUpload } from 'react-icons/fa';
 import { ComplaintsView } from 'types/api';
 import { saveAs } from 'file-saver';
 import { useToasts } from 'react-toast-notifications';
+const moment = require('moment');
 
 function UserMandate({ item }: { item: ComplaintsView }) {
   const [showDownload, setShowDownload] = useState(false);
@@ -49,7 +50,7 @@ function UserMandate({ item }: { item: ComplaintsView }) {
         <Box w="40%" as="div">
           <Flex justify="space-between" align="start" pos="relative">
             <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-              Feb, 23rd 2022
+              {moment(item.departureDate).format('MMM Do YYYY')}
             </Text>
             <Box onClick={() => setShowDownload(!showDownload)}>
               <Icon as={BsThreeDotsVertical} cursor="pointer" />

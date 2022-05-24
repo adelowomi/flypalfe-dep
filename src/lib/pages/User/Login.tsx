@@ -31,17 +31,6 @@ function Login({ toggleForms }: { toggleForms: any }) {
   const { setUser } = useContext(UserContext);
   const { addToast } = useToasts();
 
-  useEffect(() => {
-    function redirectToLogin() {
-      if (sessionStorage.getItem('user')) {
-        router.push('/user/dashboard');
-      } else {
-        router.push('/user');
-      }
-    }
-    redirectToLogin();
-  }, []);
-
   const {
     handleSubmit,
     register,
@@ -61,7 +50,8 @@ function Login({ toggleForms }: { toggleForms: any }) {
         });
         setUser(result.data);
         Cookies.set('token', result.data.token);
-        sessionStorage.setItem('user', JSON.stringify(result.data));
+        Cookies.set('user', 'true');
+        Cookies.set('userData', JSON.stringify(result.data));
         router.push('/user/dashboard');
         return;
       }
@@ -114,7 +104,7 @@ function Login({ toggleForms }: { toggleForms: any }) {
             w="100%"
             flexDirection={['column', 'row']}
           >
-            <NextLink href="/user/reset" passHref>
+            <NextLink href="/auth/reset" passHref>
               <Link>Forgot Password</Link>
             </NextLink>
             <Button

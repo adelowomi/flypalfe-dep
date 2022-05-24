@@ -12,6 +12,8 @@ import { ToastProvider } from 'react-toast-notifications';
 import Layout from 'lib/layout';
 import { UserProvider } from 'lib/Utils/MainContext';
 import Cookies from 'js-cookie';
+import { retuurnAdminData } from 'lib/components/Utilities/Functions/utils';
+import { GetServerSidePropsContext } from 'next';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let headers: HeadersInit;
@@ -59,3 +61,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 export default MyApp;
+
+export const getStaticProps = (context: GetServerSidePropsContext) => {
+  const {
+    data: { admin, redirect },
+  } = retuurnAdminData(context);
+  if (redirect)
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+      props: {},
+    };
+
+  return {
+    props: {
+      admin,
+    },
+  };
+};

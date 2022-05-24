@@ -21,8 +21,8 @@ function UserLogoutModal({
   const router = useRouter();
   function LogOut(): void {
     Cookies.remove('token');
-    sessionStorage.clear();
-    router.push('/user');
+    Cookies.remove('user');
+    router.push('/auth');
   }
 
   return (

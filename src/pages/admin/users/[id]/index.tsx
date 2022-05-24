@@ -4,6 +4,7 @@ import UserInfo from 'lib/components/sections/admin/UserInfo';
 import UserStats from 'lib/components/sections/admin/UserStats';
 import { GetServerSideProps } from 'next';
 import { DataAccess } from 'lib/Utils/Api';
+import { retuurnAdminData } from 'lib/components/Utilities/Functions/utils';
 
 function index({ item, complaints }: { item: any; complaints: any }) {
   return (
@@ -19,6 +20,17 @@ function index({ item, complaints }: { item: any; complaints: any }) {
 
 export default index;
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    data: { admin, redirect },
+  } = retuurnAdminData(context);
+  if (redirect)
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+      props: {},
+    };
   const bearer = `Bearer ${context.req.cookies.token}`;
   const _dataAccess = new DataAccess(bearer);
   const id = context?.params?.id;

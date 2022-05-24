@@ -15,16 +15,20 @@ import { useToasts } from 'react-toast-notifications';
 import { SecondaryInput } from 'lib/components/Utilities/SecondaryInput';
 import { UserresetinitiateEmailParameters } from 'types/api';
 import { Parameters } from 'openapi-client-axios';
+import { useRouter } from 'next/router';
 
 const schema = yup.object().shape({
   email: yup.string().required('Email is required'),
 });
 
-function InitiateEmail({ toggleForms }: { toggleForms: any }) {
+function InitiateEmail() {
   const [initiateEmail, { data, loading, error }] = useOperationMethod(
     'Userresetinitiate{email}'
   );
   const { addToast } = useToasts();
+  const router = useRouter();
+
+  let dataMessage;
 
   const {
     handleSubmit,
@@ -40,11 +44,11 @@ function InitiateEmail({ toggleForms }: { toggleForms: any }) {
     };
     try {
       const result = await (await initiateEmail(params)).data;
-      console.log(data);
-      console.log({ result });
+      dataMessage = result.message as unknown as string;
+
       if (result.status) {
-        toggleForms();
         addToast(result.message, { appearance: 'success', autoDismiss: true });
+        router.push('/');
         return;
       }
       addToast(result.message, { appearance: 'error', autoDismiss: true });
@@ -54,6 +58,7 @@ function InitiateEmail({ toggleForms }: { toggleForms: any }) {
       // addToast(error, { appearance: 'error', autoDismiss: true });
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
       <VStack
@@ -65,6 +70,9 @@ function InitiateEmail({ toggleForms }: { toggleForms: any }) {
         p="3rem"
         mt="0rem"
       >
+        <Text fontSize="1.2rem" color="red.300">
+          {dataMessage}
+        </Text>
         <SimpleGrid columns={2} rowGap="3" columnGap="4" w="100%">
           <GridItem colSpan={2}>
             <SecondaryInput<UserresetinitiateEmailParameters>
