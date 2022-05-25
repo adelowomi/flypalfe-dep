@@ -31,6 +31,20 @@ function Login({ toggleForms }: { toggleForms: any }) {
   const { setUser } = useContext(UserContext);
   const { addToast } = useToasts();
 
+  // const userToken = Cookies.get('user');
+  // // useEffect(() => {
+  // //   if (userToken === 'true') {
+  // //     router.push('/user/dashboard');
+  // //   }
+  // // });
+
+  const handleAfterLogin = () => {
+    if (router.query && router.query.from) {
+      router.push(router.query.from as unknown as string);
+    } else {
+      router.push('/user/dashboard');
+    }
+  };
   const {
     handleSubmit,
     register,
@@ -52,7 +66,8 @@ function Login({ toggleForms }: { toggleForms: any }) {
         Cookies.set('token', result.data.token);
         Cookies.set('user', 'true');
         Cookies.set('userData', JSON.stringify(result.data));
-        router.push('/user/dashboard');
+        // router.push('/user/dashboard');
+        handleAfterLogin();
         return;
       }
       addToast(result.message, { appearance: 'error', autoDismiss: true });

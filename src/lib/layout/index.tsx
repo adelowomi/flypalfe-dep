@@ -7,6 +7,7 @@ import UserTopNav from 'lib/pages/Admin/UserTopNav';
 import UserSideNav from 'lib/pages/User/SideNav';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import { UserView } from 'types/api';
 
 import Footer from './Footer';
 import Header from './Header';

@@ -61,23 +61,3 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 export default MyApp;
-
-export const getStaticProps = (context: GetServerSidePropsContext) => {
-  const {
-    data: { admin, redirect },
-  } = retuurnAdminData(context);
-  if (redirect)
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login',
-      },
-      props: {},
-    };
-
-  return {
-    props: {
-      admin,
-    },
-  };
-};

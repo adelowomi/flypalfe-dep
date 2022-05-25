@@ -14,7 +14,7 @@ export const retuurnUserData = (ctx: GetServerSidePropsContext) => {
   const { userData, user } = ctx.req.cookies;
   return {
     data: {
-      admin: userData,
+      user: userData,
       redirect: !user,
     },
   };

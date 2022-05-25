@@ -1,7 +1,5 @@
-import axios from 'axios';
 import Dashboard from 'lib/pages/Admin/Dashboard';
 import { GetServerSideProps } from 'next';
-import cookie from 'js-cookie';
 import { DashboardMetricsView, UserView } from 'types/api';
 import { DataAccess } from 'lib/Utils/Api';
 import { retuurnAdminData } from 'lib/components/Utilities/Functions/utils';
@@ -37,6 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
     data: { admin, redirect },
   } = retuurnAdminData(context);
+
   if (redirect)
     return {
       redirect: {

@@ -7,7 +7,6 @@ import Third from 'lib/components/sections/getStarted/Third';
 import FormButton from 'lib/components/Utilities/FormButton';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { GetServerSidePropsContext } from 'next';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ComplaintsModel } from 'types/api';
@@ -16,7 +15,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToasts } from 'react-toast-notifications';
 import Cancelled from 'lib/components/sections/getStarted/Cancelled';
-import { retuurnUserData } from 'lib/components/Utilities/Functions/utils';
+import Cookies from 'js-cookie';
 
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
@@ -39,6 +38,14 @@ function GetStarted() {
   const [step, setStep] = useState(1);
   const { addToast } = useToasts();
   const id = 1;
+
+  const isUser = Cookies.get('user');
+  useEffect(() => {
+    if (isUser !== 'true') {
+      router.push({ pathname: '/auth', query: { from: router.pathname } });
+      return;
+    }
+  });
 
   const {
     handleSubmit,
@@ -153,23 +160,3 @@ function GetStarted() {
 }
 
 export default GetStarted;
-
-export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
-  const {
-    data: { admin, redirect },
-  } = retuurnUserData(ctx);
-  if (redirect)
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/auth',
-      },
-      props: {},
-    };
-
-  return {
-    props: {
-      admin,
-    },
-  };
-};

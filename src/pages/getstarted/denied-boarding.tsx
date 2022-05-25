@@ -15,6 +15,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToasts } from 'react-toast-notifications';
 import Denied from 'lib/components/sections/getStarted/Denied';
+import Cookies from 'js-cookie';
 
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
@@ -41,10 +42,10 @@ function GetStarted() {
   const { addToast } = useToasts();
   const id = 3;
 
+  const isUser = Cookies.get('user');
   useEffect(() => {
-    const isUser = localStorage.getItem('user') as unknown as string;
-    if (isUser == null || undefined) {
-      router.push('/user');
+    if (isUser !== 'true') {
+      router.push({ pathname: '/auth', query: { from: router.pathname } });
       return;
     }
   });

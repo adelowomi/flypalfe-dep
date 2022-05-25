@@ -1,10 +1,12 @@
 import { Text, Circle, Flex, Image } from '@chakra-ui/react';
-import { UserContext } from 'lib/Utils/MainContext';
-import { useContext, useEffect, useRef, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export default function UserTopNav() {
-  const { admin, user } = useContext(UserContext);
-
+  const checkUser = Cookies.get('userData') as unknown as string;
+  let user;
+  if (checkUser !== undefined) {
+    user = JSON.parse(checkUser);
+  }
   return (
     <Flex align="center" h="6rem" bg="transparent" justify="space-between">
       <Text fontWeight="600">Welcome</Text>
@@ -28,7 +30,7 @@ export default function UserTopNav() {
           pl={['0', '.8rem']}
           pr={['.8rem', '0rem']}
         >
-          {`Hi, ${admin ? admin.firstName : user ? user.firstName : ''}`}
+          {`Hi, ${user ? user.firstName : ''}`}
         </Text>
       </Flex>
     </Flex>

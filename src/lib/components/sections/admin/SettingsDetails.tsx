@@ -1,11 +1,16 @@
 import { Box, Flex, HStack, Icon, Text, VStack } from '@chakra-ui/react';
-import { UserContext } from 'lib/Utils/MainContext';
-import { useContext, useState } from 'react';
+import Cookies from 'js-cookie';
+import { useState } from 'react';
 import { RiEditBoxLine } from 'react-icons/ri';
 import EditAdmin from './Modals/EditAdmin';
 
 function SettingsDetails() {
-  const { admin } = useContext(UserContext);
+  const checkAdmin = Cookies.get('adminData') as unknown as string;
+  let admin;
+  if (checkAdmin !== undefined) {
+    admin = JSON.parse(checkAdmin);
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -48,7 +53,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {admin.firstName}
+                  {admin ? admin.firstName : ''}
                 </Text>
               </VStack>
               <VStack
@@ -66,7 +71,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {admin.phoneNumber}
+                  {admin ? admin.phoneNumber : ''}
                 </Text>
               </VStack>
               <VStack
@@ -84,7 +89,7 @@ function SettingsDetails() {
                   color="brand.200"
                   mt={['0 !important', '1rem']}
                 >
-                  {admin.email}
+                  {admin ? admin.email : ''}
                 </Text>
               </VStack>
             </HStack>

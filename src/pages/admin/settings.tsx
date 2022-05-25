@@ -2,8 +2,6 @@ import { Button, Flex, VStack } from '@chakra-ui/react';
 import AdminInfo from 'lib/components/sections/admin/AdminInfo';
 import SettingsDetails from 'lib/components/sections/admin/SettingsDetails';
 import SettingsNav from 'lib/components/sections/SettingsNav';
-import Cookies from 'js-cookie';
-import { CgTapSingle } from 'react-icons/cg';
 import { GetServerSidePropsContext } from 'next';
 import { retuurnAdminData } from 'lib/components/Utilities/Functions/utils';
 
@@ -23,6 +21,7 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const {
     data: { admin, redirect },
   } = retuurnAdminData(ctx);
+
   if (redirect)
     return {
       redirect: {

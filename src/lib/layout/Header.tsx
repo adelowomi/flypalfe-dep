@@ -6,11 +6,13 @@ import { useContext, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { CgMenuRight } from 'react-icons/cg';
 import MenuItems from './Props/MenuItems';
+import Cookies from 'js-cookie';
 
 function Header() {
   const router = useRouter();
   const [opened, setOpened] = useState(true);
-  const { user } = useContext(UserContext);
+
+  const user = Cookies.get('user');
   const openMobileMenu = () => {
     setOpened(!opened);
   };
@@ -125,7 +127,7 @@ function Header() {
                 )}
               </Box>
               <>
-                {user ? (
+                {user === 'true' ? (
                   <Box display={{ base: 'none', md: 'block' }}>
                     <MenuItems
                       text="Dashboard"

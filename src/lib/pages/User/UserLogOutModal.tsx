@@ -22,6 +22,7 @@ function UserLogoutModal({
   function LogOut(): void {
     Cookies.remove('token');
     Cookies.remove('user');
+    Cookies.remove('userData');
     router.push('/auth');
   }
 

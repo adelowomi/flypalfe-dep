@@ -34,6 +34,8 @@ function Authentication() {
   const { setAdmin } = useContext(UserContext);
   const { addToast } = useToasts();
 
+
+
   const {
     handleSubmit,
     register,
@@ -45,9 +47,9 @@ function Authentication() {
   const onSubmit = async (data: LoginModel) => {
     try {
       const result = await logUserIn(undefined, data);
-      console.log(data);
+      // console.log(data);
       const value = result.data;
-      console.log({ value });
+      // console.log({ value });
       if (value.status) {
         addToast('Login Successful', {
           appearance: 'success',

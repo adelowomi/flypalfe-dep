@@ -14,11 +14,14 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { UserContext } from 'lib/Utils/MainContext';
-import React, { useContext } from 'react';
+import Cookies from 'js-cookie';
 
 function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
-  const { admin } = useContext(UserContext);
+  const checkAdmin = Cookies.get('adminData') as unknown as string;
+  let admin;
+  if (checkAdmin !== undefined) {
+    admin = JSON.parse(checkAdmin);
+  }
   return (
     <Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
@@ -40,7 +43,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="Balogun"
                     type="text"
-                    defaultValue={admin.firstName}
+                    defaultValue={admin ? admin.firstName : ''}
                     disabled
                   />
                 </InputGroup>
@@ -53,7 +56,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="08123456789"
                     type="number"
-                    defaultValue={admin.phoneNumber}
+                    defaultValue={admin ? admin.phoneNumber : ''}
                     disabled
                   />
                 </InputGroup>
@@ -66,7 +69,7 @@ function EditAdmin({ isOpen, onClose }: { isOpen: boolean; onClose: any }) {
                   <Input
                     placeholder="balogun@gmail.com"
                     type="text"
-                    defaultValue={admin.email}
+                    defaultValue={admin ? admin.email : ''}
                     disabled
                   />
                 </InputGroup>

@@ -9,11 +9,10 @@ import {
   Box,
 } from '@chakra-ui/react';
 import Cookies from 'js-cookie';
-import { UserContext } from 'lib/Utils/MainContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Parameters } from 'openapi-client-axios';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useOperationMethod } from 'react-openapi-client';
 import { UserView } from 'types/api';
@@ -21,8 +20,11 @@ import listenForOutsideClick from '../../layout/Props/OnclickOutside';
 
 export default function TopNav() {
   const router = useRouter();
-  const { admin, user } = useContext(UserContext);
-  
+  const checkAdmin = Cookies.get('adminData') as unknown as string;
+  let admin;
+  if (checkAdmin !== undefined) {
+    admin = JSON.parse(checkAdmin);
+  }
 
   const [searchUser, { data, loading, error }] =
     useOperationMethod('Usersearch{search}');
@@ -47,7 +49,7 @@ export default function TopNav() {
       const newSearch = result.data.filter((value: any) => {
         return value.fullName.toLowerCase().includes(search.toLowerCase());
       });
-      if (search == '') {
+      if (search === '') {
         setSearchResult([]);
       } else {
         setSearchResult(newSearch);
@@ -137,7 +139,7 @@ export default function TopNav() {
           pl={['0', '.8rem']}
           pr={['.8rem', '0rem']}
         >
-          {`Hi, ${admin ? admin.firstName : user ? user.firstName : ''}`}
+          {`Hi, ${admin ? admin.firstName : ''}`}
         </Text>
       </Flex>
     </Flex>

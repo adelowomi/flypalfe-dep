@@ -10,15 +10,20 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import Cookies from 'js-cookie';
 import shadeColor from 'lib/components/Utilities/Functions/ColorShade';
-import { UserContext } from 'lib/Utils/MainContext';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import ChangePassword from './Modals/ChangePassword';
 import UploadPhoto from './Modals/UploadPhoto';
 
 function AdminInfo() {
-  const { admin } = useContext(UserContext);
+  const checkAdmin = Cookies.get('adminData') as unknown as string;
+  let admin;
+  if (checkAdmin !== undefined) {
+    admin = JSON.parse(checkAdmin);
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -61,10 +66,10 @@ function AdminInfo() {
             >
               <VStack as="div" align={['center', 'flex-start']} spacing={1}>
                 <Text fontWeight="700" fontSize="1rem">
-                  {admin.firstName} {admin.lastName}
+                  {admin ? admin.firstName : ''} {admin ? admin.lastName : ''}
                 </Text>
                 <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                  {admin.email}
+                  {admin ? admin.email : ''}
                 </Text>
                 <Text
                   fontWeight="400"
