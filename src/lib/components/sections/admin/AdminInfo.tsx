@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import Cookies from 'js-cookie';
 import shadeColor from 'lib/components/Utilities/Functions/ColorShade';
+import Image from 'next/image';
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import ChangePassword from './Modals/ChangePassword';
@@ -55,7 +56,22 @@ function AdminInfo() {
               bg={shadeColor('#007F82', 0.1)}
               alignItems="flex-end"
             >
-              <Icon as={FaUser} color="brand.100" fontSize="90px" />
+              {admin && admin.profilePhotoReference !== null ? (
+                <Image
+                  src={admin.profilePhotoReference}
+                  height="120px"
+                  width="120px"
+                  objectFit="cover"
+                />
+              ) : (
+                <Icon as={FaUser} color="brand.100" fontSize="90px" />
+              )}
+              {/* <Image
+                src={admin.profilePhotoReference}
+                height="120px"
+                width="120px"
+                objectFit="cover"
+              /> */}
             </Circle>
             <HStack
               align={['center', 'flex-start']}

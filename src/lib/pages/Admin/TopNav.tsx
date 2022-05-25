@@ -25,6 +25,7 @@ export default function TopNav() {
   if (checkAdmin !== undefined) {
     admin = JSON.parse(checkAdmin);
   }
+  console.log({ admin });
 
   const [searchUser, { data, loading, error }] =
     useOperationMethod('Usersearch{search}');
@@ -127,7 +128,7 @@ export default function TopNav() {
       >
         <Circle size="50px" overflow="hidden" bg="gray">
           <Image
-            src="/assets/whoarewe.png"
+            src={admin ? admin.profilePhotoReference : '/assets/whoarewe.png'}
             w="full"
             h="full"
             objectFit="cover"

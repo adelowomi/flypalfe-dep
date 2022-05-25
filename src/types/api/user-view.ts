@@ -9,5 +9,6 @@ export interface UserView {
   lastName?: null | string;
   token?: null | string;
   phoneNumber?: null | string;
+  profilePhotoReference?: null | string;
   metrics?: UserMetricsView;
 }

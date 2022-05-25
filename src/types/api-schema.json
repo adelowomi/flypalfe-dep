@@ -1389,6 +1389,10 @@
             "type": "string",
             "nullable": true
           },
+          "profilePhotoReference": {
+            "type": "string",
+            "nullable": true
+          },
           "metrics": {
             "$ref": "#/components/schemas/UserMetricsView"
           }
@@ -2339,6 +2343,10 @@
             "format": "int32"
           },
           "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "profilePhotoReference": {
             "type": "string",
             "nullable": true
           },
