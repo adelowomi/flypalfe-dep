@@ -12,7 +12,7 @@ function dashboard({ complains, item }: { complains: any; item: any }) {
 export default dashboard;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
-    data: { admin, redirect },
+    data: { user, redirect },
   } = retuurnUserData(context);
   if (redirect)
     return {

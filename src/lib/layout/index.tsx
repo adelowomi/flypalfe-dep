@@ -1,13 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
-import Cookies from 'js-cookie';
-import Authentication from 'lib/pages/Admin/Authentication';
 import SideNav from 'lib/pages/Admin/SideNav';
 import TopNav from 'lib/pages/Admin/TopNav';
 import UserTopNav from 'lib/pages/Admin/UserTopNav';
 import UserSideNav from 'lib/pages/User/SideNav';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
-import { UserView } from 'types/api';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -48,7 +45,6 @@ const Layout = ({ children }: LayoutProps) => {
           <Footer />
         </Box>
       )}
-      ;
     </>
   );
 };
