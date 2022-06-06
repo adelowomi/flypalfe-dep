@@ -1,9 +1,4 @@
 import { FormControl, FormLabel, GridItem, Icon, Text } from '@chakra-ui/react';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { TextField } from '@mui/material';
-import moment, { Moment } from 'moment';
 import {
   Controller,
   UseFormRegister,
@@ -13,9 +8,6 @@ import {
 } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import {} from '@chakra-ui/core';
-// const moment = require('moment');
-
 interface FormInputProps<TFormValues extends Record<string, unknown>> {
   name: Path<TFormValues>;
   required?: boolean;
@@ -69,7 +61,7 @@ export const PrimaryDate = <TFormValues extends Record<string, any>>({
               dateFormat="d MMM yyyy"
               minDate={new Date(2016, 10, 1)}
               maxDate={new Date()}
-              onChange={(date) => console.log(field.onChange(date))}
+              onChange={(date) => field.onChange(date)}
               selected={field.value}
             />
           )}
