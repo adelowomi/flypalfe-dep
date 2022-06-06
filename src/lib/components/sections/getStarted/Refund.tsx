@@ -6,6 +6,9 @@ import { ComplaintsModel } from 'types/api';
 import { RadioButton } from 'lib/components/Utilities/RadioButton';
 import RadioInput from 'lib/components/Utilities/RadioInput';
 import { PrimaryTextarea } from 'lib/components/Utilities/Textarea';
+import { PrimaryDate } from 'lib/components/Utilities/PrimaryDate';
+import { PrimarySelect } from 'lib/components/Utilities/PrimarySelect';
+import { airports } from 'lib/components/Utilities/airport';
 
 function Refund({
   register,
@@ -41,15 +44,17 @@ function Refund({
               background={['unset', 'unset']}
               borderRadius="5px"
               p="0"
+              pos="relative"
             >
-              <PrimaryInput<ComplaintsModel>
+              <PrimarySelect<ComplaintsModel>
                 label="Departing From"
+                name="departureLocation"
                 register={register}
                 error={errors.departureLocation}
-                defaultValue={''}
-                placeholder="Lagos"
-                name="departureLocation"
-                icon={<GiAirplaneArrival size="1.8rem" />}
+                control={control}
+                icon={GiAirplaneDeparture}
+                options={airports}
+                placeholder="Abuja Airport"
               />
             </GridItem>
             <GridItem
@@ -57,15 +62,17 @@ function Refund({
               background={['unset', 'unset']}
               borderRadius="5px"
               p="0"
+              pos="relative"
             >
-              <PrimaryInput<ComplaintsModel>
-                label="Final destination"
+              <PrimarySelect<ComplaintsModel>
+                label="Final Destination"
+                name="finalDestination"
                 register={register}
                 error={errors.finalDestination}
-                defaultValue={''}
-                name="finalDestination"
-                placeholder="Dubai"
-                icon={<GiAirplaneDeparture size="1.8rem" />}
+                control={control}
+                icon={GiAirplaneArrival}
+                options={airports}
+                placeholder="Akure Airport"
               />
             </GridItem>
           </SimpleGrid>
@@ -81,16 +88,16 @@ function Refund({
         borderRadius="10px"
         p="2rem"
       >
-        <PrimaryInput<ComplaintsModel>
-          label=" Departure date"
-          register={register}
-          error={errors.depatureDate}
-          defaultValue={''}
-          name="departureDate"
-          type="date"
-          icon={<BiCalendarEvent size="1.8rem" />}
-          w="24%"
-        />
+        <GridItem colSpan={2}>
+          <PrimaryDate<ComplaintsModel>
+            label="Departure date"
+            register={register}
+            error={errors.departureDate}
+            name="departureDate"
+            icon={BiCalendarEvent}
+            control={control}
+          />
+        </GridItem>
       </SimpleGrid>
       <SimpleGrid
         columns={2}

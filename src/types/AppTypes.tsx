@@ -1,4 +1,5 @@
-import { Link } from './api';
+import { string } from 'yup';
+import { Link, UserView } from './api';
 
 export const UserTypes = {
   ADMIN_USER: 'ADMIN_USER',
@@ -59,3 +60,27 @@ export type ContactData = {
   phone: string;
   company: string;
 };
+
+export interface LocationView {
+  id?: number;
+  abv?: null | string;
+  airportName?: null | string;
+  airportLocation?: null | string;
+}
+export interface ComplaintsView {
+  id?: number;
+  user?: UserView;
+  complaintsCategory?: null | string;
+  status?: null | string;
+  departureLocation?: LocationView;
+  finalDestination?: null | string;
+  departureDate?: string;
+  connectingFlights?: boolean;
+  arrivalTime?: null | string;
+  notificationPeriod?: null | string;
+  delayedFlight?: null | string;
+  airline?: null | string;
+  flightNumber?: null | string;
+  additionalInformation?: null | string;
+  mandateFormReference?: null | string;
+}

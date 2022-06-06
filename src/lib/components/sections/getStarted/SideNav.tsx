@@ -39,7 +39,7 @@ function SideNav({ step, isValid }: Steps) {
             steps={2}
             name="Document"
           />
-          <SideNavLinks step={step} isValid={isValid} steps={4} name="Finsh" />
+          <SideNavLinks step={step} isValid={isValid} steps={4} name="Finish" />
         </VStack>
       </Flex>
     </Box>

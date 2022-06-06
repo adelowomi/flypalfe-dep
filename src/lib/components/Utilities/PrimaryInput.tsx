@@ -37,6 +37,7 @@ interface FormInputProps<TFormValues extends Record<string, unknown>> {
   testId?: string;
   w?: string;
   padding?: string;
+  onChange?: any;
 }
 
 export const PrimaryInput = <TFormValues extends Record<string, any>>({
@@ -60,6 +61,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
   testId,
   w,
   padding,
+  onChange,
 }: FormInputProps<TFormValues>) => {
   return (
     <GridItem colSpan={2}>
@@ -80,6 +82,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
             defaultValue={defaultValue}
             disabled={disableLabel}
             padding={padding}
+            onChange={onChange}
           />
           <InputRightElement
             pointerEvents="none"

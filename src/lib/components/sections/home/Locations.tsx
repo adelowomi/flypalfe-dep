@@ -69,7 +69,7 @@ function Locations() {
               mt={['2.5rem', '0']}
             >
               <Text fontSize=".8rem" color="brand.200" mx={['auto', 'unset']}>
-                All the airlines we support
+                Locations
               </Text>
             </Flex>
             <Grid

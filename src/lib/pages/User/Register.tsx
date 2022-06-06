@@ -15,13 +15,13 @@ import { useToasts } from 'react-toast-notifications';
 import { SecondaryInput } from 'lib/components/Utilities/SecondaryInput';
 import { Register } from 'types/api';
 
+const phoneRegExp = /^([0]{1})[0-9]{10}$/;
 const schema = yup.object().shape({
   email: yup.string().required('Email is required'),
   password: yup.string().required('Password is required'),
   firstName: yup.string().required('First Name is required'),
   lastName: yup.string().required('Last Name is required'),
-  middleName: yup.string().required('Middle Name is required'),
-  phoneNumber: yup.string().required('Phone Number is required'),
+  phoneNumber: yup.string().matches(phoneRegExp, 'Invalid phone number'),
 });
 
 function Register({
@@ -48,10 +48,6 @@ function Register({
       const result = await (await RegsiterUser(undefined, data)).data;
       console.log(result);
       if (result.status) {
-        addToast('User Successfully Created', {
-          appearance: 'success',
-          autoDismiss: true,
-        });
         localStorage.setItem('email', result.data.email);
         setVerify(true);
         return;

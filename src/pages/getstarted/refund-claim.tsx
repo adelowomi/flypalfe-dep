@@ -62,8 +62,12 @@ function GetStarted() {
 
   const onSubmit = async (data: ComplaintsModel) => {
     data.connectingFlights = data.connectingFlights as boolean;
-    console.log(data.connectingFlights);
+    data.departureDate = new Date(
+      data.departureDate as unknown as Date
+    ).toLocaleDateString();
+
     data.mandateFormReference = url;
+
     let value;
     try {
       const result = await registerComplain(undefined, data);

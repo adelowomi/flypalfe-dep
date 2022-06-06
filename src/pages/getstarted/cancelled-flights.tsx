@@ -7,7 +7,7 @@ import Third from 'lib/components/sections/getStarted/Third';
 import FormButton from 'lib/components/Utilities/FormButton';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ComplaintsModel } from 'types/api';
 import { useOperationMethod } from 'react-openapi-client';
@@ -20,7 +20,7 @@ import Cookies from 'js-cookie';
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
   finalDestination: yup.string().required('Final Destination is required'),
-  departureDate: yup.string().required('Departure Date is required'),
+  // departureDate: yup.string().required('Departure Date is required').nullable(),
   connectingFlights: yup.string().required('Connecting Flight is required'),
   arrivalTime: yup.string().required('Arrival Time is required'),
   notificationPeriod: yup.string().required('Notification Period is required'),
@@ -62,24 +62,29 @@ function GetStarted() {
 
   const onSubmit = async (data: ComplaintsModel) => {
     data.connectingFlights = data.connectingFlights as boolean;
-    console.log(data.connectingFlights);
     data.mandateFormReference = url;
+    data.departureDate = new Date(
+      data.departureDate as unknown as Date
+    ).toLocaleDateString();
+    
     let value;
     try {
       const result = await registerComplain(undefined, data);
+      console.log({ data });
+      // console.log({ result });
       value = result.data;
-      if (value.status) {
-        addToast('Successful', {
-          appearance: 'success',
-          autoDismiss: true,
-        });
-        setValue(result.status);
+      if (result.status !== 200) {
+        addToast(value.message, { appearance: 'error', autoDismiss: true });
         return;
       }
-      addToast(value.message, { appearance: 'error', autoDismiss: true });
+      addToast('Successful', {
+        appearance: 'success',
+        autoDismiss: true,
+      });
+      setValue(result.status);
       return;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log('An error occured');
     }
   };
 

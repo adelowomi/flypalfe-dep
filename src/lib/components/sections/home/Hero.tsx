@@ -45,9 +45,8 @@ function Hero() {
             className="animate__animated animate__fadeInUp animate__delay-1s"
           >
             Get up to
-            <Text color="brand.500" display="inline">
-              {' '}
-              50% of your fare{' '}
+            <Text as="span" color="brand.500" display="inline">
+              &nbsp; 50% of your fare &nbsp;
             </Text>
             through FLYPAL. Both local and international
           </Text>
@@ -169,7 +168,7 @@ function Hero() {
 
           <Box
             pos="absolute"
-            top={['-19%',"-15%"]}
+            top={['-19%', '-15%']}
             right={['-215px', '-270px']}
             zIndex="1"
           >

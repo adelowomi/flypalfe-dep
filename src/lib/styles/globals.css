@@ -3,6 +3,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
 
+.react-selectrix .rs-toggle {
+  border: 1px solid !important;
+  outline: none;
+  padding: 10px 50px 10px 60px !important;
+  width: 100%;
+  cursor: pointer;
+  color: #6a7f9d;
+  font-size: 14px;
+  line-height: normal;
+  height: 4rem;
+  border-color: #007f82;
+  border-radius: 5px;
+  box-shadow: 0px 0px 9px rgb(0 127 130 / 37%) !important;
+}
+
+.react-datepicker__input-container input {
+  border: 1px solid !important;
+  outline: none;
+  padding: 10px 50px 10px 60px !important;
+  width: 100%;
+  cursor: pointer;
+  color: #6a7f9d;
+  font-size: 14px;
+  line-height: normal;
+  height: 4rem;
+  border-color: #007f82;
+  border-radius: 5px;
+  box-shadow: 0px 0px 9px rgb(0 127 130 / 37%) !important;
+}
 .radio {
   width: 2rem !important;
   height: 2rem !important;

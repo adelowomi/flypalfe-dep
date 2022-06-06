@@ -1,4 +1,4 @@
-import { Box, Flex, VStack, Text } from '@chakra-ui/react';
+import { Box, Flex, VStack, Text, Button } from '@chakra-ui/react';
 import Fifth from 'lib/components/sections/getStarted/Fifth';
 import First from 'lib/components/sections/getStarted/First';
 import Fourth from 'lib/components/sections/getStarted/Fourth';
@@ -20,14 +20,20 @@ import Cookies from 'js-cookie';
 const schema = yup.object().shape({
   departureLocation: yup.string().required('Departure Location is required'),
   finalDestination: yup.string().required('Final Destination is required'),
-  departureDate: yup.string().required('Departure Date is required'),
-  connectingFlights: yup.string().required('Connecting Flight is required'),
+  // departureDate: yup.string().required('Departure Date is required'),
+  connectingFlights: yup.boolean().required('Connecting Flight is required'),
   arrivalTime: yup.string().required('Arrival Time is required'),
   delayedFlight: yup.string().required('Flight Delayed is required'),
   airline: yup.string().required('Airline is required'),
   flightNumber: yup.string().required('Flight Number is required'),
-  connectingFlightAirLine: yup.string().required('Airline is required'),
-  connectingFlightNumber: yup.string().required('Flight Number is required'),
+  connectingFlightAirLine: yup.string().when('connectingFlights', {
+    is: true,
+    then: yup.string().required('Airline is required'),
+  }),
+  connectingFlightNumber: yup.string().when('connectingFlights', {
+    is: true,
+    then: yup.string().required('Airline is required'),
+  }),
 });
 function GetStarted() {
   const [canSubmit, setCanSubmit] = useState(false);
@@ -42,6 +48,8 @@ function GetStarted() {
   const [step, setStep] = useState(1);
   const { addToast } = useToasts();
   const id = 2;
+  let states;
+  console.log({ states });
 
   const isUser = Cookies.get('user');
   useEffect(() => {
@@ -55,6 +63,7 @@ function GetStarted() {
     handleSubmit,
     register,
     control,
+    watch,
     formState: { errors, isValid },
   } = useForm<ComplaintsModel>({
     resolver: yupResolver(schema),
@@ -66,24 +75,25 @@ function GetStarted() {
 
   const onSubmit = async (data: ComplaintsModel) => {
     data.connectingFlights = data.connectingFlights as boolean;
-    console.log(data.connectingFlights);
+    data.departureDate = new Date(
+      data.departureDate as unknown as Date
+    ).toLocaleDateString();
+
     data.mandateFormReference = url;
-    let value;
+
     try {
       const result = await registerComplain(undefined, data);
-      const value = result.data;
-      if (value.status) {
-        addToast('Successful', {
-          appearance: 'success',
-          autoDismiss: true,
-        });
-        setValue(result.status);
+      states = result.data.status;
+      if (result.status !== 200) {
+        addToast(value.message, { appearance: 'error', autoDismiss: true });
         return;
       }
-      addToast(value.message, { appearance: 'error', autoDismiss: true });
-      return;
-    } catch (error) {
-      console.log(error);
+      addToast('Successful', {
+        appearance: 'success',
+        autoDismiss: true,
+      });
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -143,13 +153,8 @@ function GetStarted() {
                     setUploadedUrl={setUrlString}
                   />
                 )}
-                {step === 4 && value ? (
-                  <Fifth />
-                ) : step != 4 ? (
-                  ''
-                ) : (
-                  'Please wait'
-                )}
+                {/* {console.log({ states })}
+                {states === true ? <Fifth /> : step != 4 ? '' : 'Please wait'} */}
                 <FormButton
                   step={step}
                   setStep={setStep}

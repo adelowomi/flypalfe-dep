@@ -35,8 +35,8 @@ function Help() {
               textAlign="center"
               w="90%"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              As the world’s largest flight compensation company, we work across
+              more countries, and can help in more situations than anyone else.
             </Text>
           </VStack>
           <Grid

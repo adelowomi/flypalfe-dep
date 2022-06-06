@@ -9,7 +9,8 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { ComplaintsView } from 'types/api';
+import { ComplaintsView } from 'types/AppTypes';
+// import { ComplaintsView } from 'types/api';
 const moment = require('moment');
 
 function ComplaintsDetails({ item }: { item: ComplaintsView }) {
@@ -43,7 +44,7 @@ function ComplaintsDetails({ item }: { item: ComplaintsView }) {
                   Departing from?
                 </Text>
                 <Text fontWeight="400" fontSize=".9rem" color="brand.200">
-                  {item.departureLocation}
+                  {item.departureLocation?.airportLocation}
                 </Text>
                 <Text fontWeight="500" fontSize="1rem">
                   Final destination
