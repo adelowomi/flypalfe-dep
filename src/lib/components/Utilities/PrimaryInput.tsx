@@ -59,7 +59,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
   value,
   icon,
   testId,
-  w,
+  w = '0',
   padding,
   onChange,
 }: FormInputProps<TFormValues>) => {

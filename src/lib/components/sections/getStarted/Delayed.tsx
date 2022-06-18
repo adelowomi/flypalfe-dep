@@ -1,5 +1,9 @@
 import { Box, GridItem, SimpleGrid, VStack, Text } from '@chakra-ui/react';
-import { GiAirplaneArrival, GiAirplaneDeparture } from 'react-icons/gi';
+import {
+  GiAirplaneArrival,
+  GiAirplaneDeparture,
+  GiDeadlyStrike,
+} from 'react-icons/gi';
 import { BiCalendarEvent } from 'react-icons/bi';
 import { PrimaryInput } from 'lib/components/Utilities/PrimaryInput';
 import { ComplaintsModel } from 'types/api';
@@ -200,7 +204,7 @@ function Delayed({
                 register={register}
                 error={errors.delayedFlight}
                 control={control}
-                icon={GiAirplaneDeparture}
+                icon={GiDeadlyStrike}
                 options={airports}
                 placeholder="Abuja Airport"
               />

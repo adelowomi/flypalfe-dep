@@ -142,7 +142,7 @@ function Fifth() {
             />
           </Box>
           <Text
-            fontSize="20px"
+            fontSize="16px"
             color="brand.200"
             textAlign="center"
             w={['full', '70%']}

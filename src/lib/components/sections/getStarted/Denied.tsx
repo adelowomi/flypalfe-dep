@@ -1,5 +1,9 @@
 import { Box, GridItem, SimpleGrid, VStack } from '@chakra-ui/react';
-import { GiAirplaneArrival, GiAirplaneDeparture } from 'react-icons/gi';
+import {
+  GiAirplaneArrival,
+  GiAirplaneDeparture,
+  GiTicket,
+} from 'react-icons/gi';
 import { BiCalendarEvent } from 'react-icons/bi';
 import { PrimaryInput } from 'lib/components/Utilities/PrimaryInput';
 import { ComplaintsModel } from 'types/api';
@@ -153,9 +157,9 @@ function Denied({
                 register={register}
                 error={errors.boardingPass}
                 defaultValue={''}
-                placeholder="Lagos to Abuja"
+                placeholder="ZHG3456789"
                 name="boardingPass"
-                icon={<GiAirplaneArrival size="1.8rem" />}
+                icon={<GiTicket size="1.8rem" />}
               />
             </GridItem>
           </SimpleGrid>
