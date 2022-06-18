@@ -90,7 +90,7 @@ export const PrimaryInput = <TFormValues extends Record<string, any>>({
             position="absolute"
             bgColor="white"
             width={w}
-            height="70%"
+            // height="70%"
             top="10px"
             right="10px"
           />

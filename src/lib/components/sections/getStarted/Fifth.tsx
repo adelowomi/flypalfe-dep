@@ -150,8 +150,9 @@ function Fifth() {
             mt="7rem"
             mb="3rem"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut.
+            Your complaint has been registered and will be worked upon by our
+            customer service agents. Please Check your dashboard to see the
+            progress of your complaints.
           </Text>
           <Box mx="auto" w="fit-content">
             <Link href="/user/dashboard">

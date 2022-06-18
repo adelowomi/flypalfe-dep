@@ -42,7 +42,8 @@ function Login({ toggleForms }: { toggleForms: any }) {
     if (router.query && router.query.from) {
       router.push(router.query.from as unknown as string);
     } else {
-      router.push('/user/dashboard');
+      // router.push('/user/dashboard');
+      window.location.href = '/user/dashboard';
     }
   };
   const {

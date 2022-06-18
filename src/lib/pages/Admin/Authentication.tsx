@@ -57,7 +57,7 @@ function Authentication() {
         Cookies.set('token', value.data.token);
         Cookies.set('admin', 'true');
         Cookies.set('adminData', JSON.stringify(value.data));
-        router.push('/admin/dashboard');
+        window.location.href = '/admin/dashboard';
         return;
       }
       addToast(value.message, { appearance: 'error', autoDismiss: true });

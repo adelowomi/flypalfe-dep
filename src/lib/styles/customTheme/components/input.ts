@@ -7,7 +7,7 @@ const Input: DeepPartial<Theme['components']['Input']> = {
         borderRadius: '5px',
         background: 'white',
         boxSizing: 'border-box',
-        height: '4rem',
+        height: '3.5rem',
         borderColor: 'brand.100',
         border: '1px solid',
         boxShadow: '0px 0px 9px rgba(0, 127, 130, 0.37)',
@@ -25,7 +25,7 @@ const Input: DeepPartial<Theme['components']['Input']> = {
         borderRadius: '5px',
         background: 'rgba(0, 127, 130, 0.2)',
         boxSizing: 'border-box',
-        height: '4rem',
+        height: '3.5rem',
         border: 'none',
         _focus: {
           borderColor: 'brand.200',

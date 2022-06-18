@@ -9,7 +9,7 @@ import {
 import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 
-function Fourth({
+function  Fourth({
   canSubmit,
   setCanSubmit,
   setUploadedUrl,

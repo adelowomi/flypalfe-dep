@@ -2,8 +2,6 @@ import {
   FormControl,
   FormLabel,
   RadioGroup,
-  Radio,
-  Box,
   Stack,
   HStack,
 } from '@chakra-ui/react';
@@ -14,8 +12,6 @@ import {
   FieldError,
   Control,
 } from 'react-hook-form';
-
-// import {} from '@chakra-ui/core';
 
 interface FormInputProps<TFormValues extends Record<string, unknown>> {
   name: Path<TFormValues>;

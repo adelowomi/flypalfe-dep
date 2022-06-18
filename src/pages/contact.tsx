@@ -73,7 +73,8 @@ function contact() {
   return (
     <Flex
       align="center"
-      h="auto"
+      h="100vh"
+      overflow="hidden"
       // bg={['rgba(226, 232, 240, 0.3)', 'unset']}
       py={['1rem', '0']}
     >
@@ -108,7 +109,7 @@ function contact() {
           mb={['2rem', '0']}
         >
           <Text
-            fontSize={{ base: '2rem', md: '2.5rem' }}
+            fontSize={{ base: '2rem', md: '2rem' }}
             color="brand.100"
             // mb={5}
             textAlign={['center', 'left']}
@@ -116,7 +117,7 @@ function contact() {
             Say hi! 👋
           </Text>
           <Text
-            fontSize={['18px', '20px']}
+            fontSize={['18px', '18px']}
             color="black"
             w={['80%', 'full']}
             textAlign={['center', 'left']}
@@ -128,16 +129,16 @@ function contact() {
           >
             <SimpleGrid
               columns={2}
-              rowGap="3"
+              rowGap="4"
               columnGap={['2', '4']}
-              w={['full', '80%']}
+              w={['full', '90%']}
               mt="2rem !important"
             >
               <GridItem
                 colSpan={2}
                 background={['unset', 'rgba(226, 232, 240, 0.3)']}
                 borderRadius="5px"
-                p={['.5rem 2rem', '2rem']}
+                p={['.5rem 2rem', '1rem 2rem']}
               >
                 <PrimaryInput<ContactData>
                   register={register}
@@ -147,14 +148,14 @@ function contact() {
                   label="Email"
                   placeholder="Chigozie@gmail.com"
                   padding="1rem"
-                  w='0'
+                  w="0"
                 />
               </GridItem>
               <GridItem colSpan={2}>
                 <SimpleGrid
                   columns={2}
                   rowGap="3"
-                  columnGap={['2', '4']}
+                  columnGap={['2', '2']}
                   w="full"
                   background={['unset', 'rgba(226, 232, 240, 0.3)']}
                 >
@@ -162,7 +163,7 @@ function contact() {
                     colSpan={[2, 1]}
                     background={['unset', 'unset']}
                     borderRadius="5px"
-                    p={['.5rem 2rem', '2rem']}
+                    p={['.5rem 2rem', '1rem 2rem']}
                   >
                     <PrimaryInput<ContactData>
                       register={register}
@@ -172,14 +173,14 @@ function contact() {
                       label="Full name"
                       placeholder="Chigozie"
                       padding="1rem"
-                      w='0'
+                      w="0"
                     />
                   </GridItem>
                   <GridItem
                     colSpan={[2, 1]}
                     background={['unset', 'unset']}
                     borderRadius="5px"
-                    p={['.5rem 2rem', '2rem']}
+                    p={['.5rem 2rem', '1rem 2rem']}
                   >
                     <PrimaryInput<ContactData>
                       register={register}
@@ -189,7 +190,7 @@ function contact() {
                       label="Phone Number"
                       padding="1rem"
                       placeholder="0800000000000"
-                      w='0'
+                      w="0"
                     />
                   </GridItem>
                 </SimpleGrid>
@@ -198,7 +199,7 @@ function contact() {
                 colSpan={2}
                 background={['unset', 'rgba(226, 232, 240, 0.3)']}
                 borderRadius="5px"
-                p={['.5rem 2rem', '2rem']}
+                p={['.5rem 2rem', '1rem 2rem']}
               >
                 <PrimaryTextarea<ContactData>
                   label="Message"
