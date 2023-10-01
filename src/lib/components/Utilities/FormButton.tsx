@@ -18,7 +18,7 @@ function FormButton({
     setStep((cur: number) => cur + 1);
   };
   const saveFile = () => {
-    saveAs('/assets/dummy.pdf', 'mandate.pdf');
+    saveAs('/assets/flypalmandate.pdf', 'mandate.pdf');
     setStep(3);
   };
   // console.log(canSubmit);

@@ -38,6 +38,8 @@ export * from './complaintslist-parameters';
 export * from './complaintslist-response';
 export * from './complaintslistuser-parameters';
 export * from './complaintslistuser-response';
+export * from './complaintsreportdownload-parameters';
+export * from './complaintsreportdownload-response';
 export * from './daily-complaint-count';
 export * from './daily-complaint-count-i-enumerable-standard-response';
 export * from './dashboard-metrics-view';

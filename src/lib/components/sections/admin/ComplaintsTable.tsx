@@ -47,6 +47,7 @@ function ComplaintsTable({ complains }: { complains: any }) {
               <TableHead title="Airline" />
               <TableHead title="Departure" />
               <TableHead title="Date" />
+              <TableHead title="Reference" />
               <TableHead title="Status" />
             </Tr>
           </Thead>
@@ -62,6 +63,11 @@ function ComplaintsTable({ complains }: { complains: any }) {
                     <TableData
                       name={moment(x.departureDate).format('MMM Do YYYY')}
                     />
+                     <TableData
+                    name={
+                      x.referenceCode ? x.referenceCode.toUpperCase() : 'N/A'
+                    }
+                  />
                     <TableStatus name={x.status} />
                   </Tr>
                 </Link>

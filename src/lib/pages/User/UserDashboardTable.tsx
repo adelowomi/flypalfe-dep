@@ -43,6 +43,7 @@ function UserDashboardTable({ complains }: { complains: any }) {
               <TableHead title="Destination" />
               <TableHead title="Complain type" />
               <TableHead title="Date" />
+              <TableHead title="Reference" />
               <TableHead title="Complaint Status" />
             </Tr>
           </Thead>
@@ -56,6 +57,11 @@ function UserDashboardTable({ complains }: { complains: any }) {
                   <TableData name={x.complaintsCategory} />
                   <TableData
                     name={moment(x.departureDate).format('MMM Do YYYY')}
+                  />
+                  <TableData
+                    name={
+                      x.referenceCode ? x.referenceCode.toUpperCase() : 'N/A'
+                    }
                   />
                   <TableStatus name={x.status} />
                 </Tr>

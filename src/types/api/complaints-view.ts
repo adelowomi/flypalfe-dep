@@ -17,4 +17,5 @@ export interface ComplaintsView {
   flightNumber?: null | string;
   additionalInformation?: null | string;
   mandateFormReference?: null | string;
+  referenceCode?: null | string;
 }

@@ -1,95 +1,91 @@
 export const airports = [
   {
     key: 1,
-    label: 'Nnamdi Azikiwe International Airport',
+    label: 'Arik Air',
   },
   {
     key: 2,
-    label: 'Akure Airport',
+    label: 'Air Peace',
   },
   {
     key: 3,
-    label: 'Bauchi Airport',
+    label: 'Dana Air',
   },
   {
     key: 4,
-    label: 'Benin City Airport',
+    label: 'Med-View Airlines',
   },
   {
     key: 5,
-    label: 'Calabar Airport',
+    label: 'Azman Air',
   },
   {
     key: 6,
-    label: 'Enugu Airport',
+    label: 'Overland Airways',
   },
   {
     key: 7,
-    label: 'Ibadan Airport',
+    label: 'Max Air',
   },
   {
     key: 8,
-    label: 'Ilorin Airport',
+    label: 'Aero Contractors',
   },
   {
     key: 9,
-    label: 'Jos Airport',
+    label: 'Ibom Air',
   },
   {
     key: 10,
-    label: 'Kaduna Airport',
+    label: 'United Nigeria Airlines',
   },
   {
     key: 11,
-    label: 'Aminu Kano International Apt Airport',
+    label: 'First Nation Airways',
   },
   {
     key: 12,
-    label: 'Murtala Muhammed Airport',
+    label: 'IRS Airlines',
   },
   {
     key: 13,
-    label: 'Makeyuguri Airport',
+    label: 'Chanchangi Airlines',
   },
   {
     key: 14,
-    label: 'Makurdi Airport',
+    label: 'Allied Air',
   },
   {
     key: 15,
-    label: 'Minna Airport',
+    label: 'Green Africa Airways',
   },
   {
     key: 16,
-    label: 'Port Harcourt Airport',
+    label: 'Dornier Aviation Nigeria',
   },
   {
     key: 16,
-    label: 'Port Harcourt Airport',
+    label: 'Skyjet Aviation Services',
   },
   {
     key: 17,
-    label: 'Port Harcourt City Airport',
+    label: 'ValueJet',
   },
   {
     key: 18,
-    label: 'Sokoto Airport',
+    label: 'Kabo Air',
   },
   {
     key: 19,
-    label: 'Victoria Island Airport',
+    label: 'Hak Air',
   },
   {
     key: 20,
-    label: 'Warri Airport',
+    label: 'Rano Airline',
   },
   {
     key: 21,
-    label: 'Yola Airport',
-  },
-  {
-    key: 22,
-    label: 'Zaria Airport',
+    label: 'Others',
   },
 ];
 // export const airports = [
@@ -232,3 +228,26 @@ export const airports = [
 //     abv: 'ZAR',
 //   },
 // ];
+
+// Arik Air
+// Air Peace
+// Dana Air 
+// Med-View Airlines 
+// Azman Air 
+// Overland Airways
+// Max Air
+// Aero Contractors
+// Ibom Air
+// United Nigeria Airlines 
+// First Nation Airways
+// IRS Airlines
+// Chanchangi Airlines 
+// Allied Air
+// Green Africa Airways 
+// Dornier Aviation Nigeria 
+// Skyjet Aviation Services 
+// ValueJet
+// Kabo Air
+// Hak Air
+// Rano Airline
+// Others
